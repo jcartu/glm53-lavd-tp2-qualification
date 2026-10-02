@@ -1,0 +1,106 @@
+{
+  "type": 0,
+  "content": "wrap-up from me on Lavd's 2-GPU config, full data is up: <https://github.com/jcartu/glm53-lavd-tp2-qualification>\n\nbottom line: two cards get you ~68% of four-card speed with no measurable quality cost. 207/488/672 tok/s at 1/4/8 users vs 306/694/962 on the same QAD checkpoint at TP4.\n\nquality, paired, same 200 MMLU-Pro questions greedy: 2-GPU 168/200, 4-GPU 168/200, p=1.0. rerunning the unchanged config moved the score 3 points, so treat small deltas as noise. ledger 8\u26052\u26060\u2715, estonia 29/30.\n\nthe 1M ctx is not a sticker. salted needle retrieval passed at every size up to a 1,040,355 token prompt, both facts, 249s. 700K+420K at the same time also both fine. and with the 786432 cap uncommented the pool lands on exactly his 1,066,052.\n\ntwo things for the group: his NCCL 2ch override is load bearing, 16ch default boots but the scheduler metrics never come up and benching aborts. and max_parallel_prefills 2 on the pinned image kills all 12 of my queued 30K prompts at ~30s, default 1 is 12/12 fine, same family as netwalker's report.\n\nB12X drafter = marlin here, no reason to switch. dual-instance and knob A/Bs got cut, cards needed elsewhere. charts + per-request JSON + checksums all in the repo",
+  "mentions": [],
+  "mention_roles": [],
+  "attachments": [
+    {
+      "id": "1555588945369366580",
+      "filename": "glm-flash-setups.png",
+      "size": 228025,
+      "url": "https://cdn.discordapp.com/attachments/1471527895439638528/1555588945369366580/glm-flash-setups.png?backend=b2&ex=6ac1129a&is=6abfc11a&hm=3902e9ff517b7037fbf445bbe38b70636c749c299d1d56dccb80d1da8d3f5f9d&",
+      "proxy_url": "https://media.discordapp.net/attachments/1471527895439638528/1555588945369366580/glm-flash-setups.png?backend=b2&ex=6ac1129a&is=6abfc11a&hm=3902e9ff517b7037fbf445bbe38b70636c749c299d1d56dccb80d1da8d3f5f9d&",
+      "width": 2520,
+      "height": 1800,
+      "description": "Decode throughput at 1, 4 and 8 concurrent users across the four tested setups; median of three 30-second trials with range whiskers.",
+      "content_type": "image/png",
+      "content_scan_version": 4,
+      "placeholder": "S+cFDYJUaDmUeYiwaPhWVbt8n8z3",
+      "placeholder_version": 1
+    },
+    {
+      "id": "1555588946434588672",
+      "filename": "glm-flash-quality.png",
+      "size": 200360,
+      "url": "https://cdn.discordapp.com/attachments/1471527895439638528/1555588946434588672/glm-flash-quality.png?backend=b2&ex=6ac1129a&is=6abfc11a&hm=4a978da5eb820f726f39ef77197900f3f26dd18846cfc51ba73429bee3c0b660&",
+      "proxy_url": "https://media.discordapp.net/attachments/1471527895439638528/1555588946434588672/glm-flash-quality.png?backend=b2&ex=6ac1129a&is=6abfc11a&hm=4a978da5eb820f726f39ef77197900f3f26dd18846cfc51ba73429bee3c0b660&",
+      "width": 2520,
+      "height": 1800,
+      "description": "Paired MMLU-Pro accuracy on the same 200 questions with 95 percent Wilson intervals, including the unchanged-config repeat.",
+      "content_type": "image/png",
+      "content_scan_version": 4,
+      "placeholder": "RucBBYBaZmm/ZXm8dap4dk17vwPl",
+      "placeholder_version": 1
+    },
+    {
+      "id": "1555588946782589070",
+      "filename": "glm-flash-1m-retrieval.png",
+      "size": 244725,
+      "url": "https://cdn.discordapp.com/attachments/1471527895439638528/1555588946782589070/glm-flash-1m-retrieval.png?backend=b2&ex=6ac1129a&is=6abfc11a&hm=f7c7f180b73503076afb2403c1253f49c61b4cd2d4ce362f17c2db3ef4f0178e&",
+      "proxy_url": "https://media.discordapp.net/attachments/1471527895439638528/1555588946782589070/glm-flash-1m-retrieval.png?backend=b2&ex=6ac1129a&is=6abfc11a&hm=f7c7f180b73503076afb2403c1253f49c61b4cd2d4ce362f17c2db3ef4f0178e&",
+      "width": 2520,
+      "height": 1800,
+      "description": "Cold salted needle retrieval time versus prompt length through 1,040,355 tokens; both planted facts recovered at every size.",
+      "content_type": "image/png",
+      "content_scan_version": 4,
+      "placeholder": "RucBBYAvEUfuGGPXNrlWMJyfv8r3",
+      "placeholder_version": 1
+    }
+  ],
+  "embeds": [],
+  "timestamp": "2026-10-02T14:35:06.421000+00:00",
+  "edited_timestamp": null,
+  "flags": 0,
+  "components": [],
+  "id": "1555588947046834387",
+  "channel_id": "1471527895439638528",
+  "author": {
+    "id": "448933919447056385",
+    "username": "jcartu",
+    "avatar": "1a51fb29ad7c95e96f41ff9483881480",
+    "discriminator": "0",
+    "public_flags": 0,
+    "flags": 0,
+    "banner": "a_5ee6b26ef3418a0ae6b6fa07cc1b66ed",
+    "accent_color": null,
+    "global_name": "JCartu",
+    "avatar_decoration_data": null,
+    "collectibles": {
+      "nameplate": {
+        "sku_id": "1428438925067817093",
+        "asset": "nameplates/plastic/ryomen_sukuna/",
+        "label": "COLLECTIBLES_PLASTIC_RYOMEN_SUKUNA_NP_A11Y",
+        "palette": "crimson"
+      }
+    },
+    "display_name_styles": {
+      "font_id": 14,
+      "effect_id": 7,
+      "colors": [
+        7997702,
+        13114898,
+        16013848,
+        16749824,
+        16766023
+      ]
+    },
+    "vad_colors": null,
+    "banner_color": null,
+    "clan": {
+      "identity_guild_id": "1466898002793857221",
+      "identity_enabled": true,
+      "tag": "LIL",
+      "badge": "736e7d8bb18ed68b6e0223765e79015e"
+    },
+    "primary_guild": {
+      "identity_guild_id": "1466898002793857221",
+      "identity_enabled": true,
+      "tag": "LIL",
+      "badge": "736e7d8bb18ed68b6e0223765e79015e"
+    }
+  },
+  "pinned": false,
+  "mention_everyone": false,
+  "tts": false,
+  "nonce": "6743394989630412649"
+}

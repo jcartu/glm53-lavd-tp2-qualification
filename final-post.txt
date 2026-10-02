@@ -1,0 +1,11 @@
+wrap-up from me on Lavd's 2-GPU config, full data is up: <https://github.com/jcartu/glm53-lavd-tp2-qualification>
+
+bottom line: two cards get you ~68% of four-card speed with no measurable quality cost. 207/488/672 tok/s at 1/4/8 users vs 306/694/962 on the same QAD checkpoint at TP4.
+
+quality, paired, same 200 MMLU-Pro questions greedy: 2-GPU 168/200, 4-GPU 168/200, p=1.0. rerunning the unchanged config moved the score 3 points, so treat small deltas as noise. ledger 8★2☆0✕, estonia 29/30.
+
+the 1M ctx is not a sticker. salted needle retrieval passed at every size up to a 1,040,355 token prompt, both facts, 249s. 700K+420K at the same time also both fine. and with the 786432 cap uncommented the pool lands on exactly his 1,066,052.
+
+two things for the group: his NCCL 2ch override is load bearing, 16ch default boots but the scheduler metrics never come up and benching aborts. and max_parallel_prefills 2 on the pinned image kills all 12 of my queued 30K prompts at ~30s, default 1 is 12/12 fine, same family as netwalker's report.
+
+B12X drafter = marlin here, no reason to switch. dual-instance and knob A/Bs got cut, cards needed elsewhere. charts + per-request JSON + checksums all in the repo
