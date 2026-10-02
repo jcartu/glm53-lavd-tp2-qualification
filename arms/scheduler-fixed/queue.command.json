@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/usr/bin/python",
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/scenarios.py",
+    "--mode",
+    "queue",
+    "--ports",
+    "8002",
+    "--output",
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/arms/scheduler-fixed/queue.json"
+  ],
+  "exit_code": 0,
+  "start": 1790950008.4969532,
+  "end": 1790950083.7742672,
+  "elapsed_s": 75.27731442451477
+}

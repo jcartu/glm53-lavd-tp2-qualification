@@ -1,0 +1,5 @@
+retrieval 8192 8151 True None
+retrieval 131072 131056 True None
+retrieval 524288 524258 True None
+retrieval 770000 769946 True None
+pressure {'requests': 2, 'completed': 2, 'failed': 0, 'wall_s': 243.49869918823242, 'output_tokens': 20, 'aggregate_output_tokens_per_s': 0.08213596239600175, 'ttft_p50_s': 173.4640692472458, 'ttft_p95_s': 236.49287627935408, 'tpot_p50_ms': 22.525337007310654, 'tpot_p95_ms': 42.798140313890244}

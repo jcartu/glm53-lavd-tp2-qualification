@@ -1,0 +1,14 @@
+{
+  "started_utc": "2026-10-01T23:19:27.134743+00:00",
+  "production_id": "e03ceb359c93d5249689f3aa4f25db6f4da165554afeae9ad71f4ac2f01f0351",
+  "production_name": "orca-prod",
+  "qad_model": "/mnt/2king/models/GLM-5.3-Flash-NVFP4-qad-tvn-step3500",
+  "lavd_image": "ghcr.io/local-inference-lab/vllm@sha256:04bdd08b6ccbfe18f297dc4b60580fc6354f2efe249534888574d5046c187077",
+  "production_model": "/mnt/2king/models/GLM-5.3-Flash-NVFP4-nvidia-09b04e5e",
+  "input_sha256": "4c00675e35cb36abe2d4d59f5f99f528b41063755ff38a75ac7121dd33cba2f5",
+  "drafter_image": "ghcr.io/local-inference-lab/vllm@sha256:bda42b65377c20eee4d976de76b8ebfecb33b385c0b7ebcbb2ed7088512f01f0",
+  "scheduler_image": "ghcr.io/local-inference-lab/vllm@sha256:0283bc84008d37853f7ccc2e16ec2ad299008fa6ce052a5a1c65c7fdd5255ee3",
+  "spark_model": "/mnt/2king/models/GLM-5.3-Flash-NVFP4-Spark-a6082410",
+  "spark_revision": "a608241037e4c2565356bff7ca293f2133888f88",
+  "qad_hf_revision": "1ebb2e017d585b95ab841b54f94bdcd0ce675fdf"
+}

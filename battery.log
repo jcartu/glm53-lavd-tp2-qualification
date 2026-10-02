@@ -1,0 +1,7 @@
+[2026-10-02 02:39:56] R26 QUALIFICATION START
+[2026-10-02 02:40:53] PRODUCTION PAUSED; GPU qualification begins (isolation=strict)
+[2026-10-02 02:40:58] QUALIFICATION PHASE reference
+[2026-10-02 02:40:58] $ /usr/bin/python /home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py --phase reference
+[2026-10-02 10:27:37] GATE PASS phase-execution:reference
+[2026-10-02 10:31:33] PRODUCTION RESTORED
+[2026-10-02 10:31:33] R26 QUALIFICATION COORDINATOR EXIT

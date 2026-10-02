@@ -1,0 +1,13 @@
+{
+  "args": [
+    "/usr/bin/python",
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py",
+    "--phase",
+    "drafter-b12x"
+  ],
+  "returncode": 0,
+  "started_at": 1790943890.2706547,
+  "finished_at": 1790946066.6017058,
+  "elapsed_seconds": 2176.3310511112213,
+  "log": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/control/20261002T083133Z/phase-drafter-b12x.log"
+}

@@ -1,0 +1,14 @@
+{
+  "kv_tokens": [
+    6416584
+  ],
+  "capacity_lines": [
+    "(Worker_TP2 pid=984) INFO 10-02 08:38:58 [gpu_worker.py:785] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.9300 is equivalent to --gpu-memory-utilization=0.9277 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.9323. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.",
+    "(Worker_TP3 pid=985) INFO 10-02 08:38:58 [gpu_worker.py:785] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.9300 is equivalent to --gpu-memory-utilization=0.9277 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.9323. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.",
+    "(Worker_TP0 pid=982) INFO 10-02 08:38:58 [gpu_worker.py:785] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.9300 is equivalent to --gpu-memory-utilization=0.9277 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.9323. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.",
+    "(Worker_TP1 pid=983) INFO 10-02 08:38:58 [gpu_worker.py:785] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.9300 is equivalent to --gpu-memory-utilization=0.9277 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.9323. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.",
+    "(EngineCore pid=703) INFO 10-02 08:38:58 [kv_cache_utils.py:2798] GPU KV cache size: 6,416,584 tokens, Maximum concurrency for 1,048,576 tokens per request: 6.12x"
+  ],
+  "checkpoint": "/mnt/2king/models/GLM-5.3-Flash-NVFP4-qad-tvn-step3500:/model:ro",
+  "image": "sha256:04bdd08b6ccbfe18f297dc4b60580fc6354f2efe249534888574d5046c187077"
+}

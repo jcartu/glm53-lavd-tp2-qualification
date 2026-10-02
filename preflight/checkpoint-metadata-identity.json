@@ -1,0 +1,22 @@
+{
+  "config.json": {
+    "local_sha256": "676382abd1e90a6c85f0c8f33d45441ecd45fd514fd7b63ce5610e732d8e4996",
+    "upstream_sha256": "676382abd1e90a6c85f0c8f33d45441ecd45fd514fd7b63ce5610e732d8e4996",
+    "identical": true
+  },
+  "hf_quant_config.json": {
+    "local_sha256": "9c084477c9fe496929a15dde8fb795d13b143e32911e613fe7209121b5606ee9",
+    "upstream_sha256": "9c084477c9fe496929a15dde8fb795d13b143e32911e613fe7209121b5606ee9",
+    "identical": true
+  },
+  "quatrain-materialization.json": {
+    "local_sha256": "2f0737daac0d03d6b56716e2a14249fa6f9ac7eb7281435b0fe9698a4714142a",
+    "upstream_sha256": "2f0737daac0d03d6b56716e2a14249fa6f9ac7eb7281435b0fe9698a4714142a",
+    "identical": true
+  },
+  "chat_template.jinja": {
+    "local_sha256": "0c4099f3382d6c92700dfb99725025360966fd73032f0ecf32377c0d9e6309c5",
+    "upstream_sha256": "0c4099f3382d6c92700dfb99725025360966fd73032f0ecf32377c0d9e6309c5",
+    "identical": true
+  }
+}

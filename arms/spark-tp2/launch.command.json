@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "docker",
+    "compose",
+    "-p",
+    "lavd-qualification",
+    "-f",
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/arms/spark-tp2/compose.yaml",
+    "up",
+    "-d"
+  ],
+  "exit_code": 0,
+  "start": 1790935546.3358686,
+  "end": 1790935547.2017968,
+  "elapsed_s": 0.8659288883209229
+}

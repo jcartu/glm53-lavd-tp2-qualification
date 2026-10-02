@@ -1,0 +1,13 @@
+{
+  "args": [
+    "/usr/bin/python",
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py",
+    "--phase",
+    "reference"
+  ],
+  "returncode": 0,
+  "started_at": 1790901658.257783,
+  "finished_at": 1790929657.9515545,
+  "elapsed_seconds": 27999.693771600723,
+  "log": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/phase-reference.log"
+}

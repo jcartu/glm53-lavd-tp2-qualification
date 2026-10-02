@@ -1,0 +1,42 @@
+{
+  "error": "KeyboardInterrupt('Qualification interrupted by signal 2')",
+  "completed_phases": [
+    {
+      "phase": "qad-tp4",
+      "returncode": 0
+    },
+    {
+      "phase": "spark-tp2",
+      "returncode": 0
+    },
+    {
+      "phase": "drafter-marlin",
+      "returncode": 0
+    },
+    {
+      "phase": "drafter-b12x",
+      "returncode": 0
+    },
+    {
+      "phase": "nccl-4",
+      "returncode": 0
+    },
+    {
+      "phase": "nccl-16",
+      "returncode": 0
+    },
+    {
+      "phase": "context-786k",
+      "returncode": 0
+    },
+    {
+      "phase": "scheduler-fixed",
+      "returncode": 0
+    },
+    {
+      "phase": "scheduler-old-stress",
+      "returncode": 0
+    }
+  ],
+  "timestamp": 1790950624.8547115
+}

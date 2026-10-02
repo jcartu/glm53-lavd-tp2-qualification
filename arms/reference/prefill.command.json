@@ -1,0 +1,28 @@
+{
+  "argv": [
+    "/home/josh/llm-inference-bench/.venv/bin/python",
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/preflight/llm_decode_bench.py",
+    "--port",
+    "8002",
+    "--model",
+    "g53fq",
+    "--display-mode",
+    "plain",
+    "--no-resume",
+    "--output",
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/arms/reference/prefill.json",
+    "--dcp-size",
+    "2",
+    "--prefill-only",
+    "--prefill-contexts",
+    "64k,128k",
+    "--prefill-duration",
+    "20",
+    "--token-targeting",
+    "exact"
+  ],
+  "exit_code": 0,
+  "start": 1790903534.9136562,
+  "end": 1790903616.0526624,
+  "elapsed_s": 81.13900637626648
+}

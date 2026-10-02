@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/usr/bin/python",
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/scenarios.py",
+    "--mode",
+    "interference",
+    "--ports",
+    "8002",
+    "--output",
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/arms/qad-tp4/interference.json"
+  ],
+  "exit_code": 0,
+  "start": 1790935301.2721992,
+  "end": 1790935543.4933906,
+  "elapsed_s": 242.22119164466858
+}

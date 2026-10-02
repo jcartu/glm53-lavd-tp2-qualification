@@ -1,0 +1,442 @@
+usage: llm_decode_bench.py [-h] [--host HOST] [--port PORT]
+                           [--api-key API_KEY] [--prompt PROMPT]
+                           [--prompt-file PROMPT_FILE]
+                           [--test-profile {estonia,estonia-legacy,estonia-long,estonia-v1,estonia-v2,gpqa,gpqa-diamond,gpqa_diamond,gsm-8k,gsm8k,hotel,hotel-lights,lavd,lavd-test,ledger-lavd,lights,mmlu-pro,mmlu-pro-1000,mmlupro}]
+                           [--completion-stats]
+                           [--completion-stats-min-results COMPLETION_STATS_MIN_RESULTS]
+                           [--completion-stats-runs COMPLETION_STATS_RUNS]
+                           [--completion-stats-concurrency COMPLETION_STATS_CONCURRENCY]
+                           [--completion-stats-concurrency-levels COMPLETION_STATS_CONCURRENCY_LEVELS]
+                           [--completion-stats-probe-waves COMPLETION_STATS_PROBE_WAVES]
+                           [--completion-stats-min-improvement COMPLETION_STATS_MIN_IMPROVEMENT]
+                           [--completion-stats-patience COMPLETION_STATS_PATIENCE]
+                           [--completion-stats-auto-stop | --no-completion-stats-auto-stop]
+                           [--completion-stats-correct-regex COMPLETION_STATS_CORRECT_REGEX]
+                           [--completion-stats-score-source {final_answer,content,output}]
+                           [--completion-stats-save-text]
+                           [--completion-stats-no-prefill-scout]
+                           [--completion-stats-temperature COMPLETION_STATS_TEMPERATURE]
+                           [--completion-stats-top-p COMPLETION_STATS_TOP_P]
+                           [--completion-stats-seed COMPLETION_STATS_SEED]
+                           [--completion-stats-stall-timeout COMPLETION_STATS_STALL_TIMEOUT]
+                           [--completion-stats-request-timeout COMPLETION_STATS_REQUEST_TIMEOUT]
+                           [--reasoning-effort {none,minimal,low,medium,high,xhigh,max}]
+                           [--compare-baseline COMPARE_BASELINE]
+                           [--compare-candidate COMPARE_CANDIDATE]
+                           [--concurrency CONCURRENCY] [--contexts CONTEXTS]
+                           [--duration DURATION]
+                           [--request-count REQUEST_COUNT]
+                           [--warmup-request-count WARMUP_REQUEST_COUNT]
+                           [--run-burst]
+                           [--burst-request-count BURST_REQUEST_COUNT]
+                           [--burst-warmup-request-count BURST_WARMUP_REQUEST_COUNT]
+                           [--burst-requests-per-concurrency BURST_REQUESTS_PER_CONCURRENCY]
+                           [--max-tokens MAX_TOKENS]
+                           [--temperature TEMPERATURE]
+                           [--forced-token-id FORCED_TOKEN_ID]
+                           [--accept-len-ref ACCEPT_LEN_REF] [--resume]
+                           [--no-resume] [--coding-peak]
+                           [--coding-peak-runs CODING_PEAK_RUNS]
+                           [--coding-peak-max-tokens CODING_PEAK_MAX_TOKENS]
+                           [--coding-peak-prompt CODING_PEAK_PROMPT]
+                           [--coding-peak-temperature CODING_PEAK_TEMPERATURE]
+                           [--decode-warmup-seconds DECODE_WARMUP_SECONDS]
+                           [--cell-warmup-timeout-seconds CELL_WARMUP_TIMEOUT_SECONDS]
+                           [--prefill-duration PREFILL_DURATION]
+                           [--prefill-contexts PREFILL_CONTEXTS]
+                           [--prefill-metric PREFILL_METRIC]
+                           [--token-targeting {estimate,exact}]
+                           [--calibration-context CALIBRATION_CONTEXT]
+                           [--calibration-cache CALIBRATION_CACHE]
+                           [--no-calibration-cache]
+                           [--display-mode {screen,live,plain}]
+                           [--loop-detection | --no-loop-detection]
+                           [--refresh-rate REFRESH_RATE]
+                           [--hw-monitor-interval HW_MONITOR_INTERVAL]
+                           [--no-hw-monitor] [--hw-gpu-limit HW_GPU_LIMIT]
+                           [--p2pmark] [--p2pmark-only] [--p2pmark-detail]
+                           [--p2pmark-bin P2PMARK_BIN]
+                           [--p2pmark-mode {all,bandwidth,latency,allreduce}]
+                           [--p2pmark-size-mb P2PMARK_SIZE_MB]
+                           [--p2pmark-iters P2PMARK_ITERS]
+                           [--p2pmark-warmup P2PMARK_WARMUP]
+                           [--p2pmark-latency-iters P2PMARK_LATENCY_ITERS]
+                           [--p2pmark-max-gpus P2PMARK_MAX_GPUS]
+                           [--p2pmark-allreduce-sizes-mb P2PMARK_ALLREDUCE_SIZES_MB]
+                           [--p2pmark-timeout P2PMARK_TIMEOUT] [--amd-fabric]
+                           [--amd-fabric-only] [--amd-fabric-detail]
+                           [--amd-fabric-bin AMD_FABRIC_BIN]
+                           [--amd-fabric-size-mb AMD_FABRIC_SIZE_MB]
+                           [--amd-fabric-latency-mb AMD_FABRIC_LATENCY_MB]
+                           [--amd-fabric-iters AMD_FABRIC_ITERS]
+                           [--amd-fabric-warmup AMD_FABRIC_WARMUP]
+                           [--amd-fabric-threads AMD_FABRIC_THREADS]
+                           [--amd-fabric-latency-iters AMD_FABRIC_LATENCY_ITERS]
+                           [--amd-fabric-max-nodes AMD_FABRIC_MAX_NODES]
+                           [--amd-fabric-timeout AMD_FABRIC_TIMEOUT]
+                           [--respect-eos] [--show-capacity-limited-values]
+                           [--output OUTPUT] [--model MODEL]
+                           [--max-total-tokens MAX_TOTAL_TOKENS]
+                           [--kv-budget KV_BUDGET] [--dcp-size DCP_SIZE]
+                           [--skip-prefill] [--standalone-prefill]
+                           [--prefill-only]
+
+LLM Inference Benchmark with Rich TUI Dashboard (SGLang + vLLM)
+
+options:
+  -h, --help            show this help message and exit
+  --host HOST           Server host or full URL (default: localhost). Accepts
+                        a full URL with scheme (e.g. https://ai.example.com)
+                        for HTTPS endpoints.
+  --port PORT           Server port (default: 5000, or appended to URL when
+                        --host is a URL)
+  --api-key API_KEY     API key for authenticated endpoints (sent as
+                        Authorization: Bearer header)
+  --prompt PROMPT       Prompt text for --completion-stats mode. Mutually
+                        exclusive with --prompt-file.
+  --prompt-file PROMPT_FILE
+                        Prompt file for --completion-stats mode. '-' reads
+                        stdin. If omitted, --completion-stats uses the built-
+                        in estonia test profile.
+  --test-profile, --profile {estonia,estonia-legacy,estonia-long,estonia-v1,estonia-v2,gpqa,gpqa-diamond,gpqa_diamond,gsm-8k,gsm8k,hotel,hotel-lights,lavd,lavd-test,ledger-lavd,lights,mmlu-pro,mmlu-pro-1000,mmlupro}
+                        Run a built-in long-answer test profile. Available:
+                        estonia, estonia-long, estonia-v1, gpqa-diamond,
+                        gsm8k, hotel-lights, lavd-test, mmlu-pro. hotel-lights
+                        is a compact reasoning test with expected answer 48.
+                        lavd-test is a context consistency test: arithmetic
+                        any model can do, but the model must find human errors
+                        in long structured data and understand how to repair
+                        them before computing ticket count and hours. gsm8k,
+                        mmlu-pro, and gpqa-diamond are pinned multi-item
+                        accuracy benchmarks (1319 math problems / 1000
+                        stratified multiple-choice questions / 198 graduate-
+                        level science questions, one item per request,
+                        temperature 0) intended for quantization A/B
+                        comparisons via --compare-baseline. Setting this
+                        implies --completion-stats.
+  --completion-stats    Run the adaptive completion-token statistics benchmark
+                        instead of the decode matrix. This mode warms prefix
+                        cache once, probes parallel decode concurrency,
+                        selects the fastest level, then collects enough
+                        completed answers to summarize how many decode tokens
+                        the model needs for the task.
+  --completion-stats-min-results COMPLETION_STATS_MIN_RESULTS
+                        Minimum completed runs to collect at the selected
+                        concurrency in adaptive --completion-stats mode.
+                        (default: 30)
+  --completion-stats-runs, --profile-runs COMPLETION_STATS_RUNS
+                        Total measured profile requests. With --profile-
+                        concurrency this is an exact request count. 0 uses
+                        --completion-stats-min-results. (default: 0)
+  --completion-stats-concurrency, --profile-concurrency COMPLETION_STATS_CONCURRENCY
+                        Fixed concurrency for built-in profile / completion-
+                        stats runs. 0 keeps adaptive probing via --completion-
+                        stats-concurrency-levels. (default: 0)
+  --completion-stats-concurrency-levels COMPLETION_STATS_CONCURRENCY_LEVELS
+                        Comma-separated concurrency levels to probe in
+                        --completion-stats mode. (default: 1,2,4,8,16,30)
+  --completion-stats-probe-waves COMPLETION_STATS_PROBE_WAVES
+                        Probe requests per concurrency level are concurrency ×
+                        waves, except C=1 uses waves. (default: 1)
+  --completion-stats-min-improvement COMPLETION_STATS_MIN_IMPROVEMENT
+                        Required aggregate tok/s improvement to keep
+                        increasing concurrency. (default: 0.03 = 3%)
+  --completion-stats-patience COMPLETION_STATS_PATIENCE
+                        Number of non-improving probed levels before adaptive
+                        search stops. (default: 1)
+  --completion-stats-auto-stop, --no-completion-stats-auto-stop
+                        Stop probing after --completion-stats-patience non-
+                        improving levels. Use --no-completion-stats-auto-stop
+                        to probe all levels.
+  --completion-stats-correct-regex COMPLETION_STATS_CORRECT_REGEX
+                        Regex used to score correctness in --completion-stats
+                        mode. Empty string disables scoring. (default:
+                        \\bestonia\\b)
+  --completion-stats-score-source {final_answer,content,output}
+                        Text region used for correctness scoring. final_answer
+                        = last non-empty answer line. (default: final_answer)
+  --completion-stats-save-text
+                        Keep longer output excerpts in JSON for --completion-
+                        stats. Default keeps only final answer/excerpt
+                        metadata.
+  --completion-stats-no-prefill-scout
+                        Do not send the initial max_tokens=1 prefix-cache
+                        scout request in --completion-stats mode.
+  --completion-stats-temperature COMPLETION_STATS_TEMPERATURE
+                        Optional temperature override for --completion-stats
+                        requests. Default leaves server/model default
+                        unchanged.
+  --completion-stats-top-p COMPLETION_STATS_TOP_P
+                        Optional top_p override for --completion-stats
+                        requests. Default leaves server/model default
+                        unchanged.
+  --completion-stats-seed COMPLETION_STATS_SEED
+                        Base sampling seed for --completion-stats/profile
+                        requests. Run i is sent with seed = base + i, so
+                        resamples differ from each other but are identical
+                        across engines/quants. Default sends no seed (engine
+                        picks).
+  --completion-stats-stall-timeout COMPLETION_STATS_STALL_TIMEOUT
+                        Stall watchdog for --completion-stats/profile streams:
+                        if no token arrives for this many seconds the request
+                        is closed and scored STALL. 0 disables. (default: 600)
+  --completion-stats-request-timeout COMPLETION_STATS_REQUEST_TIMEOUT
+                        Wall-clock watchdog per --completion-stats/profile
+                        request in seconds: a stream still running after this
+                        long is closed and scored TIMEOUT. Catches models that
+                        loop without ever stalling when max_tokens is omitted.
+                        0 disables. (default: 0)
+  --reasoning-effort {none,minimal,low,medium,high,xhigh,max}
+                        Optional OpenAI reasoning_effort for completion-
+                        stats/test-profile requests. Default leaves the model
+                        template default unchanged.
+  --compare-baseline COMPARE_BASELINE
+                        Path to a previous completion-stats results JSON from
+                        the same dataset profile (gsm8k, mmlu-pro). After this
+                        run finishes, a paired per-item comparison is printed
+                        and embedded in the output JSON: accuracy delta,
+                        correct/wrong flips, exact McNemar p-value, per-
+                        category deltas, and completion-token inflation.
+  --compare-candidate COMPARE_CANDIDATE
+                        Standalone comparison mode: compare --compare-baseline
+                        against this results JSON and exit without contacting
+                        any server. Requires --compare-baseline.
+  --concurrency CONCURRENCY
+                        Comma-separated concurrency levels (default:
+                        1,2,4,8,16,32,64,128)
+  --contexts CONTEXTS   Comma-separated context lengths in tokens, supports k
+                        suffix (default: 0,16k,32k,64k,128k)
+  --duration DURATION   Duration per test cell in seconds (default: 30)
+  --request-count REQUEST_COUNT
+                        Burst / E2E-only decode mode: send exactly this many
+                        measured requests per cell and wait for all to finish.
+                        0 keeps the default duration-based steady-state mode.
+                        (default: 0)
+  --warmup-request-count WARMUP_REQUEST_COUNT
+                        When --request-count is set, send and discard this
+                        many warmup requests before each measured cell.
+                        (default: 0)
+  --run-burst           After the default sustained decode matrix, run an
+                        additional short Burst / E2E request-count matrix.
+                        Ignored when --request-count is set.
+  --burst-request-count BURST_REQUEST_COUNT
+                        Measured requests per Burst / E2E cell. 0 = auto,
+                        using concurrency × --burst-requests-per-concurrency.
+                        (default: 0)
+  --burst-warmup-request-count BURST_WARMUP_REQUEST_COUNT
+                        Warmup requests per Burst / E2E cell. 0 = auto, using
+                        concurrency. (default: 0)
+  --burst-requests-per-concurrency BURST_REQUESTS_PER_CONCURRENCY
+                        Auto Burst / E2E measured request multiplier when
+                        --burst-request-count=0. For C=10 and default 5, the
+                        burst sends 50 measured requests. (default: 5)
+  --max-tokens MAX_TOKENS
+                        Max tokens to generate per request. In --completion-
+                        stats/--profile mode, 0 omits max_tokens from the
+                        OpenAI request. (default: 8192)
+  --temperature TEMPERATURE
+                        Optional decode request temperature override. Use 0
+                        for deterministic greedy decode. Default leaves the
+                        server/model default unchanged.
+  --forced-token-id FORCED_TOKEN_ID
+                        Force one token during the sustained and burst decode
+                        matrices by sending logit_bias=100, temperature=0, and
+                        ignore_eos=true. This produces a repeatable fixed-
+                        route performance diagnostic, not natural model
+                        throughput.
+  --accept-len-ref ACCEPT_LEN_REF
+                        MTP/speculative decoding: also report projected tok/s
+                        at this fixed reference accept length (steps/s x ref).
+                        steps/s itself is always reported when the engine
+                        exports speculative counters. (default: 0 = off)
+  --resume              Resume an interrupted benchmark run from its
+                        checkpoint without asking.
+  --no-resume           Discard any unfinished-run checkpoint and start fresh
+                        without asking.
+  --coding-peak         After the main benchmark, run a sequential cc1 coding
+                        prompt peak test matching /mnt/test.py throughput
+                        semantics and store it under coding_peak.
+  --coding-peak-runs CODING_PEAK_RUNS
+                        Number of sequential coding peak runs when --coding-
+                        peak is enabled. (default: 5)
+  --coding-peak-max-tokens CODING_PEAK_MAX_TOKENS
+                        Max output tokens per coding peak request. (default:
+                        2000)
+  --coding-peak-prompt CODING_PEAK_PROMPT
+                        Prompt used by --coding-peak. Default matches
+                        /mnt/test.py.
+  --coding-peak-temperature CODING_PEAK_TEMPERATURE
+                        Optional temperature override for --coding-peak.
+                        Default sends no temperature and uses the server/model
+                        default.
+  --decode-warmup-seconds DECODE_WARMUP_SECONDS
+                        Hidden C=1 decode warmup duration before measured
+                        decode cells. The warmup uses the largest requested
+                        context that fits current model/KV limits. Set 0 to
+                        disable. (default: 3)
+  --cell-warmup-timeout-seconds CELL_WARMUP_TIMEOUT_SECONDS
+                        Override per-cell readiness warmup timeout. 0 = auto
+                        by context (<=32k: 60s, 64k: 120s, >=128k: 180s).
+  --prefill-duration PREFILL_DURATION
+                        Duration per standalone prefill context in seconds.
+                        Only used with --standalone-prefill. (default: 10)
+  --prefill-contexts PREFILL_CONTEXTS
+                        Comma-separated prefill context lengths, supports k
+                        suffix. In default mode these are scout-only extras
+                        when not already present in --contexts; with
+                        --standalone-prefill they define the standalone cold
+                        profile. (default: 8k,64k,128k)
+  --prefill-metric PREFILL_METRIC
+                        Headline prefill timing source: client, auto,
+                        prometheus, or ttft. client uses prompt_tokens / TTFT
+                        with no server dependency. auto uses the same client
+                        headline and also collects Prometheus validation when
+                        available. prometheus forces server counters as the
+                        headline. ttft is a legacy alias for client. (default:
+                        client)
+  --token-targeting {estimate,exact}
+                        How to build context prompts. estimate uses one
+                        calibration request and extrapolates all contexts;
+                        exact binary-searches each context through /tokenize
+                        and is much slower. (default: estimate)
+  --calibration-context CALIBRATION_CONTEXT
+                        Single-point token calibration context for --token-
+                        targeting=estimate (default: 8k)
+  --calibration-cache CALIBRATION_CACHE
+                        Path to chars/token calibration cache (default:
+                        /tmp/llm_decode_bench_token_calibration_cache.json)
+  --no-calibration-cache
+                        Disable cached chars/token calibration and force a
+                        fresh calibration request.
+  --display-mode {screen,live,plain}
+                        Progress display mode. screen uses Rich alternate
+                        screen to avoid inline flicker; live uses inline
+                        updates; plain disables live updates. (default:
+                        screen)
+  --loop-detection, --no-loop-detection
+                        Check every decode response for sustained exact
+                        repetition, including warmup. A confirmed loop
+                        invalidates the cell (ERROR: loop), not a speed
+                        result. Use --no-loop-detection for deliberately
+                        repetitive output. (default: enabled)
+  --refresh-rate REFRESH_RATE
+                        Rich live refresh rate in Hz for screen/live display
+                        modes (default: 1)
+  --hw-monitor-interval HW_MONITOR_INTERVAL
+                        Hardware monitor sampling interval in seconds for
+                        GPU/CPU live panel. Set 0 or use --no-hw-monitor to
+                        disable. (default: 2)
+  --no-hw-monitor       Disable the live hardware panel sampler.
+  --hw-gpu-limit HW_GPU_LIMIT
+                        Maximum GPUs to show in the live hardware panel. All
+                        sampled GPUs still contribute to aggregate PCIe rx/tx.
+                        (default: 8)
+  --p2pmark             Run the bundled CUDA/NCCL P2P diagnostic before the
+                        LLM benchmark and embed the result in JSON.
+  --p2pmark-only        Run only the bundled CUDA/NCCL P2P diagnostic and
+                        exit.
+  --p2pmark-detail      Print expanded P2P matrices and per-pair
+                        topology/latency tables. Default output is compact;
+                        JSON always keeps full raw diagnostics.
+  --p2pmark-bin P2PMARK_BIN
+                        Path to llm_p2pmark binary. Default uses
+                        tools/p2pmark/llm_p2pmark next to this script, then
+                        PATH, then the embedded fallback helper.
+  --p2pmark-mode {all,bandwidth,latency,allreduce}
+                        P2P diagnostic mode. bandwidth = CUDA peer
+                        memcpy/topology; latency = remote-read latency;
+                        allreduce = custom PCIe vs NCCL; all = every
+                        diagnostic. (default: all)
+  --p2pmark-size-mb P2PMARK_SIZE_MB
+                        Buffer size per CUDA peer memcpy measurement in MiB.
+                        (default: 64)
+  --p2pmark-iters P2PMARK_ITERS
+                        Timed iterations per P2P diagnostic measurement.
+                        (default: 20)
+  --p2pmark-warmup P2PMARK_WARMUP
+                        Warmup iterations per P2P diagnostic measurement.
+                        (default: 5)
+  --p2pmark-latency-iters P2PMARK_LATENCY_ITERS
+                        Remote-read iterations inside each P2P latency kernel.
+                        (default: 10000)
+  --p2pmark-max-gpus P2PMARK_MAX_GPUS
+                        Limit visible GPUs used by the P2P diagnostic. 0 = all
+                        visible GPUs. (default: 0)
+  --p2pmark-allreduce-sizes-mb P2PMARK_ALLREDUCE_SIZES_MB
+                        Comma-separated allreduce message sizes in MiB, or
+                        'full' for the default small-message sweep from 256 B
+                        to 1 MiB. Use explicit sizes such as 1,2,4,8,16,32,64
+                        for larger sweeps. (default: full)
+  --p2pmark-timeout P2PMARK_TIMEOUT
+                        Timeout for the P2P diagnostic subprocess in seconds.
+                        (default: 300)
+  --amd-fabric          Run the bundled AMD CPU NUMA/xGMI fabric diagnostic
+                        before the LLM benchmark and embed the result in JSON.
+  --amd-fabric-only     Run only the bundled AMD CPU NUMA/xGMI fabric
+                        diagnostic and exit.
+  --amd-fabric-detail   Print separate AMD fabric matrices and expanded xGMI
+                        notes. Default output is compact; JSON always keeps
+                        full raw diagnostics.
+  --amd-fabric-bin AMD_FABRIC_BIN
+                        Path to llm_amd_fabric binary. Default uses
+                        tools/amd_fabric/llm_amd_fabric next to this script,
+                        then PATH, and auto-builds the sidecar when make/g++
+                        are available.
+  --amd-fabric-size-mb AMD_FABRIC_SIZE_MB
+                        Buffer size per NUMA bandwidth measurement in MiB.
+                        (default: 512)
+  --amd-fabric-latency-mb AMD_FABRIC_LATENCY_MB
+                        Pointer-chase latency working-set size per NUMA node
+                        in MiB. (default: 256)
+  --amd-fabric-iters AMD_FABRIC_ITERS
+                        Timed bandwidth iterations per CPU fabric measurement.
+                        (default: 5)
+  --amd-fabric-warmup AMD_FABRIC_WARMUP
+                        Warmup iterations per CPU fabric bandwidth
+                        measurement. (default: 1)
+  --amd-fabric-threads AMD_FABRIC_THREADS
+                        Threads per NUMA node for bandwidth tests. 0 = auto
+                        from node CPU count. (default: 0)
+  --amd-fabric-latency-iters AMD_FABRIC_LATENCY_ITERS
+                        Dependent remote-read iterations for each pointer-
+                        chase latency cell. (default: 5000000)
+  --amd-fabric-max-nodes AMD_FABRIC_MAX_NODES
+                        Limit NUMA nodes used by the AMD fabric diagnostic. 0
+                        = all NUMA nodes. (default: 0)
+  --amd-fabric-timeout AMD_FABRIC_TIMEOUT
+                        Timeout for the AMD fabric diagnostic subprocess in
+                        seconds. (default: 600)
+  --respect-eos         Respect model EOS while measuring decode. Default is
+                        ignore_eos=true so decode cells are not contaminated
+                        by repeated short completions.
+  --show-capacity-limited-values
+                        Show raw throughput for capacity-limited cells in
+                        tables. By default such cells are printed as ∅ and the
+                        raw value is kept in JSON.
+  --output OUTPUT       Output JSON file path (default:
+                        benchmark_results.json)
+  --model MODEL         Model name for API requests (default: Qwen3.5)
+  --max-total-tokens MAX_TOTAL_TOKENS
+                        Max total tokens budget (concurrency × (context +
+                        max_tokens)). Cells exceeding this are skipped. 0 = no
+                        limit (default: 0)
+  --kv-budget KV_BUDGET
+                        KV cache budget in tokens. Overrides auto-detection.
+                        Cells where concurrency × (context + max_tokens) >
+                        budget are skipped. Use this for vLLM where auto-
+                        detection is unreliable. (default: 0 = auto-detect)
+  --dcp-size DCP_SIZE   CP/DCP multiplier for auto-detected KV cache budget.
+                        vLLM Prometheus and some SGLang /get_server_info
+                        deployments expose local KV only; startup logs
+                        multiply it by the effective CP/DCP size. Set this to
+                        the effective multiplier, or use LLM_BENCH_DCP_SIZE. 0
+                        = auto-detect from local vLLM process when possible.
+                        (default: 0)
+  --skip-prefill        Skip prefill reporting entirely and go straight to
+                        decode tests
+  --standalone-prefill  Run the old standalone cold prefill profile before
+                        decode. By default, prefill is measured from the
+                        decode scout requests that are needed anyway.
+  --prefill-only        Run standalone cold prefill profiling and exit before
+                        sustained decode. Useful for prefill/PCIe
+                        communication sweeps. Implies --standalone-prefill.

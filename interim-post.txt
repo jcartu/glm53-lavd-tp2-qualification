@@ -1,0 +1,7 @@
+hey Lavd, first results from your TP2 config on my box: **207 tok/s solo, 488 at 4 requests, 672 total at 8**. Two RTX PRO 6000s.
+
+It pulled both buried facts out of a **1.04M-token prompt**, cold, in about 4 minutes. Ledger: 8 exact / 2 near / 0 fails. Estonia: 29/30.
+
+Not calling a quality winner: greedy MMLU-Pro was 82.6% over 1,000 questions, with 113 hitting the output cap. The same 200-question control moved 84% to 87% on repeat. This wasn't the repetition-penalty 1.18 setup.
+
+Charts below. NVIDIA TP4 is just my current deployment for reference, different quant/runtime. Matched QAD TP4, two TP2 copies and the tuning tests are still going.

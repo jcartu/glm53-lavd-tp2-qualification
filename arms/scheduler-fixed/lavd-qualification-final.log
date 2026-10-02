@@ -1,0 +1,899 @@
+ERROR 10-02 13:59:26 [config.py:29] Failed to import Triton kernels. Please make sure your triton version is compatible. Error: No module named 'triton_kernels.matmul_ogs'
+INFO 10-02 13:59:27 [__init__.py:112] Registered model loader `<class 'b12x.integration.vllm.loader.B12xModelLoader'>` with load format `b12x`
+(APIServer pid=74) INFO 10-02 13:59:27 [api_utils.py:347] 
+(APIServer pid=74) INFO 10-02 13:59:27 [api_utils.py:347]        █     █     █▄   ▄█
+(APIServer pid=74) INFO 10-02 13:59:27 [api_utils.py:347]  ▄▄ ▄█ █     █     █ ▀▄▀ █  version 0.1.dev21983+g980d84efb
+(APIServer pid=74) INFO 10-02 13:59:27 [api_utils.py:347]   █▄█▀ █     █     █     █  model   /model
+(APIServer pid=74) INFO 10-02 13:59:27 [api_utils.py:347]    ▀▀  ▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀
+(APIServer pid=74) INFO 10-02 13:59:27 [api_utils.py:347] 
+(APIServer pid=74) INFO 10-02 13:59:27 [api_utils.py:286] non-default args: {'model_tag': '/model', 'default_chat_template_kwargs': {'reasoning_effort': 'max', 'clear_thinking': True}, 'enable_auto_tool_choice': True, 'tool_call_parser': 'glm47', 'host': '0.0.0.0', 'port': 8002, 'model': '/model', 'dtype': 'bfloat16', 'quantization': 'modelopt_mixed', 'quantization_config': QuantizationConfigArgs(linear=QuantSpec(weight=QuantKey(dtype=torch.float8_e4m3fn, scale=ScaleDesc(dtype=torch.uint8, static=False, group_shape=GroupShape(row=1, col=32)), scale2=None, symmetric=True), activation=None), moe=None, ignore=[], targets=None), 'served_model_name': ['g53fq'], 'override_generation_config': {'temperature': 1.0, 'top_p': 0.95}, 'load_format': 'safetensors', 'attention_backend': 'B12X', 'reasoning_parser': 'glm45', 'tensor_parallel_size': 2, 'decode_context_parallel_size': 2, 'dcp_kv_cache_interleave_size': 4, 'cp_kv_cache_interleave_size': 4, 'block_size': 256, 'kv_cache_memory_bytes': 4000000000, 'kv_cache_dtype': 'fp8', 'enable_prefix_caching': True, 'prefix_cache_retention_interval': None, 'recurrent_checkpoint_policy': 'aligned', 'mamba_cache_mode': 'align', 'cpu_offload_gb': 1.5, 'cpu_offload_params': ['visual'], 'max_num_batched_tokens': 2112, 'max_num_seqs': 8, 'enable_chunked_prefill': True, 'max_cudagraph_capture_size': 32, 'enable_flashinfer_autotune': False, 'moe_backend': 'b12x', 'linear_backend': 'b12x', 'speculative_config': {'method': 'mtp', 'num_speculative_tokens': 3, 'draft_sample_method': 'probabilistic', 'rejection_sample_method': 'standard', 'moe_backend': 'marlin', 'attention_backend': 'B12X'}, 'compilation_config': {'mode': None, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': [], 'ir_enable_torch_wrap': None, 'splitting_ops': None, 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': None, 'compile_ranges_endpoints': None, 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [1, 2, 4, 8, 12, 16, 20, 24, 28, 32], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': None, 'pass_config': {}, 'max_cudagraph_capture_size': None, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': None, 'static_all_moe_layers': []}, 'additional_config': {'glm53_kda_decode_backend': 'auto', 'kda_prefill_backend': 'b12x'}}
+(APIServer pid=74) INFO 10-02 13:59:27 [model.py:693] Resolved architecture: Glm5NextForConditionalGeneration
+(APIServer pid=74) INFO 10-02 13:59:27 [model.py:2055] Using max model len 1048576
+(APIServer pid=74) WARNING 10-02 13:59:27 [indexer_topk.py:29] Failed to import the DeepSelect extension (vllm._deepselect_C): No module named 'vllm._deepselect_C'
+(APIServer pid=74) ERROR 10-02 13:59:27 [mxfp4.py:61] Failed to import Triton kernels. Please make sure your triton version is compatible. Error: No module named 'triton_kernels.matmul_ogs'
+(APIServer pid=74) INFO 10-02 13:59:30 [cache.py:369] Using fp8 data type to store kv cache. It reduces the GPU memory footprint and boosts the performance. Meanwhile, it may cause accuracy drop without a proper scaling factor
+(APIServer pid=74) INFO 10-02 13:59:30 [model.py:693] Resolved architecture: Glm5NextMTPModel
+(APIServer pid=74) INFO 10-02 13:59:30 [model.py:2055] Using max model len 1048576
+(APIServer pid=74) WARNING 10-02 13:59:30 [speculative.py:1497] Enabling num_speculative_tokens > 1 will run multiple times of forward on same MTP layer,which may result in lower acceptance rate
+(APIServer pid=74) INFO 10-02 13:59:30 [scheduler.py:404] Chunked prefill is enabled with max_num_batched_tokens=2112.
+(APIServer pid=74) INFO 10-02 13:59:30 [vllm.py:928] Auto-enabling VLLM_USE_BREAKABLE_CUDAGRAPH=1. Set VLLM_USE_BREAKABLE_CUDAGRAPH=0 to opt out.
+(APIServer pid=74) INFO 10-02 13:59:30 [kernel.py:430] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(APIServer pid=74) WARNING 10-02 13:59:30 [vllm.py:2360] max_num_scheduled_tokens is set to 2112 based on the speculative decoding settings. This may lead to suboptimal performance. Consider increasing max_num_batched_tokens to accommodate the additional draft token slots, or decrease num_speculative_tokens.
+(APIServer pid=74) INFO 10-02 13:59:31 [compilation.py:336] Enabled custom fusions: norm_quant, act_quant, allreduce_rms
+(APIServer pid=74) INFO 10-02 13:59:31 [vllm.py:3485] GLM speculative KDA uses B12X checkpoint recovery with FP32 recurrent state. Use --no-use-replayssm to retain full speculative states.
+(APIServer pid=74) INFO 10-02 13:59:37 [base.py:261] Multi-modal warmup completed in 1.663s
+(APIServer pid=74) INFO 10-02 13:59:38 [base.py:261] Readonly multi-modal warmup completed in 1.698s
+ERROR 10-02 13:59:43 [config.py:29] Failed to import Triton kernels. Please make sure your triton version is compatible. Error: No module named 'triton_kernels.matmul_ogs'
+ERROR 10-02 13:59:44 [mxfp4.py:61] Failed to import Triton kernels. Please make sure your triton version is compatible. Error: No module named 'triton_kernels.matmul_ogs'
+(EngineCore pid=703) INFO 10-02 13:59:44 [__init__.py:112] Registered model loader `<class 'b12x.integration.vllm.loader.B12xModelLoader'>` with load format `b12x`
+(EngineCore pid=703) INFO 10-02 13:59:44 [core.py:124] Initializing a V1 LLM engine (v0.1.dev21983+g980d84efb) with config: model='/model', speculative_config=SpeculativeConfig(method='mtp', model='/model', num_spec_tokens=3), tokenizer='/model', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=1048576, download_dir=None, load_format=safetensors, tensor_parallel_size=2, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=2, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=modelopt_mixed, quantization_config=QuantizationConfigArgs(linear=QuantSpec(weight=QuantKey(dtype=torch.float8_e4m3fn, scale=ScaleDesc(dtype=torch.uint8, static=False, group_shape=GroupShape(row=1, col=32)), scale2=None, symmetric=True), activation=None), moe=None, ignore=[], targets=None), enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=fp8, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='glm45', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, per_request_spec_decode_metrics='none', kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=0, served_model_name=g53fq, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['all'], 'ir_enable_torch_wrap': False, 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [2112], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 12, 16, 20, 24, 28, 32], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': True, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 32, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native']), enable_flashinfer_autotune=False, enable_b12x_autotune=True, enable_cutedsl_warmup=True, enable_jit_warmup=True, enable_bf16x3_router_gemm=False, moe_backend='b12x', sparse_indexer_topk_backend='auto', linear_backend='b12x', linear_backend_per_quant=None)
+(EngineCore pid=703) INFO 10-02 13:59:44 [multiproc_executor.py:280] DP group leader: node_rank=0, node_rank_within_dp=0, master_addr=127.0.0.1, mq_connect_ip=127.0.0.1 (local), world_size=2, local_world_size=2
+ERROR 10-02 13:59:52 [config.py:29] Failed to import Triton kernels. Please make sure your triton version is compatible. Error: No module named 'triton_kernels.matmul_ogs'
+ERROR 10-02 13:59:52 [config.py:29] Failed to import Triton kernels. Please make sure your triton version is compatible. Error: No module named 'triton_kernels.matmul_ogs'
+ERROR 10-02 13:59:53 [mxfp4.py:61] Failed to import Triton kernels. Please make sure your triton version is compatible. Error: No module named 'triton_kernels.matmul_ogs'
+ERROR 10-02 13:59:53 [mxfp4.py:61] Failed to import Triton kernels. Please make sure your triton version is compatible. Error: No module named 'triton_kernels.matmul_ogs'
+INFO 10-02 13:59:53 [__init__.py:112] Registered model loader `<class 'b12x.integration.vllm.loader.B12xModelLoader'>` with load format `b12x`
+INFO 10-02 13:59:53 [__init__.py:112] Registered model loader `<class 'b12x.integration.vllm.loader.B12xModelLoader'>` with load format `b12x`
+WARNING 10-02 13:59:54 [indexer_topk.py:29] Failed to import the DeepSelect extension (vllm._deepselect_C): No module named 'vllm._deepselect_C'
+WARNING 10-02 13:59:54 [indexer_topk.py:29] Failed to import the DeepSelect extension (vllm._deepselect_C): No module named 'vllm._deepselect_C'
+(Worker pid=1010) INFO 10-02 13:59:55 [parallel_state.py:1909] world_size=2 rank=0 local_rank=0 distributed_init_method=file:///tmp/vllm_dist_0bbda4e549df4976951750e019724376 backend=nccl
+(Worker pid=1011) INFO 10-02 13:59:55 [parallel_state.py:1909] world_size=2 rank=1 local_rank=1 distributed_init_method=file:///tmp/vllm_dist_0bbda4e549df4976951750e019724376 backend=nccl
+(Worker pid=1010) INFO 10-02 13:59:57 [pynccl.py:148] vLLM is using nccl==2.30.7
+(Worker pid=1010) INFO 10-02 13:59:58 [b12x_pcie_all_reduce.py:319] Using B12X PCIe all-reduce (algorithm=oneshot, one-shot max=524288, fused max=86016, two-shot bf16 max=off, DMA min=off).
+(Worker pid=1010) WARNING 10-02 13:59:58 [symm_mem.py:67] SymmMemCommunicator: Device capability 12.0 not supported, communicator is not available.
+(Worker pid=1010) INFO 10-02 13:59:58 [cuda_communicator.py:420] Using ['B12X_PCIE', 'PYNCCL'] all-reduce backends (in dispatch order) for group 'tp:0' out of potential backends: ['FLASHINFER_PCIE_IPC', 'B12X_PCIE', 'B12X_ROCENANTE', 'FLASHINFER', 'NCCL_SYMM_MEM', 'QUICK_REDUCE', 'AITER_CUSTOM', 'CUSTOM', 'SYMM_MEM', 'PYNCCL'].
+(Worker pid=1011) WARNING 10-02 13:59:58 [symm_mem.py:67] SymmMemCommunicator: Device capability 12.0 not supported, communicator is not available.
+(Worker pid=1010) INFO 10-02 13:59:58 [cuda_communicator.py:420] Using ['PYNCCL'] all-reduce backends (in dispatch order) for group 'dcp:0' out of potential backends: ['FLASHINFER_PCIE_IPC', 'B12X_PCIE', 'B12X_ROCENANTE', 'FLASHINFER', 'NCCL_SYMM_MEM', 'QUICK_REDUCE', 'AITER_CUSTOM', 'CUSTOM', 'SYMM_MEM', 'PYNCCL'].
+(Worker pid=1010) INFO 10-02 13:59:58 [cuda_communicator.py:420] Using ['PYNCCL'] all-reduce backends (in dispatch order) for group 'ep:0' out of potential backends: ['FLASHINFER_PCIE_IPC', 'B12X_PCIE', 'B12X_ROCENANTE', 'FLASHINFER', 'NCCL_SYMM_MEM', 'QUICK_REDUCE', 'AITER_CUSTOM', 'CUSTOM', 'SYMM_MEM', 'PYNCCL'].
+(Worker pid=1010) INFO 10-02 13:59:58 [parallel_state.py:2349] rank 0 in world size 2 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, ETP rank 0, EP rank 0, EPLB rank N/A
+(Worker pid=1010) INFO 10-02 13:59:58 [gpu_worker.py:474] Using V2 Model Runner
+(Worker pid=1010) INFO 10-02 13:59:58 [base.py:138] Offloader set to UVAOffloader
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 13:59:58 [model_runner.py:417] Loading model from scratch...
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 13:59:59 [cuda.py:611] Using backend AttentionBackendEnum.FLASH_ATTN for vit attention
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 13:59:59 [mm_encoder_attention.py:372] Using AttentionBackendEnum.FLASH_ATTN for MMEncoderAttention.
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 13:59:59 [uva.py:67] Total CPU offloaded parameters: 0.54
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 13:59:59 [kernel.py:430] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(Worker_TP0_DCP0 pid=1010) WARNING 10-02 13:59:59 [vllm.py:2360] max_num_scheduled_tokens is set to 2112 based on the speculative decoding settings. This may lead to suboptimal performance. Consider increasing max_num_batched_tokens to accommodate the additional draft token slots, or decrease num_speculative_tokens.
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 13:59:59 [compilation.py:336] Enabled custom fusions: norm_quant, act_quant, allreduce_rms
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 13:59:59 [uva.py:67] Total CPU offloaded parameters: 0.54
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 13:59:59 [kernel.py:430] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 13:59:59 [__init__.py:923] Using B12xMxfp8LinearKernel for MXFP8 GEMM
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:00:00 [mla_attention.py:688] Using fp8_ds_mla KV cache format for B12X backend.
+(Worker_TP0_DCP0 pid=1010) WARNING 10-02 14:00:00 [mla_attention.py:783] Sparse MLA layer has no dense-MHA prefill path; using the top-k MQA path only.
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:00:00 [deep_gemm.py:196] deep_gemm not found in site-packages, trying vendored vllm.third_party.deep_gemm
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:00:00 [deep_gemm.py:223] DeepGEMM PDL enabled on vllm.third_party.deep_gemm.
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:00:00 [deep_gemm.py:136] DeepGEMM E8M0 enabled on current platform.
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:00:00 [nvfp4.py:261] Using 'B12X' NvFp4 MoE backend out of potential backends: ['FLASHINFER_TRTLLM', 'FLASHINFER_CUTEDSL', 'FLASHINFER_CUTLASS', 'VLLM_CUTLASS', 'MARLIN', 'HUMMING', 'EMULATION'].
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:00:01 [uva.py:67] Total CPU offloaded parameters: 0.54
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:00:01 [l2_prefetch.py:516] [l2_prefetch] persisting L2 set-aside on cuda:0: L2 134 MB, max 84 MB, requested 0 MB, now 0 MB
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:00:01 [uva.py:67] Total CPU offloaded parameters: 0.54
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:00:01 [l2_prefetch.py:516] [l2_prefetch] persisting L2 set-aside on cuda:1: L2 134 MB, max 84 MB, requested 0 MB, now 0 MB
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:00:01 [base_loader.py:121] Quantized 326 layers of types: mlp.down_proj: 3 (from linear: mxfp8); mlp.gate_up_proj: 3 (from linear: mxfp8); mlp.shared_experts.down_proj: 42 (from linear: mxfp8); mlp.shared_experts.gate_up_proj: 42 (from linear: mxfp8); self_attn.f_b_proj: 34 (from linear: mxfp8); self_attn.fused_qkv_a_proj: 11 (from linear: mxfp8); self_attn.g_a_proj: 34 (from linear: mxfp8); self_attn.g_b_proj: 34 (from linear: mxfp8); self_attn.in_proj_qkvgfab: 34 (from linear: mxfp8); self_attn.indexer.wk: 11 (from linear: mxfp8); self_attn.indexer.wq_b: 11 (from linear: mxfp8); self_attn.kv_b_proj: 11 (from linear: mxfp8); self_attn.o_proj: 45 (from linear: mxfp8); self_attn.q_b_proj: 11 (from linear: mxfp8)
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:00:01 [base_loader.py:121] Quantized 326 layers of types: mlp.down_proj: 3 (from linear: mxfp8); mlp.gate_up_proj: 3 (from linear: mxfp8); mlp.shared_experts.down_proj: 42 (from linear: mxfp8); mlp.shared_experts.gate_up_proj: 42 (from linear: mxfp8); self_attn.f_b_proj: 34 (from linear: mxfp8); self_attn.fused_qkv_a_proj: 11 (from linear: mxfp8); self_attn.g_a_proj: 34 (from linear: mxfp8); self_attn.g_b_proj: 34 (from linear: mxfp8); self_attn.in_proj_qkvgfab: 34 (from linear: mxfp8); self_attn.indexer.wk: 11 (from linear: mxfp8); self_attn.indexer.wq_b: 11 (from linear: mxfp8); self_attn.kv_b_proj: 11 (from linear: mxfp8); self_attn.o_proj: 45 (from linear: mxfp8); self_attn.q_b_proj: 11 (from linear: mxfp8)
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:00:02 [weight_utils.py:1058] Filesystem type for checkpoints: BTRFS. Checkpoint size: 184.46 GiB. Available RAM: 126.51 GiB.
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:00:02 [weight_utils.py:1088] Auto-prefetch is disabled because the filesystem (BTRFS) is not a recognized network FS (NFS/Lustre) and the checkpoint size (184.46 GiB) exceeds 90% of available RAM (126.51 GiB).
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:02:17 [default_loader.py:510] Loading weights took 135.19 seconds
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:02:17 [nvfp4.py:618] Using MoEPrepareAndFinalizeNoDPEPModular
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:02:35 [kernel.py:430] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:02:35 [kernel.py:430] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:02:35 [kernel.py:430] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:02:35 [kernel.py:430] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:02:35 [vocab_parallel_embedding.py:437] Quantizing LM head shards to NVFP4 with BF16 activations.
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:02:35 [mxfp8.py:148] Using 'MARLIN' MxFp8 MoE backend (user-requested).
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:02:36 [kernel.py:430] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:02:36 [kernel.py:430] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:02:36 [kernel.py:430] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:02:36 [kernel.py:430] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:02:36 [base_loader.py:121] Quantized 334 layers of types: mlp.down_proj: 3 (from linear: mxfp8); mlp.gate_up_proj: 3 (from linear: mxfp8); mlp.shared_experts.down_proj: 43 (from linear: mxfp8); mlp.shared_experts.gate_up_proj: 43 (from linear: mxfp8); self_attn.f_b_proj: 34 (from linear: mxfp8); self_attn.fused_qkv_a_proj: 12 (from linear: mxfp8); self_attn.g_a_proj: 34 (from linear: mxfp8); self_attn.g_b_proj: 34 (from linear: mxfp8); self_attn.in_proj_qkvgfab: 34 (from linear: mxfp8); self_attn.indexer.wk: 12 (from linear: mxfp8); self_attn.indexer.wq_b: 12 (from linear: mxfp8); self_attn.kv_b_proj: 12 (from linear: mxfp8); self_attn.o_proj: 46 (from linear: mxfp8); self_attn.q_b_proj: 12 (from linear: mxfp8)
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:02:36 [weight_utils.py:704] Safetensors index filter selected 5/44 checkpoint shards.
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:02:36 [weight_utils.py:1058] Filesystem type for checkpoints: BTRFS. Checkpoint size: 12.29 GiB. Available RAM: 125.36 GiB.
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:02:36 [weight_utils.py:1081] Auto-prefetch is disabled because the filesystem (BTRFS) is not a recognized network FS (NFS/Lustre). If you want to force prefetching, start vLLM with --safetensors-load-strategy=prefetch.
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:02:36 [base_loader.py:121] Quantized 334 layers of types: mlp.down_proj: 3 (from linear: mxfp8); mlp.gate_up_proj: 3 (from linear: mxfp8); mlp.shared_experts.down_proj: 43 (from linear: mxfp8); mlp.shared_experts.gate_up_proj: 43 (from linear: mxfp8); self_attn.f_b_proj: 34 (from linear: mxfp8); self_attn.fused_qkv_a_proj: 12 (from linear: mxfp8); self_attn.g_a_proj: 34 (from linear: mxfp8); self_attn.g_b_proj: 34 (from linear: mxfp8); self_attn.in_proj_qkvgfab: 34 (from linear: mxfp8); self_attn.indexer.wk: 12 (from linear: mxfp8); self_attn.indexer.wq_b: 12 (from linear: mxfp8); self_attn.kv_b_proj: 12 (from linear: mxfp8); self_attn.o_proj: 46 (from linear: mxfp8); self_attn.q_b_proj: 12 (from linear: mxfp8)
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:02:38 [default_loader.py:510] Loading weights took 1.54 seconds
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:02:38 [fp8.py:754] Using MoEPrepareAndFinalizeNoDPEPModular
+(Worker_TP0_DCP0 pid=1010) WARNING 10-02 14:02:38 [speculator.py:240] Draft model Glm5NextMTP does not support external multimodal embeddings. Embeddings from the target model will not be passed to the drafter; using text-only draft inputs instead.
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:02:39 [model_runner.py:449] Model loading took 88.33 GiB memory and 160.994808 seconds
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:02:39 [topk_topp_sampler.py:80] Using FlashInfer for top-p & top-k sampling.
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:02:39 [interface.py:1051] Setting attention block size to 4864 tokens to ensure that attention page size is >= mamba page size.
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:02:39 [interface.py:1084] Padding mamba page size by 4.83% to ensure that mamba page size and attention page size are exactly equal.
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:02:39 [model_runner.py:449] Model loading took 88.33 GiB memory and 161.038987 seconds
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:02:39 [interface.py:1051] Setting attention block size to 4864 tokens to ensure that attention page size is >= mamba page size.
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:02:39 [interface.py:1084] Padding mamba page size by 4.83% to ensure that mamba page size and attention page size are exactly equal.
+(EngineCore pid=703) INFO 10-02 14:02:39 [torch_utils.py:287] Reducing Torch threads from 56 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+(EngineCore pid=703) INFO 10-02 14:02:39 [utils.py:405] Using BLHNC KV cache layout.
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:02:43 [b12x_prepare.py:573] b12x weights preparation uses 8 compiler workers
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:02:43 [b12x_prepare.py:573] b12x weights preparation uses 8 compiler workers
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:03:07 [encoder_runner.py:131] Encoder cache will be initialized with a budget of 32242 tokens, and profiled with 1 video items of the maximum feature size.
+(EngineCore pid=703) INFO 10-02 14:04:05 [multiproc_executor.py:185] No available shared memory broadcast block found in 60 seconds. This typically happens when some processes are hanging or doing some time-consuming work (e.g. compilation, weight/kv cache quantization).
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:04:30 [model.py:838] [l2_prefetch] layer 0 A: - | B: 10 segs 3.4 MB: post_attention_layernorm.weight:0.0MB, hc_ffn_base:0.0MB, hc_ffn_fn:1.6MB, L1.hc_attn_fn:1.6MB, L1.hc_attn_base:0.0MB, L1.input_layernorm.weight:0.0MB, L1.self_attn.dt_bias:0.0MB, L1.self_attn.A_log:0.0MB | C: - | dropped 0.0 MB
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:04:30 [model.py:838] [l2_prefetch] layer 0 A: - | B: 10 segs 3.4 MB: post_attention_layernorm.weight:0.0MB, hc_ffn_base:0.0MB, hc_ffn_fn:1.6MB, L1.hc_attn_fn:1.6MB, L1.hc_attn_base:0.0MB, L1.input_layernorm.weight:0.0MB, L1.self_attn.dt_bias:0.0MB, L1.self_attn.A_log:0.0MB | C: - | dropped 0.0 MB
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:04:30 [model.py:838] [l2_prefetch] layer 2 A: - | B: 12 segs 19.9 MB: post_attention_layernorm.weight:0.0MB, hc_ffn_base:0.0MB, hc_ffn_fn:1.6MB, L3.hc_attn_fn:1.6MB, L3.hc_attn_base:0.0MB, L3.input_layernorm.weight:0.0MB, L3.self_attn.q_a_layernorm.weight:0.0MB, L3.self_attn.kv_a_layernorm.weight:0.0MB | C: - | dropped 0.0 MB
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:04:30 [model.py:838] [l2_prefetch] layer 2 A: - | B: 12 segs 19.9 MB: post_attention_layernorm.weight:0.0MB, hc_ffn_base:0.0MB, hc_ffn_fn:1.6MB, L3.hc_attn_fn:1.6MB, L3.hc_attn_base:0.0MB, L3.input_layernorm.weight:0.0MB, L3.self_attn.q_a_layernorm.weight:0.0MB, L3.self_attn.kv_a_layernorm.weight:0.0MB | C: - | dropped 0.0 MB
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:04:30 [model.py:838] [l2_prefetch] layer 3 A: deferred | B: 12 segs 5.7 MB: post_attention_layernorm.weight:0.0MB, hc_ffn_base:0.0MB, hc_ffn_fn:1.6MB, mlp.gate.weight:2.4MB, mlp.gate.e_score_correction_bias:0.0MB, L4.hc_attn_fn:1.6MB, L4.hc_attn_base:0.0MB, L4.input_layernorm.weight:0.0MB | C: - | dropped 0.0 MB
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:04:30 [model.py:838] [l2_prefetch] layer 3 A: deferred | B: 12 segs 5.7 MB: post_attention_layernorm.weight:0.0MB, hc_ffn_base:0.0MB, hc_ffn_fn:1.6MB, mlp.gate.weight:2.4MB, mlp.gate.e_score_correction_bias:0.0MB, L4.hc_attn_fn:1.6MB, L4.hc_attn_base:0.0MB, L4.input_layernorm.weight:0.0MB | C: - | dropped 0.0 MB
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:04:30 [model.py:824] [l2_prefetch] layer 3 deferred MLA A: 2 segs 16.8 MB: mla_attn.W_UV:8.4MB, mla_attn.W_UK_T:8.4MB
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:04:30 [model.py:824] [l2_prefetch] layer 3 deferred MLA A: 2 segs 16.8 MB: mla_attn.W_UV:8.4MB, mla_attn.W_UK_T:8.4MB
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:04:31 [model.py:838] [l2_prefetch] layer 4 A: - | B: 12 segs 5.7 MB: post_attention_layernorm.weight:0.0MB, hc_ffn_base:0.0MB, hc_ffn_fn:1.6MB, mlp.gate.weight:2.4MB, mlp.gate.e_score_correction_bias:0.0MB, L5.hc_attn_fn:1.6MB, L5.hc_attn_base:0.0MB, L5.input_layernorm.weight:0.0MB | C: - | dropped 0.0 MB
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:04:31 [model.py:838] [l2_prefetch] layer 4 A: - | B: 12 segs 5.7 MB: post_attention_layernorm.weight:0.0MB, hc_ffn_base:0.0MB, hc_ffn_fn:1.6MB, mlp.gate.weight:2.4MB, mlp.gate.e_score_correction_bias:0.0MB, L5.hc_attn_fn:1.6MB, L5.hc_attn_base:0.0MB, L5.input_layernorm.weight:0.0MB | C: - | dropped 0.0 MB
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:04:31 [model.py:838] [l2_prefetch] layer 44 A: - | B: 13 segs 6.1 MB: post_attention_layernorm.weight:0.0MB, hc_ffn_base:0.0MB, hc_ffn_fn:1.6MB, mlp.gate.weight:2.4MB, mlp.gate.e_score_correction_bias:0.0MB, L0.hc_attn_fn_broadcast:0.4MB, L0.hc_attn_fn:1.6MB, L0.hc_attn_base:0.0MB | C: - | dropped 0.0 MB
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:04:31 [model.py:838] [l2_prefetch] layer 44 A: - | B: 13 segs 6.1 MB: post_attention_layernorm.weight:0.0MB, hc_ffn_base:0.0MB, hc_ffn_fn:1.6MB, mlp.gate.weight:2.4MB, mlp.gate.e_score_correction_bias:0.0MB, L0.hc_attn_fn_broadcast:0.4MB, L0.hc_attn_fn:1.6MB, L0.hc_attn_base:0.0MB | C: - | dropped 0.0 MB
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:04:34 [gpu_worker.py:640] Initial free memory 94.03 GiB, reserved 3.73 GiB memory for KV Cache as specified by kv_cache_memory_bytes config and skipped memory profiling. This does not respect the gpu_memory_utilization config. Only use kv_cache_memory_bytes config when you want manual control of KV cache memory size. If OOM'ed, check the difference of initial free memory between the current run and the previous run where kv_cache_memory_bytes is suggested and update it correspondingly.
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:04:34 [gpu_worker.py:640] Initial free memory 94.03 GiB, reserved 3.73 GiB memory for KV Cache as specified by kv_cache_memory_bytes config and skipped memory profiling. This does not respect the gpu_memory_utilization config. Only use kv_cache_memory_bytes config when you want manual control of KV cache memory size. If OOM'ed, check the difference of initial free memory between the current run and the previous run where kv_cache_memory_bytes is suggested and update it correspondingly.
+(EngineCore pid=703) WARNING 10-02 14:04:34 [kv_cache_utils.py:2520] Speculative decoding (method=mtp) is enabled but no KV cache group could be identified as the draft model's.
+(EngineCore pid=703) INFO 10-02 14:04:34 [kv_cache_utils.py:2798] GPU KV cache size: 1,093,386 tokens, Maximum concurrency for 1,048,576 tokens per request: 1.04x
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:04:34 [b12x_prepare.py:633] b12x autotuning uses 34 temporary KV blocks before allocating 122 serving blocks
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:04:34 [b12x_prepare.py:633] b12x autotuning uses 34 temporary KV blocks before allocating 122 serving blocks
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:04:35 [b12x_prepare.py:573] b12x state preparation uses 8 compiler workers
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:04:35 [b12x_prepare.py:573] b12x state preparation uses 8 compiler workers
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:04:54 [b12x_prepare.py:573] b12x bind preparation uses 8 compiler workers
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:04:54 [b12x_prepare.py:573] b12x bind preparation uses 8 compiler workers
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:04:56 [kernel_warmup.py:173] JIT kernel warmup starting.
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:04:56 [kernel_warmup.py:173] JIT kernel warmup starting.
+(EngineCore pid=703) INFO 10-02 14:05:56 [multiproc_executor.py:185] No available shared memory broadcast block found in 60 seconds. This typically happens when some processes are hanging or doing some time-consuming work (e.g. compilation, weight/kv cache quantization).
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:06:07 [kernel_warmup.py:186] JIT kernel warmup finished in 70.51s.
+(Worker_TP0_DCP0 pid=1010) [ERROR] `min_frames` is part of Qwen3VLVideoProcessorInitKwargs, but not documented. Make sure to add it to the docstring of the function in /opt/venv/lib/python3.12/site-packages/transformers/models/qwen3_vl/video_processing_qwen3_vl.py.
+(Worker_TP0_DCP0 pid=1010) [ERROR] `max_frames` is part of Qwen3VLVideoProcessorInitKwargs, but not documented. Make sure to add it to the docstring of the function in /opt/venv/lib/python3.12/site-packages/transformers/models/qwen3_vl/video_processing_qwen3_vl.py.
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:06:07 [mamba_triton_warmup.py:42] Warmed Mamba batch_memcpy_kernel.
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:06:07 [kernel_warmup.py:96] Warming up ll_bf16 router GEMM kernels for shapes: ((4096, 288),).
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:06:07 [kernel_warmup.py:186] JIT kernel warmup finished in 70.67s.
+(Worker_TP1_DCP1 pid=1011) [ERROR] `min_frames` is part of Qwen3VLVideoProcessorInitKwargs, but not documented. Make sure to add it to the docstring of the function in /opt/venv/lib/python3.12/site-packages/transformers/models/qwen3_vl/video_processing_qwen3_vl.py.
+(Worker_TP1_DCP1 pid=1011) [ERROR] `max_frames` is part of Qwen3VLVideoProcessorInitKwargs, but not documented. Make sure to add it to the docstring of the function in /opt/venv/lib/python3.12/site-packages/transformers/models/qwen3_vl/video_processing_qwen3_vl.py.
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:06:07 [mamba_triton_warmup.py:42] Warmed Mamba batch_memcpy_kernel.
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:06:08 [kernel_warmup.py:251] Skipping FlashInfer autotune because it is disabled.
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:06:10 [l2_prefetch.py:275] [l2_prefetch] CuTe kernel ready (grid=16 block=128 chunk=4096; budgets A/B/C/A_mla=20/50/15/36 MB)
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:06:10 [l2_prefetch.py:275] [l2_prefetch] CuTe kernel ready (grid=16 block=128 chunk=4096; budgets A/B/C/A_mla=20/50/15/36 MB)
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:06:11 [b12x_mla_sparse.py:1977] Using full-CKV gather for GLM5Next B12X DCP prefill
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:06:22 [breakable_cudagraph.py:327] Breakable CUDA graph enabled
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:06:33 [speculator.py:187] Capturing model for speculator...
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:06:33 [speculator.py:187] Capturing model for speculator...
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:06:34 [model_runner.py:1256] Graph capturing finished in 13 secs, took 0.32 GiB
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:06:34 [model_runner.py:1256] Graph capturing finished in 13 secs, took 0.32 GiB
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:06:36 [jit_monitor.py:85] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(Worker_TP1_DCP1 pid=1011) INFO 10-02 14:06:36 [jit_monitor.py:85] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(Worker_TP0_DCP0 pid=1010) INFO 10-02 14:06:36 [torch_utils.py:287] Reducing Torch threads from 56 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+(EngineCore pid=703) INFO 10-02 14:06:36 [core.py:390] init engine (profile, create kv cache, warmup model) took 237.30 s
+(EngineCore pid=703) INFO 10-02 14:06:38 [kv_cache_utils.py:752] kv cache group sizes [4864, 4864, 4864, 9728]
+(EngineCore pid=703) INFO 10-02 14:06:38 [kv_cache_utils.py:753] kv lcm block sizes 9728
+(EngineCore pid=703) WARNING 10-02 14:06:38 [indexer_topk.py:29] Failed to import the DeepSelect extension (vllm._deepselect_C): No module named 'vllm._deepselect_C'
+(EngineCore pid=703) INFO 10-02 14:06:41 [kernel.py:430] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(EngineCore pid=703) WARNING 10-02 14:06:41 [vllm.py:2360] max_num_scheduled_tokens is set to 2112 based on the speculative decoding settings. This may lead to suboptimal performance. Consider increasing max_num_batched_tokens to accommodate the additional draft token slots, or decrease num_speculative_tokens.
+(EngineCore pid=703) INFO 10-02 14:06:42 [compilation.py:336] Enabled custom fusions: norm_quant, act_quant, allreduce_rms
+(APIServer pid=74) INFO 10-02 14:06:42 [entry.py:135] Supported tasks: ['generate']
+(APIServer pid=74) INFO 10-02 14:06:42 [factories.py:76] Scale-out endpoints are disabled. Set --enable-scale-out to enable them.
+(APIServer pid=74) INFO 10-02 14:06:42 [parser_manager.py:36] "auto" tool choice has been enabled.
+(APIServer pid=74) INFO 10-02 14:06:44 [hf.py:642] Detected the chat template content format to be 'openai'. You can set `--chat-template-content-format` to override this.
+(APIServer pid=74) WARNING 10-02 14:06:44 [model.py:1797] Default vLLM sampling parameters have been overridden by the model's `generation_config.json`: `{'temperature': 1.0, 'top_p': 0.95}`. If this is not intended, please relaunch vLLM instance with `--generation-config vllm`.
+(APIServer pid=74) INFO 10-02 14:06:44 [entry.py:139] Starting vLLM server on http://0.0.0.0:8002
+(APIServer pid=74) INFO 10-02 14:06:44 [launcher.py:62] Available routes are:
+(APIServer pid=74) INFO 10-02 14:06:44 [launcher.py:71] Route: /openapi.json, Methods: GET, HEAD
+(APIServer pid=74) INFO 10-02 14:06:44 [launcher.py:71] Route: /docs, Methods: GET, HEAD
+(APIServer pid=74) INFO 10-02 14:06:44 [launcher.py:71] Route: /docs/oauth2-redirect, Methods: GET, HEAD
+(APIServer pid=74) INFO 10-02 14:06:44 [launcher.py:71] Route: /redoc, Methods: GET, HEAD
+(APIServer pid=74) INFO 10-02 14:06:44 [launcher.py:71] Route: /load, Methods: GET
+(APIServer pid=74) INFO 10-02 14:06:44 [launcher.py:71] Route: /version, Methods: GET
+(APIServer pid=74) INFO 10-02 14:06:44 [launcher.py:71] Route: /health, Methods: GET
+(APIServer pid=74) INFO 10-02 14:06:44 [launcher.py:71] Route: /metrics, Methods: GET
+(APIServer pid=74) INFO 10-02 14:06:44 [launcher.py:71] Route: /tokenize, Methods: POST
+(APIServer pid=74) INFO 10-02 14:06:44 [launcher.py:71] Route: /detokenize, Methods: POST
+(APIServer pid=74) INFO 10-02 14:06:44 [launcher.py:71] Route: /v1/models, Methods: GET
+(APIServer pid=74) INFO 10-02 14:06:44 [launcher.py:71] Route: /ping, Methods: GET
+(APIServer pid=74) INFO 10-02 14:06:44 [launcher.py:71] Route: /ping, Methods: POST
+(APIServer pid=74) INFO 10-02 14:06:44 [launcher.py:71] Route: /invocations, Methods: POST
+(APIServer pid=74) INFO 10-02 14:06:44 [launcher.py:71] Route: /v1/chat/completions, Methods: POST
+(APIServer pid=74) INFO 10-02 14:06:44 [launcher.py:71] Route: /v1/chat/completions/batch, Methods: POST
+(APIServer pid=74) INFO 10-02 14:06:44 [launcher.py:71] Route: /v1/responses, Methods: POST
+(APIServer pid=74) INFO 10-02 14:06:44 [launcher.py:71] Route: /v1/responses/{response_id}, Methods: GET
+(APIServer pid=74) INFO 10-02 14:06:44 [launcher.py:71] Route: /v1/responses/{response_id}/cancel, Methods: POST
+(APIServer pid=74) INFO 10-02 14:06:44 [launcher.py:71] Route: /v1/completions, Methods: POST
+(APIServer pid=74) INFO 10-02 14:06:44 [launcher.py:71] Route: /v1/messages, Methods: POST
+(APIServer pid=74) INFO 10-02 14:06:44 [launcher.py:71] Route: /v1/messages/count_tokens, Methods: POST
+(APIServer pid=74) INFO 10-02 14:06:44 [launcher.py:71] Route: /generative_scoring, Methods: POST
+(APIServer pid=74) INFO 10-02 14:06:44 [launcher.py:71] Route: /scale_elastic_ep, Methods: POST
+(APIServer pid=74) INFO 10-02 14:06:44 [launcher.py:71] Route: /is_scaling_elastic_ep, Methods: POST
+(APIServer pid=74) INFO:     127.0.0.1:47198 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47204 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47206 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47220 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47222 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47232 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47244 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47248 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47258 - "GET /health HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47266 - "GET /metrics HTTP/1.1" 200 OK
+(Worker_TP0_DCP0 pid=1010) WARNING 10-02 14:06:48 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _glm_device_token_metadata_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(APIServer pid=74) INFO:     127.0.0.1:47272 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47286 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47258 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47258 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47258 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47258 - "GET /version HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47302 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47306 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47310 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47320 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47322 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47338 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47346 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47350 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47352 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47366 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47378 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47386 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47392 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47406 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47414 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47420 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47426 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47438 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47452 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47466 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47468 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47474 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47476 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47490 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47506 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47508 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47514 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47522 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47524 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47530 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47538 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47548 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47550 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47552 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47566 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47574 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47578 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47584 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47594 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47580 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:47598 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36208 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36224 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36238 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36242 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36252 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36256 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36272 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36284 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36294 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36304 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36308 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36310 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36326 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36332 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36342 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36344 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36350 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36358 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36368 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36374 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36382 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36398 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36408 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36384 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36410 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36418 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36420 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36422 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36426 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36430 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36436 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36440 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36454 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36462 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36478 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36482 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36484 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36498 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36500 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36504 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36508 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36518 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36528 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36536 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36566 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36552 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36582 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36600 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36616 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36592 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36628 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36630 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36640 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36656 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36670 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36672 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36674 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36680 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36684 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36686 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36696 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36700 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36712 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36728 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36744 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36756 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36760 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36776 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36778 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36784 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36798 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36800 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36814 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36826 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36832 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36848 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36858 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36862 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36874 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36882 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36888 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36896 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36912 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36924 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36940 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36944 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36958 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36960 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36970 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36972 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:36986 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37000 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37010 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37026 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37040 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37068 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37054 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37090 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37100 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37078 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37104 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37108 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37112 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37114 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37122 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37136 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37138 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37148 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37158 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO 10-02 14:06:54 [loggers.py:315] Engine 000: Avg prompt throughput: 2.0 tokens/s, Avg generation throughput: 0.2 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%
+(APIServer pid=74) INFO 10-02 14:06:54 [metrics.py:136] SpecDecoding metrics: Mean acceptance length: 3.00, Mean verification depth: 3.00/3, Accepted throughput: 0.15 tokens/s, Drafted throughput: 0.23 tokens/s, Accepted: 2 tokens, Drafted: 3 tokens, Per-position acceptance rate: 1.000, 1.000, 0.000, Per-position verification coverage: 1.000, 1.000, 1.000, Avg Draft acceptance rate: 66.7%
+(APIServer pid=74) INFO:     127.0.0.1:37168 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37182 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37198 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37210 - "POST /tokenize HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37220 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37252 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37242 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37230 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37258 - "POST /v1/completions HTTP/1.1" 200 OK
+(Worker_TP0_DCP0 pid=1010) WARNING 10-02 14:06:55 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _pool_seq_lens_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(APIServer pid=74) INFO:     127.0.0.1:37280 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37274 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37306 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37294 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37308 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37314 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37330 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37344 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37354 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37364 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37380 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37382 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37388 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37398 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37400 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37404 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37420 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37432 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:37438 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:34000 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:34016 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:34028 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:34030 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:34042 - "GET /metrics HTTP/1.1" 200 OK
+(Worker_TP0_DCP0 pid=1010) WARNING 10-02 14:07:02 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _prefill_pool_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP0_DCP0 pid=1010) WARNING 10-02 14:07:02 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _prefill_tail_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(Worker_TP0_DCP0 pid=1010) WARNING 10-02 14:07:02 [jit_monitor.py:141] Triton kernel JIT compilation during inference: _gather_c4_block_table_rows_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(APIServer pid=74) INFO:     127.0.0.1:34052 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:34056 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:34070 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:34084 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:34096 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:34098 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:34104 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO 10-02 14:07:04 [loggers.py:315] Engine 000: Avg prompt throughput: 2993.3 tokens/s, Avg generation throughput: 1.6 tokens/s, Running: 3 reqs, Waiting: 9 reqs, GPU KV cache usage: 15.7%, Prefix cache hit rate: 0.0%
+(APIServer pid=74) INFO 10-02 14:07:04 [metrics.py:136] SpecDecoding metrics: Mean acceptance length: 3.00, Mean verification depth: 3.00/3, Accepted throughput: 1.00 tokens/s, Drafted throughput: 1.50 tokens/s, Accepted: 10 tokens, Drafted: 15 tokens, Per-position acceptance rate: 1.000, 0.600, 0.400, Per-position verification coverage: 1.000, 1.000, 1.000, Avg Draft acceptance rate: 66.7%
+(APIServer pid=74) INFO:     127.0.0.1:34112 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:34116 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:34126 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:34136 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:34146 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:34162 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:34164 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:34176 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:34190 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:34196 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:34198 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:34204 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:34216 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:40424 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:40436 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:40442 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:40452 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:40462 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:40466 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:40482 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:40486 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:40492 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:40502 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO 10-02 14:07:14 [loggers.py:315] Engine 000: Avg prompt throughput: 5990.4 tokens/s, Avg generation throughput: 5.7 tokens/s, Running: 3 reqs, Waiting: 7 reqs, GPU KV cache usage: 15.7%, Prefix cache hit rate: 0.0%
+(APIServer pid=74) INFO 10-02 14:07:14 [metrics.py:136] SpecDecoding metrics: Mean acceptance length: 2.95, Mean verification depth: 3.00/3, Accepted throughput: 3.70 tokens/s, Drafted throughput: 5.70 tokens/s, Accepted: 37 tokens, Drafted: 57 tokens, Per-position acceptance rate: 0.947, 0.579, 0.421, Per-position verification coverage: 1.000, 1.000, 1.000, Avg Draft acceptance rate: 64.9%
+(APIServer pid=74) INFO:     127.0.0.1:40508 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:40522 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:40524 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:40530 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:40542 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:40552 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:40562 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:40568 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:40578 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:40592 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:40594 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:40610 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:40622 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:33756 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:33766 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:33780 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:33784 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:33792 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:33796 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:33812 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:33824 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:33828 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:33834 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:33838 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:33850 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO 10-02 14:07:24 [loggers.py:315] Engine 000: Avg prompt throughput: 5987.8 tokens/s, Avg generation throughput: 5.6 tokens/s, Running: 3 reqs, Waiting: 5 reqs, GPU KV cache usage: 15.7%, Prefix cache hit rate: 0.0%
+(APIServer pid=74) INFO 10-02 14:07:24 [metrics.py:136] SpecDecoding metrics: Mean acceptance length: 3.18, Mean verification depth: 3.00/3, Accepted throughput: 3.70 tokens/s, Drafted throughput: 5.10 tokens/s, Accepted: 37 tokens, Drafted: 51 tokens, Per-position acceptance rate: 0.824, 0.706, 0.647, Per-position verification coverage: 1.000, 1.000, 1.000, Avg Draft acceptance rate: 72.5%
+(APIServer pid=74) INFO:     127.0.0.1:33864 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:33868 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:33882 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:33898 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:33914 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:33920 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:33928 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:33932 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:33936 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:33952 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:33962 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:33974 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:46434 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:46438 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:46446 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:46462 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:46466 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:46476 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:46486 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:46494 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:46506 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:46520 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:46530 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO 10-02 14:07:34 [loggers.py:315] Engine 000: Avg prompt throughput: 2997.7 tokens/s, Avg generation throughput: 6.3 tokens/s, Running: 2 reqs, Waiting: 4 reqs, GPU KV cache usage: 10.7%, Prefix cache hit rate: 0.0%
+(APIServer pid=74) INFO 10-02 14:07:34 [metrics.py:136] SpecDecoding metrics: Mean acceptance length: 3.42, Mean verification depth: 3.00/3, Accepted throughput: 4.60 tokens/s, Drafted throughput: 5.70 tokens/s, Accepted: 46 tokens, Drafted: 57 tokens, Per-position acceptance rate: 0.895, 0.789, 0.737, Per-position verification coverage: 1.000, 1.000, 1.000, Avg Draft acceptance rate: 80.7%
+(APIServer pid=74) INFO:     127.0.0.1:46538 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:46546 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:46550 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:46556 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:46564 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:46576 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:46578 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:46590 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:46596 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:46612 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:46624 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:46636 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:46648 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:46664 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:35468 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:35470 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:35478 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:35480 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:35494 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:35506 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:35518 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:35524 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:35534 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:35548 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO 10-02 14:07:44 [loggers.py:315] Engine 000: Avg prompt throughput: 5986.4 tokens/s, Avg generation throughput: 6.0 tokens/s, Running: 3 reqs, Waiting: 2 reqs, GPU KV cache usage: 16.5%, Prefix cache hit rate: 0.0%
+(APIServer pid=74) INFO 10-02 14:07:44 [metrics.py:136] SpecDecoding metrics: Mean acceptance length: 3.69, Mean verification depth: 3.00/3, Accepted throughput: 4.30 tokens/s, Drafted throughput: 4.80 tokens/s, Accepted: 43 tokens, Drafted: 48 tokens, Per-position acceptance rate: 1.000, 0.875, 0.812, Per-position verification coverage: 1.000, 1.000, 1.000, Avg Draft acceptance rate: 89.6%
+(APIServer pid=74) INFO:     127.0.0.1:35554 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:35560 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:35576 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:35578 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:35588 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:35590 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:35592 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:35594 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:35596 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:35608 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:35622 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:35630 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:35646 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:60904 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:60918 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:60920 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:60924 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:60930 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:60936 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:60944 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:60960 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:60972 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:60976 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO 10-02 14:07:54 [loggers.py:315] Engine 000: Avg prompt throughput: 5987.7 tokens/s, Avg generation throughput: 5.1 tokens/s, Running: 3 reqs, Waiting: 0 reqs, GPU KV cache usage: 15.7%, Prefix cache hit rate: 0.0%
+(APIServer pid=74) INFO 10-02 14:07:54 [metrics.py:136] SpecDecoding metrics: Mean acceptance length: 3.19, Mean verification depth: 3.00/3, Accepted throughput: 3.50 tokens/s, Drafted throughput: 4.80 tokens/s, Accepted: 35 tokens, Drafted: 48 tokens, Per-position acceptance rate: 0.812, 0.750, 0.625, Per-position verification coverage: 1.000, 1.000, 1.000, Avg Draft acceptance rate: 72.9%
+(APIServer pid=74) INFO:     127.0.0.1:60988 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:60994 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:32768 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:32778 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:32782 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:32786 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:32796 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:32804 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:32806 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:32816 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:32828 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:32830 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:32842 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:32848 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:32860 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:42580 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:42594 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:42604 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:42606 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:42622 - "GET /metrics HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:42630 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=74) INFO:     127.0.0.1:42638 - "GET /metrics HTTP/1.1" 200 OK
+W1002 13:59:15.147000 74 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 13:59:15.148000 74 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 13:59:15.148000 74 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 13:59:20.926000 74 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1002 13:59:20.955000 74 torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+(APIServer pid=74) [transformers] The following generation flags are not valid and may be ignored: ['top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+W1002 13:59:37.031000 703 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 13:59:37.031000 703 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 13:59:37.032000 703 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 13:59:40.684000 703 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1002 13:59:40.709000 703 torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1002 13:59:46.015000 1011 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 13:59:46.015000 1011 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 13:59:46.016000 1011 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 13:59:46.020000 1010 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 13:59:46.020000 1010 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 13:59:46.021000 1010 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 13:59:49.873000 1011 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1002 13:59:49.897000 1011 torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1002 13:59:49.898000 1010 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1002 13:59:49.923000 1010 torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:   0% Completed | 0/44 [00:00<?, ?it/s]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:   2% Completed | 1/44 [00:02<01:39,  2.31s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:   5% Completed | 2/44 [00:04<01:44,  2.49s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:   7% Completed | 3/44 [00:07<01:45,  2.58s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:   9% Completed | 4/44 [00:09<01:38,  2.47s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  11% Completed | 5/44 [00:13<01:48,  2.79s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  14% Completed | 6/44 [00:15<01:42,  2.70s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  16% Completed | 7/44 [00:18<01:35,  2.57s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  18% Completed | 8/44 [00:20<01:31,  2.55s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  20% Completed | 9/44 [00:22<01:25,  2.44s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  23% Completed | 10/44 [00:27<01:43,  3.04s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  25% Completed | 11/44 [00:31<01:50,  3.34s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  27% Completed | 12/44 [00:34<01:50,  3.47s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  30% Completed | 13/44 [00:38<01:50,  3.55s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  32% Completed | 14/44 [00:43<01:53,  3.78s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  34% Completed | 15/44 [00:46<01:48,  3.73s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  36% Completed | 16/44 [00:50<01:43,  3.71s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  39% Completed | 17/44 [00:54<01:40,  3.71s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  41% Completed | 18/44 [00:57<01:35,  3.67s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  43% Completed | 19/44 [01:01<01:33,  3.72s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  45% Completed | 20/44 [01:05<01:28,  3.68s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  48% Completed | 21/44 [01:08<01:23,  3.64s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  50% Completed | 22/44 [01:12<01:19,  3.62s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  52% Completed | 23/44 [01:15<01:16,  3.63s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  55% Completed | 24/44 [01:19<01:13,  3.65s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  57% Completed | 25/44 [01:23<01:08,  3.63s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  59% Completed | 26/44 [01:26<01:06,  3.70s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  61% Completed | 27/44 [01:30<01:03,  3.73s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  64% Completed | 28/44 [01:34<00:59,  3.75s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  66% Completed | 29/44 [01:38<00:55,  3.73s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  68% Completed | 30/44 [01:41<00:51,  3.68s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  70% Completed | 31/44 [01:45<00:47,  3.63s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  73% Completed | 32/44 [01:49<00:44,  3.67s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  75% Completed | 33/44 [01:53<00:41,  3.78s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  77% Completed | 34/44 [01:57<00:38,  3.88s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  80% Completed | 35/44 [02:02<00:37,  4.20s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  82% Completed | 36/44 [02:05<00:31,  3.89s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  84% Completed | 37/44 [02:07<00:22,  3.25s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  86% Completed | 38/44 [02:08<00:17,  2.84s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  89% Completed | 39/44 [02:10<00:11,  2.33s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  91% Completed | 40/44 [02:13<00:10,  2.69s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  95% Completed | 42/44 [02:14<00:03,  1.58s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  98% Completed | 43/44 [02:14<00:01,  1.33s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards: 100% Completed | 44/44 [02:15<00:00,  1.10s/it]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards: 100% Completed | 44/44 [02:15<00:00,  3.07s/it]
+(Worker_TP0_DCP0 pid=1010) 
+[rank0]:[W1002 14:02:23.634942313 CUDACachingAllocator.cpp:511] expandable_segments: memory mapping failed with OOM on device 0 while trying to map 12582912 bytes (free: 12058624, total: 102069305344).
+[rank1]:[W1002 14:02:23.733689232 CUDACachingAllocator.cpp:511] expandable_segments: memory mapping failed with OOM on device 1 while trying to map 12582912 bytes (free: 12058624, total: 102069305344).
+[rank0]:[W1002 14:02:36.059422665 CUDACachingAllocator.cpp:511] expandable_segments: memory mapping failed with OOM on device 0 while trying to map 12582912 bytes (free: 9961472, total: 102069305344).
+[rank1]:[W1002 14:02:36.396055973 CUDACachingAllocator.cpp:511] expandable_segments: memory mapping failed with OOM on device 1 while trying to map 12582912 bytes (free: 9961472, total: 102069305344).
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:   0% Completed | 0/5 [00:00<?, ?it/s]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  20% Completed | 1/5 [00:00<00:00,  8.15it/s]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  60% Completed | 3/5 [00:00<00:00,  6.61it/s]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards:  80% Completed | 4/5 [00:01<00:00,  3.20it/s]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards: 100% Completed | 5/5 [00:01<00:00,  2.80it/s]
+(Worker_TP0_DCP0 pid=1010) 
+Loading safetensors checkpoint shards: 100% Completed | 5/5 [00:01<00:00,  3.31it/s]
+(Worker_TP0_DCP0 pid=1010) 
+[rank0]:[W1002 14:02:38.560799939 CUDACachingAllocator.cpp:511] expandable_segments: memory mapping failed with OOM on device 0 while trying to map 12582912 bytes (free: 3670016, total: 102069305344).
+[rank1]:[W1002 14:02:38.609208594 CUDACachingAllocator.cpp:511] expandable_segments: memory mapping failed with OOM on device 1 while trying to map 12582912 bytes (free: 3670016, total: 102069305344).
+b12x waiting for ranks: 0/3816 ready, 0 measured, 0 cached, 0 compilations, 0:00
+b12x planning norm.mhc: 0/229 ready, candidates 0/1 prepared, 0 measured, 0 cached, 0 compilations, 0:00
+b12x planning moe.decode: 0/229 ready, 0 measured, 133 cached, 0 compilations, 0:00
+b12x planning comm.pcie: 0/229 ready, candidates 0/1 prepared, 0 measured, 147 cached, 0 compilations, 0:00
+b12x selecting norm.mhc: 18/229 ready, candidates 0/1 prepared, 0 measured, 147 cached, 0 compilations, 0:00
+b12x priming gemm.blockscaled_precision: 67/229 ready, 0 measured, 147 cached, 0 compilations, 0:01
+b12x selecting moe.decode: 154/229 ready, 0 measured, 147 cached, 0 compilations, 0:02
+b12x compiling moe.decode: 154/229 ready, 0 measured, 147 cached, 0 compilations, 0:02
+W1002 14:02:47.759000 1967 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:02:47.759000 1971 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:02:47.759000 1959 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:02:47.759000 1971 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:02:47.759000 1967 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:02:47.760000 1971 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:02:47.760000 1967 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:02:47.759000 1970 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:02:47.760000 1964 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:02:47.760000 1959 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:02:47.760000 1959 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:02:47.760000 1970 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:02:47.760000 1963 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:02:47.761000 1970 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:02:47.760000 1964 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:02:47.761000 1964 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:02:47.760000 1960 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:02:47.761000 1963 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:02:47.761000 1963 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:02:47.761000 1972 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:02:47.761000 1960 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:02:47.761000 1962 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:02:47.762000 1960 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:02:47.761000 1968 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:02:47.761000 1972 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:02:47.762000 1972 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:02:47.761000 1975 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:02:47.762000 1962 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:02:47.762000 1962 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:02:47.762000 1968 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:02:47.762000 1968 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:02:47.762000 1969 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:02:47.762000 1965 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:02:47.762000 1975 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:02:47.763000 1975 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:02:47.762000 1961 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:02:47.762000 1973 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:02:47.762000 1969 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:02:47.763000 1969 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:02:47.762000 1965 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:02:47.763000 1965 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:02:47.763000 1961 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:02:47.763000 1961 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:02:47.763000 1973 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:02:47.763000 1973 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:02:47.763000 1966 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:02:47.764000 1966 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:02:47.765000 1966 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+b12x priming moe.decode: 154/229 ready, 0 measured, 147 cached, 9 compilations, 0:08
+b12x compiling moe.decode: 164/229 ready, candidates 0/1 prepared, 0 measured, 147 cached, 35 compilations, 0:18
+b12x priming gemm.bf16_vocab_projection: 165/229 ready, 0 measured, 147 cached, 35 compilations, 0:19
+b12x waiting for ranks comm.pcie: 204/229 ready, candidates 0/1 prepared, 0 measured, 147 cached, 35 compilations, 0:19
+b12x priming comm.pcie: 229/229 ready, candidates 0/1 prepared, 0 measured, 147 cached, 35 compilations, 0:19
+b12x ready comm.pcie: 229/229 ready, candidates 0/1 prepared, 0 measured, 147 cached, 35 compilations, 0:21
+(Worker_TP0_DCP0 pid=1010) /opt/venv/lib/python3.12/site-packages/b12x/attention/_shared/mla/kv_cache.py:838: UserWarning: Accessing the data pointer of FakeTensor is deprecated and will error in PyTorch 2.5. This is almost definitely a bug in your code and will cause undefined behavior with subsystems like torch.compile. Please wrap calls to tensor.data_ptr() in an opaque custom op; If all else fails, you can guard accesses to tensor.data_ptr() on isinstance(tensor, FakeTensor). (Triggered internally at /opt/pytorch/pytorch/c10/core/StorageImpl.cpp:46.)
+(Worker_TP0_DCP0 pid=1010)   if kv_c.stride(0) % 2 != 0 or kv_c.data_ptr() % 4 != 0:
+(Worker_TP1_DCP1 pid=1011) /opt/venv/lib/python3.12/site-packages/b12x/attention/_shared/mla/kv_cache.py:838: UserWarning: Accessing the data pointer of FakeTensor is deprecated and will error in PyTorch 2.5. This is almost definitely a bug in your code and will cause undefined behavior with subsystems like torch.compile. Please wrap calls to tensor.data_ptr() in an opaque custom op; If all else fails, you can guard accesses to tensor.data_ptr() on isinstance(tensor, FakeTensor). (Triggered internally at /opt/pytorch/pytorch/c10/core/StorageImpl.cpp:46.)
+(Worker_TP1_DCP1 pid=1011)   if kv_c.stride(0) % 2 != 0 or kv_c.data_ptr() % 4 != 0:
+b12x planning attention.gdn: 0/215 ready, 0 measured, 1 cached, 0 compilations, 0:00
+b12x compiling attention.gdn: 0/215 ready, 0 measured, 8 cached, 0 compilations, 0:00
+W1002 14:04:37.792000 3018 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:04:37.792000 3018 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:04:37.793000 3018 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:04:37.796000 3023 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:04:37.797000 3023 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:04:37.797000 3023 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:04:37.867000 3027 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:04:37.868000 3027 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:04:37.868000 3027 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:04:37.874000 3029 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:04:37.875000 3029 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:04:37.875000 3029 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:04:37.875000 3026 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:04:37.876000 3026 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:04:37.876000 3026 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:04:37.888000 3020 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:04:37.889000 3020 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:04:37.890000 3020 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:04:37.895000 3033 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:04:37.896000 3033 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:04:37.896000 3033 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:04:37.898000 3028 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:04:37.899000 3028 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:04:37.899000 3028 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:04:37.900000 3032 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:04:37.901000 3032 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:04:37.902000 3032 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:04:37.921000 3025 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:04:37.922000 3025 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:04:37.922000 3025 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:04:37.944000 3031 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:04:37.945000 3031 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:04:37.945000 3031 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:04:37.956000 3024 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:04:37.957000 3024 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:04:37.958000 3024 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:04:38.000000 3019 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:04:38.001000 3019 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:04:38.001000 3019 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:04:38.007000 3022 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:04:38.008000 3022 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:04:38.008000 3022 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:04:38.044000 3021 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:04:38.045000 3021 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:04:38.045000 3021 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+W1002 14:04:38.057000 3030 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1002 14:04:38.057000 3030 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1002 14:04:38.058000 3030 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+b12x selecting attention.dsa_indexer: 3/215 ready, 0 measured, 8 cached, 1 compilations, 0:05
+b12x priming attention.dsa_indexer: 7/215 ready, 0 measured, 8 cached, 1 compilations, 0:05
+b12x compiling attention.dsa_indexer: 12/215 ready, candidates 0/1 prepared, 0 measured, 8 cached, 1 compilations, 0:06
+b12x selecting attention.sparse_mla: 13/215 ready, candidates 0/1 prepared, 0 measured, 8 cached, 2 compilations, 0:07
+/opt/venv/lib/python3.12/site-packages/b12x/attention/_shared/mla/kernel.py:2610: UserWarning: Accessing the data pointer of FakeTensor is deprecated and will error in PyTorch 2.5. This is almost definitely a bug in your code and will cause undefined behavior with subsystems like torch.compile. Please wrap calls to tensor.data_ptr() in an opaque custom op; If all else fails, you can guard accesses to tensor.data_ptr() on isinstance(tensor, FakeTensor). (Triggered internally at /opt/pytorch/pytorch/c10/core/StorageImpl.cpp:46.)
+  and (int(q_all.data_ptr()) if q_alignment is None else q_alignment) % 16 == 0
+/opt/venv/lib/python3.12/site-packages/b12x/attention/_shared/mla/kernel.py:2610: UserWarning: Accessing the data pointer of FakeTensor is deprecated and will error in PyTorch 2.5. This is almost definitely a bug in your code and will cause undefined behavior with subsystems like torch.compile. Please wrap calls to tensor.data_ptr() in an opaque custom op; If all else fails, you can guard accesses to tensor.data_ptr() on isinstance(tensor, FakeTensor). (Triggered internally at /opt/pytorch/pytorch/c10/core/StorageImpl.cpp:46.)
+  and (int(q_all.data_ptr()) if q_alignment is None else q_alignment) % 16 == 0
+b12x compiling attention.sparse_mla: 13/215 ready, candidates 0/1 prepared, 0 measured, 8 cached, 2 compilations, 0:07
+b12x priming attention.sparse_mla: 14/215 ready, candidates 0/1 prepared, 0 measured, 8 cached, 3 compilations, 0:08
+/opt/venv/lib/python3.12/site-packages/b12x/attention/_shared/mla/kernel.py:2610: UserWarning: Accessing the data pointer of FakeTensor is deprecated and will error in PyTorch 2.5. This is almost definitely a bug in your code and will cause undefined behavior with subsystems like torch.compile. Please wrap calls to tensor.data_ptr() in an opaque custom op; If all else fails, you can guard accesses to tensor.data_ptr() on isinstance(tensor, FakeTensor). (Triggered internally at /opt/pytorch/pytorch/c10/core/StorageImpl.cpp:46.)
+  and (int(q_all.data_ptr()) if q_alignment is None else q_alignment) % 16 == 0
+/opt/venv/lib/python3.12/site-packages/b12x/attention/_shared/mla/kernel.py:2610: UserWarning: Accessing the data pointer of FakeTensor is deprecated and will error in PyTorch 2.5. This is almost definitely a bug in your code and will cause undefined behavior with subsystems like torch.compile. Please wrap calls to tensor.data_ptr() in an opaque custom op; If all else fails, you can guard accesses to tensor.data_ptr() on isinstance(tensor, FakeTensor). (Triggered internally at /opt/pytorch/pytorch/c10/core/StorageImpl.cpp:46.)
+  and (int(q_all.data_ptr()) if q_alignment is None else q_alignment) % 16 == 0
+/opt/venv/lib/python3.12/site-packages/b12x/attention/_shared/mla/kernel.py:2610: UserWarning: Accessing the data pointer of FakeTensor is deprecated and will error in PyTorch 2.5. This is almost definitely a bug in your code and will cause undefined behavior with subsystems like torch.compile. Please wrap calls to tensor.data_ptr() in an opaque custom op; If all else fails, you can guard accesses to tensor.data_ptr() on isinstance(tensor, FakeTensor). (Triggered internally at /opt/pytorch/pytorch/c10/core/StorageImpl.cpp:46.)
+  and (int(q_all.data_ptr()) if q_alignment is None else q_alignment) % 16 == 0
+/opt/venv/lib/python3.12/site-packages/b12x/attention/_shared/mla/kernel.py:2610: UserWarning: Accessing the data pointer of FakeTensor is deprecated and will error in PyTorch 2.5. This is almost definitely a bug in your code and will cause undefined behavior with subsystems like torch.compile. Please wrap calls to tensor.data_ptr() in an opaque custom op; If all else fails, you can guard accesses to tensor.data_ptr() on isinstance(tensor, FakeTensor). (Triggered internally at /opt/pytorch/pytorch/c10/core/StorageImpl.cpp:46.)
+  and (int(q_all.data_ptr()) if q_alignment is None else q_alignment) % 16 == 0
+/opt/venv/lib/python3.12/site-packages/b12x/attention/_shared/mla/kernel.py:2610: UserWarning: Accessing the data pointer of FakeTensor is deprecated and will error in PyTorch 2.5. This is almost definitely a bug in your code and will cause undefined behavior with subsystems like torch.compile. Please wrap calls to tensor.data_ptr() in an opaque custom op; If all else fails, you can guard accesses to tensor.data_ptr() on isinstance(tensor, FakeTensor). (Triggered internally at /opt/pytorch/pytorch/c10/core/StorageImpl.cpp:46.)
+  and (int(q_all.data_ptr()) if q_alignment is None else q_alignment) % 16 == 0
+/opt/venv/lib/python3.12/site-packages/b12x/attention/_shared/mla/kernel.py:2610: UserWarning: Accessing the data pointer of FakeTensor is deprecated and will error in PyTorch 2.5. This is almost definitely a bug in your code and will cause undefined behavior with subsystems like torch.compile. Please wrap calls to tensor.data_ptr() in an opaque custom op; If all else fails, you can guard accesses to tensor.data_ptr() on isinstance(tensor, FakeTensor). (Triggered internally at /opt/pytorch/pytorch/c10/core/StorageImpl.cpp:46.)
+  and (int(q_all.data_ptr()) if q_alignment is None else q_alignment) % 16 == 0
+/opt/venv/lib/python3.12/site-packages/b12x/attention/_shared/mla/kernel.py:2610: UserWarning: Accessing the data pointer of FakeTensor is deprecated and will error in PyTorch 2.5. This is almost definitely a bug in your code and will cause undefined behavior with subsystems like torch.compile. Please wrap calls to tensor.data_ptr() in an opaque custom op; If all else fails, you can guard accesses to tensor.data_ptr() on isinstance(tensor, FakeTensor). (Triggered internally at /opt/pytorch/pytorch/c10/core/StorageImpl.cpp:46.)
+  and (int(q_all.data_ptr()) if q_alignment is None else q_alignment) % 16 == 0
+/opt/venv/lib/python3.12/site-packages/b12x/attention/_shared/mla/kernel.py:2610: UserWarning: Accessing the data pointer of FakeTensor is deprecated and will error in PyTorch 2.5. This is almost definitely a bug in your code and will cause undefined behavior with subsystems like torch.compile. Please wrap calls to tensor.data_ptr() in an opaque custom op; If all else fails, you can guard accesses to tensor.data_ptr() on isinstance(tensor, FakeTensor). (Triggered internally at /opt/pytorch/pytorch/c10/core/StorageImpl.cpp:46.)
+  and (int(q_all.data_ptr()) if q_alignment is None else q_alignment) % 16 == 0
+/opt/venv/lib/python3.12/site-packages/b12x/attention/_shared/mla/kernel.py:2610: UserWarning: Accessing the data pointer of FakeTensor is deprecated and will error in PyTorch 2.5. This is almost definitely a bug in your code and will cause undefined behavior with subsystems like torch.compile. Please wrap calls to tensor.data_ptr() in an opaque custom op; If all else fails, you can guard accesses to tensor.data_ptr() on isinstance(tensor, FakeTensor). (Triggered internally at /opt/pytorch/pytorch/c10/core/StorageImpl.cpp:46.)
+  and (int(q_all.data_ptr()) if q_alignment is None else q_alignment) % 16 == 0
+/opt/venv/lib/python3.12/site-packages/b12x/attention/_shared/mla/kernel.py:2610: UserWarning: Accessing the data pointer of FakeTensor is deprecated and will error in PyTorch 2.5. This is almost definitely a bug in your code and will cause undefined behavior with subsystems like torch.compile. Please wrap calls to tensor.data_ptr() in an opaque custom op; If all else fails, you can guard accesses to tensor.data_ptr() on isinstance(tensor, FakeTensor). (Triggered internally at /opt/pytorch/pytorch/c10/core/StorageImpl.cpp:46.)
+  and (int(q_all.data_ptr()) if q_alignment is None else q_alignment) % 16 == 0
+/opt/venv/lib/python3.12/site-packages/b12x/attention/_shared/mla/kernel.py:2610: UserWarning: Accessing the data pointer of FakeTensor is deprecated and will error in PyTorch 2.5. This is almost definitely a bug in your code and will cause undefined behavior with subsystems like torch.compile. Please wrap calls to tensor.data_ptr() in an opaque custom op; If all else fails, you can guard accesses to tensor.data_ptr() on isinstance(tensor, FakeTensor). (Triggered internally at /opt/pytorch/pytorch/c10/core/StorageImpl.cpp:46.)
+  and (int(q_all.data_ptr()) if q_alignment is None else q_alignment) % 16 == 0
+/opt/venv/lib/python3.12/site-packages/b12x/attention/_shared/mla/kernel.py:2610: UserWarning: Accessing the data pointer of FakeTensor is deprecated and will error in PyTorch 2.5. This is almost definitely a bug in your code and will cause undefined behavior with subsystems like torch.compile. Please wrap calls to tensor.data_ptr() in an opaque custom op; If all else fails, you can guard accesses to tensor.data_ptr() on isinstance(tensor, FakeTensor). (Triggered internally at /opt/pytorch/pytorch/c10/core/StorageImpl.cpp:46.)
+  and (int(q_all.data_ptr()) if q_alignment is None else q_alignment) % 16 == 0
+/opt/venv/lib/python3.12/site-packages/b12x/attention/_shared/mla/kernel.py:2610: UserWarning: Accessing the data pointer of FakeTensor is deprecated and will error in PyTorch 2.5. This is almost definitely a bug in your code and will cause undefined behavior with subsystems like torch.compile. Please wrap calls to tensor.data_ptr() in an opaque custom op; If all else fails, you can guard accesses to tensor.data_ptr() on isinstance(tensor, FakeTensor). (Triggered internally at /opt/pytorch/pytorch/c10/core/StorageImpl.cpp:46.)
+  and (int(q_all.data_ptr()) if q_alignment is None else q_alignment) % 16 == 0
+/opt/venv/lib/python3.12/site-packages/b12x/attention/_shared/mla/kernel.py:2610: UserWarning: Accessing the data pointer of FakeTensor is deprecated and will error in PyTorch 2.5. This is almost definitely a bug in your code and will cause undefined behavior with subsystems like torch.compile. Please wrap calls to tensor.data_ptr() in an opaque custom op; If all else fails, you can guard accesses to tensor.data_ptr() on isinstance(tensor, FakeTensor). (Triggered internally at /opt/pytorch/pytorch/c10/core/StorageImpl.cpp:46.)
+  and (int(q_all.data_ptr()) if q_alignment is None else q_alignment) % 16 == 0
+b12x ready gemm.blockscaled_precision: 215/215 ready, 0 measured, 8 cached, 10 compilations, 0:16
+b12x planning attention.gdn: 0/215 ready, 0 measured, 1 cached, 0 compilations, 0:00
+b12x priming attention.dsa_indexer: 3/215 ready, 0 measured, 8 cached, 0 compilations, 0:00
+b12x priming attention.sparse_mla: 16/215 ready, candidates 0/1 prepared, 0 measured, 8 cached, 0 compilations, 0:01
+b12x ready gemm.blockscaled_precision: 215/215 ready, 0 measured, 8 cached, 0 compilations, 0:01
+(Worker_TP0_DCP0 pid=1010) 
+JIT kernel warmup (94 compile keys):   0%|          | 0/5 [00:00<?, ?kernel/s]
+JIT kernel warmup (94 compile keys):  20%|██        | 1/5 [00:00<00:00,  5.15kernel/s, CorrectAttnCPOutKernel (2 keys)]
+JIT kernel warmup (94 compile keys):  40%|████      | 2/5 [00:29<00:52, 17.53s/kernel, _DecoratedTritonJitKernel (12 keys)]
+JIT kernel warmup (94 compile keys):  60%|██████    | 3/5 [00:32<00:21, 10.94s/kernel, _DecoratedTritonJitKernel (16 keys)]
+JIT kernel warmup (94 compile keys):  80%|████████  | 4/5 [00:59<00:17, 17.04s/kernel, _DecoratedTritonJitKernel (48 keys)]
+JIT kernel warmup (94 compile keys): 100%|██████████| 5/5 [01:10<00:00, 14.91s/kernel, _DecoratedTritonJitKernel (16 keys)]
+JIT kernel warmup (94 compile keys): 100%|██████████| 5/5 [01:10<00:00, 14.10s/kernel, _DecoratedTritonJitKernel (16 keys)]
+(Worker_TP0_DCP0 pid=1010) /usr/local/lib/python3.12/dist-packages/triton/language/core.py:2623: UserWarning: tl.make_block_ptr is deprecated. Use TensorDescriptor or tl.make_tensor_descriptor instead.
+(Worker_TP0_DCP0 pid=1010)   warn("tl.make_block_ptr is deprecated. Use TensorDescriptor or tl.make_tensor_descriptor instead.")
+(Worker_TP1_DCP1 pid=1011) /usr/local/lib/python3.12/dist-packages/triton/language/core.py:2623: UserWarning: tl.make_block_ptr is deprecated. Use TensorDescriptor or tl.make_tensor_descriptor instead.
+(Worker_TP1_DCP1 pid=1011)   warn("tl.make_block_ptr is deprecated. Use TensorDescriptor or tl.make_tensor_descriptor instead.")
+(Worker_TP0_DCP0 pid=1010) 
+Capturing CUDA graphs (PIECEWISE):   0%|          | 0/10 [00:00<?, ?it/s]
+Capturing CUDA graphs (PIECEWISE):  10%|█         | 1/10 [00:00<00:06,  1.48it/s]
+Capturing CUDA graphs (PIECEWISE):  20%|██        | 2/10 [00:01<00:05,  1.39it/s]
+Capturing CUDA graphs (PIECEWISE):  30%|███       | 3/10 [00:02<00:04,  1.41it/s]
+Capturing CUDA graphs (PIECEWISE):  40%|████      | 4/10 [00:02<00:04,  1.42it/s]
+Capturing CUDA graphs (PIECEWISE):  50%|█████     | 5/10 [00:03<00:03,  1.42it/s]
+Capturing CUDA graphs (PIECEWISE):  60%|██████    | 6/10 [00:04<00:02,  1.40it/s]
+Capturing CUDA graphs (PIECEWISE):  70%|███████   | 7/10 [00:04<00:01,  1.51it/s]
+Capturing CUDA graphs (PIECEWISE):  80%|████████  | 8/10 [00:05<00:01,  1.53it/s]
+Capturing CUDA graphs (PIECEWISE):  90%|█████████ | 9/10 [00:06<00:00,  1.60it/s]
+Capturing CUDA graphs (PIECEWISE): 100%|██████████| 10/10 [00:06<00:00,  1.67it/s]
+Capturing CUDA graphs (PIECEWISE): 100%|██████████| 10/10 [00:06<00:00,  1.53it/s]
+(Worker_TP0_DCP0 pid=1010) 
+Capturing CUDA graphs (FULL):   0%|          | 0/8 [00:00<?, ?it/s]
+Capturing CUDA graphs (FULL):  12%|█▎        | 1/8 [00:00<00:05,  1.29it/s]
+Capturing CUDA graphs (FULL):  25%|██▌       | 2/8 [00:01<00:04,  1.41it/s]
+Capturing CUDA graphs (FULL):  38%|███▊      | 3/8 [00:02<00:03,  1.47it/s]
+Capturing CUDA graphs (FULL):  50%|█████     | 4/8 [00:02<00:02,  1.47it/s]
+Capturing CUDA graphs (FULL):  62%|██████▎   | 5/8 [00:03<00:01,  1.55it/s]
+Capturing CUDA graphs (FULL):  75%|███████▌  | 6/8 [00:03<00:01,  1.58it/s]
+Capturing CUDA graphs (FULL):  88%|████████▊ | 7/8 [00:04<00:00,  1.60it/s]
+Capturing CUDA graphs (FULL): 100%|██████████| 8/8 [00:05<00:00,  1.67it/s]
+Capturing CUDA graphs (FULL): 100%|██████████| 8/8 [00:05<00:00,  1.57it/s]
+(Worker_TP0_DCP0 pid=1010) 
+Capturing prefill CUDA graphs (PIECEWISE):   0%|          | 0/10 [00:00<?, ?it/s]
+Capturing prefill CUDA graphs (PIECEWISE):  40%|████      | 4/10 [00:00<00:00, 39.29it/s]
+Capturing prefill CUDA graphs (PIECEWISE): 100%|██████████| 10/10 [00:00<00:00, 45.85it/s]
+Capturing prefill CUDA graphs (PIECEWISE): 100%|██████████| 10/10 [00:00<00:00, 44.91it/s]
+(Worker_TP0_DCP0 pid=1010) 
+Capturing prefill CUDA graphs (FULL):   0%|          | 0/4 [00:00<?, ?it/s]
+Capturing prefill CUDA graphs (FULL): 100%|██████████| 4/4 [00:00<00:00, 37.14it/s]
+Capturing prefill CUDA graphs (FULL): 100%|██████████| 4/4 [00:00<00:00, 37.09it/s]
+(Worker_TP0_DCP0 pid=1010) 
+Capturing decode CUDA graphs (FULL):   0%|          | 0/4 [00:00<?, ?it/s]
+Capturing decode CUDA graphs (FULL):  75%|███████▌  | 3/4 [00:00<00:00, 27.59it/s]
+Capturing decode CUDA graphs (FULL): 100%|██████████| 4/4 [00:00<00:00, 28.93it/s]
+(APIServer pid=74) INFO:     Started server process [74]
+(APIServer pid=74) INFO:     Waiting for application startup.
+(APIServer pid=74) INFO:     Application startup complete.

@@ -1,0 +1,13 @@
+{
+  "args": [
+    "/usr/bin/python",
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py",
+    "--phase",
+    "qad-tp4"
+  ],
+  "returncode": 0,
+  "started_at": 1790929913.807113,
+  "finished_at": 1790935546.120745,
+  "elapsed_seconds": 5632.313632011414,
+  "log": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/control/20261002T083133Z/phase-qad-tp4.log"
+}

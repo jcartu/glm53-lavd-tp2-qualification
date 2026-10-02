@@ -1,0 +1,48 @@
+{
+  "state": "accepted",
+  "target": {
+    "guild_id": "1466898002793857221",
+    "channel_id": "1471527895439638528",
+    "channel_name": "glm-53-flash",
+    "author_id": "448933919447056385"
+  },
+  "payload": {
+    "content": "hey Lavd, first results from your TP2 config on my box: **207 tok/s solo, 488 at 4 requests, 672 total at 8**. Two RTX PRO 6000s.\n\nIt pulled both buried facts out of a **1.04M-token prompt**, cold, in about 4 minutes. Ledger: 8 exact / 2 near / 0 fails. Estonia: 29/30.\n\nNot calling a quality winner: greedy MMLU-Pro was 82.6% over 1,000 questions, with 113 hitting the 131k output cap. The same 200-question control moved 84% to 87% on repeat. This wasn't the repetition-penalty 1.18 setup.\n\nCharts below. NVIDIA TP4 is just my current deployment for reference, different quant/runtime. Matched QAD TP4, two TP2 copies and the tuning tests are still going.",
+    "nonce": "647752414217263623",
+    "enforce_nonce": true,
+    "allowed_mentions": {
+      "parse": []
+    },
+    "attachments": [
+      {
+        "id": "0",
+        "filename": "glm-flash-first-numbers.png",
+        "description": "Interim measured decode throughput. Lavd QAD TP2 versus the existing NVIDIA TP4 deployment; different checkpoints and runtimes."
+      },
+      {
+        "id": "1",
+        "filename": "glm-flash-million-token-check.png",
+        "description": "Five cold retrieval checks on Lavd QAD TP2, through 1,040,355 prompt tokens. Both planted facts retrieved at every tested length."
+      }
+    ]
+  },
+  "attachments": [
+    {
+      "id": "0",
+      "filename": "glm-flash-first-numbers.png",
+      "description": "Interim measured decode throughput. Lavd QAD TP2 versus the existing NVIDIA TP4 deployment; different checkpoints and runtimes.",
+      "bytes": 200586,
+      "sha256": "fba0c9009c5c54ee0715380254e264040023dc64708e8d1d68c76eb6dc70c334"
+    },
+    {
+      "id": "1",
+      "filename": "glm-flash-million-token-check.png",
+      "description": "Five cold retrieval checks on Lavd QAD TP2, through 1,040,355 prompt tokens. Both planted facts retrieved at every tested length.",
+      "bytes": 246738,
+      "sha256": "8b3b83ccbab8d0ea10e045654e527e68ec5551811b09d6da40fb6ea630abbcf1"
+    }
+  ],
+  "created_utc": "2026-10-02T08:44:03.341603+00:00",
+  "message_id": "1555500606959919184",
+  "accepted_utc": "2026-10-02T08:44:04.870384+00:00"
+}

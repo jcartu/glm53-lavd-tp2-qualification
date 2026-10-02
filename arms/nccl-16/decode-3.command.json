@@ -1,0 +1,32 @@
+{
+  "argv": [
+    "/home/josh/llm-inference-bench/.venv/bin/python",
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/preflight/llm_decode_bench.py",
+    "--port",
+    "8002",
+    "--model",
+    "g53fq",
+    "--display-mode",
+    "plain",
+    "--no-resume",
+    "--output",
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/arms/nccl-16/decode-3.json",
+    "--dcp-size",
+    "2",
+    "--concurrency",
+    "1,4,8",
+    "--contexts",
+    "0,16k",
+    "--duration",
+    "30",
+    "--max-tokens",
+    "8192",
+    "--temperature",
+    "1.0",
+    "--skip-prefill"
+  ],
+  "exit_code": 0,
+  "start": 1790948423.020245,
+  "end": 1790948423.585261,
+  "elapsed_s": 0.5650162696838379
+}

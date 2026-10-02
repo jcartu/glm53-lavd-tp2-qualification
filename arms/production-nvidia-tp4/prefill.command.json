@@ -1,0 +1,28 @@
+{
+  "argv": [
+    "/home/josh/llm-inference-bench/.venv/bin/python",
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/preflight/llm_decode_bench.py",
+    "--port",
+    "5001",
+    "--model",
+    "GLM-5.3-Flash-NVFP4",
+    "--display-mode",
+    "plain",
+    "--no-resume",
+    "--output",
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/arms/production-nvidia-tp4/prefill.json",
+    "--dcp-size",
+    "1",
+    "--prefill-only",
+    "--prefill-contexts",
+    "64k,128k",
+    "--prefill-duration",
+    "20",
+    "--token-targeting",
+    "exact"
+  ],
+  "exit_code": 0,
+  "start": 1790898097.4136667,
+  "end": 1790898152.6803586,
+  "elapsed_s": 55.26669239997864
+}

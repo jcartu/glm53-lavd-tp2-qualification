@@ -1,0 +1,102 @@
+{
+  "services": {
+    "g53f": {
+      "image": "ghcr.io/local-inference-lab/vllm@sha256:0283bc84008d37853f7ccc2e16ec2ad299008fa6ce052a5a1c65c7fdd5255ee3",
+      "container_name": "lavd-qualification",
+      "network_mode": "host",
+      "gpus": "all",
+      "shm_size": "32g",
+      "ipc": "host",
+      "init": true,
+      "ulimits": {
+        "memlock": -1,
+        "stack": 67108864
+      },
+      "environment": {
+        "HF_HUB_OFFLINE": "1",
+        "TRANSFORMERS_OFFLINE": "1",
+        "CUDA_VISIBLE_DEVICES": "2,3",
+        "TORCH_CUDA_ARCH_LIST": "12.0a",
+        "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True,large_segment_size_mb:12",
+        "CUBLAS_WORKSPACE_CONFIG": ":4096:1",
+        "NCCL_MIN_NCHANNELS": "2",
+        "NCCL_MAX_NCHANNELS": "2",
+        "NCCL_BUFFSIZE": "1048576",
+        "NCCL_NET_PLUGIN": "none",
+        "NCCL_IB_DISABLE": "1",
+        "NCCL_SOCKET_IFNAME": "lo",
+        "GLOO_SOCKET_IFNAME": "lo",
+        "VLLM_HOST_IP": "127.0.0.1",
+        "VLLM_ENABLE_PCIE_ALLREDUCE": "1",
+        "VLLM_PCIE_DMA_MIN_BYTES": "off",
+        "VLLM_B12X_MLA_CKV_GATHER": "1",
+        "VLLM_B12X_MLA_CKV_GATHER_MAX_TOKENS": "65536",
+        "VLLM_GLM53_EMBED_HOST": "1",
+        "VLLM_B12X_MOE_FP4_FORCE_A16": "1",
+        "B12X_W4A16_FP32_TOPK_WEIGHTS": "1",
+        "VLLM_LM_HEAD_A16": "1",
+        "VLLM_B12X_MXFP8_ACTIVATION_MODE": "a16"
+      },
+      "volumes": [
+        "/mnt/2king/models/GLM-5.3-Flash-NVFP4-qad-tvn-step3500:/model:ro",
+        "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/cache:/root/.cache:rw",
+        "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/cache:/cache:rw",
+        "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z:/evidence:rw"
+      ],
+      "entrypoint": [
+        "/bin/bash",
+        "-c",
+        "unset NCCL_GRAPH_FILE NCCL_GRAPH_DUMP_FILE VLLM_B12X_MLA_EXTEND_MAX_CHUNKS\nexec /opt/venv/bin/vllm serve \"$@\"\n",
+        "--"
+      ],
+      "command": [
+        "/model",
+        "--served-model-name=g53fq",
+        "--quantization=modelopt_mixed",
+        "--quantization-config={\"linear\":{\"weight\":\"mxfp8\"}}",
+        "--compilation-config={\"cudagraph_mode\":\"FULL_AND_PIECEWISE\",\"cudagraph_capture_sizes\":[1,2,4,8,12,16,20,24,28,32]}",
+        "--max-cudagraph-capture-size=32",
+        "--kv-cache-dtype=fp8",
+        "--kv-cache-memory-bytes=4000000000",
+        "--block-size=256",
+        "--dtype=bfloat16",
+        "--tensor-parallel-size=2",
+        "--pipeline-parallel-size=1",
+        "--decode-context-parallel-size=2",
+        "--cp-kv-cache-interleave-size=4",
+        "--dcp-kv-cache-interleave-size=4",
+        "--load-format=safetensors",
+        "--attention-backend=B12X",
+        "--moe-backend=b12x",
+        "--linear-backend=b12x",
+        "--cpu-offload-gb=1.5",
+        "--cpu-offload-params=visual",
+        "--additional-config={\"glm53_kda_decode_backend\":\"auto\",\"kda_prefill_backend\":\"b12x\"}",
+        "--mamba-cache-mode=align",
+        "--recurrent-checkpoint-policy=aligned",
+        "--prefix-cache-retention-interval=None",
+        "--max-num-seqs=8",
+        "--max-num-batched-tokens=2112",
+        "--prefill-schedule-interval=1",
+        "--enable-chunked-prefill",
+        "--enable-prefix-caching",
+        "--no-enable-flashinfer-autotune",
+        "--default-chat-template-kwargs={\"reasoning_effort\":\"max\",\"clear_thinking\":true}",
+        "--override-generation-config={\"temperature\":1.0,\"top_p\":0.95}",
+        "--tool-call-parser=glm47",
+        "--reasoning-parser=glm45",
+        "--enable-auto-tool-choice",
+        "--speculative-config={\"method\":\"mtp\",\"num_speculative_tokens\":3,\"draft_sample_method\":\"probabilistic\",\"rejection_sample_method\":\"standard\",\"moe_backend\":\"marlin\",\"attention_backend\":\"B12X\"}",
+        "--host=0.0.0.0",
+        "--port=8002"
+      ],
+      "labels": {
+        "field-lab.battery": "r26",
+        "lavd.campaign": "lavd-qualification-20261001T231927Z",
+        "lavd.arm": "scheduler-fixed"
+      },
+      "stop_grace_period": "60s",
+      "restart": "no"
+    }
+  }
+}

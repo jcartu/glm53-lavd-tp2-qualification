@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "docker",
+    "compose",
+    "-p",
+    "lavd-qualification",
+    "-f",
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/arms/nccl-4/compose.yaml",
+    "up",
+    "-d"
+  ],
+  "exit_code": 0,
+  "start": 1790946066.8491595,
+  "end": 1790946067.7157047,
+  "elapsed_s": 0.8665454387664795
+}

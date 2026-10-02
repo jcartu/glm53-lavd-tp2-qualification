@@ -1,0 +1,39 @@
+{
+  "scope": "Full Lavd plan plus explicitly requested dual TP2 experiment",
+  "arms": [
+    "reference",
+    "qad-tp4",
+    "spark-tp2",
+    "production-nvidia-tp4",
+    "drafter-marlin",
+    "drafter-b12x",
+    "nccl-4",
+    "nccl-16",
+    "context-786k",
+    "scheduler-fixed",
+    "scheduler-old-stress"
+  ],
+  "baseline": "production-nvidia-tp4",
+  "common_rules": [
+    "same QAD checkpoint for TP2/TP4/dual comparisons",
+    "retain failures and truncations",
+    "no promotion; restore original container",
+    "charts contain only real completed samples",
+    "one concise final Discord post after verification"
+  ],
+  "reference_observed_kv_tokens": 1093386,
+  "reference_max_model_len": 1048576,
+  "images": {
+    "lavd_image": "ghcr.io/local-inference-lab/vllm@sha256:04bdd08b6ccbfe18f297dc4b60580fc6354f2efe249534888574d5046c187077",
+    "drafter_image": "ghcr.io/local-inference-lab/vllm@sha256:bda42b65377c20eee4d976de76b8ebfecb33b385c0b7ebcbb2ed7088512f01f0",
+    "scheduler_image": "ghcr.io/local-inference-lab/vllm@sha256:0283bc84008d37853f7ccc2e16ec2ad299008fa6ce052a5a1c65c7fdd5255ee3"
+  },
+  "cancelled": {
+    "arms": [
+      "dual-tp2",
+      "accuracy-off"
+    ],
+    "reason": "GPUs reallocated to another user project at publication time; scheduler-fixed-stress was still in flight and is owned by the other session.",
+    "recorded_utc": "2026-10-02T14:19:54.220673+00:00"
+  }
+}

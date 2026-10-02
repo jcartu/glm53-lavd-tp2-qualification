@@ -1,0 +1,95 @@
+{
+  "status": 200,
+  "body": {
+    "type": 0,
+    "content": "hey Lavd, first results from your TP2 config on my box: **207 tok/s solo, 488 at 4 requests, 672 total at 8**. Two RTX PRO 6000s.\n\nIt pulled both buried facts out of a **1.04M-token prompt**, cold, in about 4 minutes. Ledger: 8 exact / 2 near / 0 fails. Estonia: 29/30.\n\nNot calling a quality winner: greedy MMLU-Pro was 82.6% over 1,000 questions, with 113 hitting the 131k output cap. The same 200-question control moved 84% to 87% on repeat. This wasn't the repetition-penalty 1.18 setup.\n\nCharts below. NVIDIA TP4 is just my current deployment for reference, different quant/runtime. Matched QAD TP4, two TP2 copies and the tuning tests are still going.",
+    "mentions": [],
+    "mention_roles": [],
+    "attachments": [
+      {
+        "id": "1555500605454155776",
+        "filename": "glm-flash-first-numbers.png",
+        "size": 200586,
+        "url": "https://cdn.discordapp.com/attachments/1471527895439638528/1555500605454155776/glm-flash-first-numbers.png?backend=b2&ex=6ac0c054&is=6abf6ed4&hm=d7a3c25de58835aa988d5b1b613a766e72f8c963911a1c5678f8a0759b19b874&",
+        "proxy_url": "https://media.discordapp.net/attachments/1471527895439638528/1555500605454155776/glm-flash-first-numbers.png?backend=b2&ex=6ac0c054&is=6abf6ed4&hm=d7a3c25de58835aa988d5b1b613a766e72f8c963911a1c5678f8a0759b19b874&",
+        "width": 2520,
+        "height": 1800,
+        "description": "Interim measured decode throughput. Lavd QAD TP2 versus the existing NVIDIA TP4 deployment; different checkpoints and runtimes.",
+        "content_type": "image/png",
+        "content_scan_version": 4,
+        "placeholder": "S9cFBYJjaDmUeYjAaPhXZqt9r9v3",
+        "placeholder_version": 1
+      },
+      {
+        "id": "1555500606561587282",
+        "filename": "glm-flash-million-token-check.png",
+        "size": 246738,
+        "url": "https://cdn.discordapp.com/attachments/1471527895439638528/1555500606561587282/glm-flash-million-token-check.png?backend=b2&ex=6ac0c054&is=6abf6ed4&hm=31dd29d2ba932f7a780760f6c600ba875a9772c7e1d0e9ea3418ccde72e60d6c&",
+        "proxy_url": "https://media.discordapp.net/attachments/1471527895439638528/1555500606561587282/glm-flash-million-token-check.png?backend=b2&ex=6ac0c054&is=6abf6ed4&hm=31dd29d2ba932f7a780760f6c600ba875a9772c7e1d0e9ea3418ccde72e60d6c&",
+        "width": 2520,
+        "height": 1800,
+        "description": "Five cold retrieval checks on Lavd QAD TP2, through 1,040,355 prompt tokens. Both planted facts retrieved at every tested length.",
+        "content_type": "image/png",
+        "content_scan_version": 4,
+        "placeholder": "RucBBYAvEUfuGGPXNrlWMJyfv8r3",
+        "placeholder_version": 1
+      }
+    ],
+    "embeds": [],
+    "timestamp": "2026-10-02T08:44:04.503000+00:00",
+    "edited_timestamp": null,
+    "flags": 0,
+    "components": [],
+    "id": "1555500606959919184",
+    "channel_id": "1471527895439638528",
+    "author": {
+      "id": "448933919447056385",
+      "username": "jcartu",
+      "avatar": "1a51fb29ad7c95e96f41ff9483881480",
+      "discriminator": "0",
+      "public_flags": 0,
+      "flags": 0,
+      "banner": "a_5ee6b26ef3418a0ae6b6fa07cc1b66ed",
+      "accent_color": null,
+      "global_name": "JCartu",
+      "avatar_decoration_data": null,
+      "collectibles": {
+        "nameplate": {
+          "sku_id": "1428438925067817093",
+          "asset": "nameplates/plastic/ryomen_sukuna/",
+          "label": "COLLECTIBLES_PLASTIC_RYOMEN_SUKUNA_NP_A11Y",
+          "palette": "crimson"
+        }
+      },
+      "display_name_styles": {
+        "font_id": 14,
+        "effect_id": 7,
+        "colors": [
+          7997702,
+          13114898,
+          16013848,
+          16749824,
+          16766023
+        ]
+      },
+      "vad_colors": null,
+      "banner_color": null,
+      "clan": {
+        "identity_guild_id": "1466898002793857221",
+        "identity_enabled": true,
+        "tag": "LIL",
+        "badge": "736e7d8bb18ed68b6e0223765e79015e"
+      },
+      "primary_guild": {
+        "identity_guild_id": "1466898002793857221",
+        "identity_enabled": true,
+        "tag": "LIL",
+        "badge": "736e7d8bb18ed68b6e0223765e79015e"
+      }
+    },
+    "pinned": false,
+    "mention_everyone": false,
+    "tts": false,
+    "nonce": "647752414217263623"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "returncode": 0,
+  "files": [
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/cache/lil-bench/e4c3932f-e6d8-4b6c-8499-4ad02abdd47c.json.gz"
+  ],
+  "upload": "not attempted; no LIL_BENCH_TOKEN present"
+}

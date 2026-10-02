@@ -1,0 +1,13 @@
+{
+  "figures": [
+    "01-two-cards-four-cards.png",
+    "02-serving-setups.png",
+    "03-tuning-results.png",
+    "04-quality-check.png",
+    "05-prefill-interference.png",
+    "06-million-token-retrieval.png"
+  ],
+  "partial": false,
+  "interim": false,
+  "data_sha256": "8dd5612613170f0a8d0eaba4ed79ed71d884547e62738955299d5ce891b33052"
+}

@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "docker",
+    "exec",
+    "--privileged",
+    "lavd-qualification",
+    "/opt/venv/bin/lil-bench",
+    "run",
+    "--no-upload",
+    "--profile",
+    "standard",
+    "--note",
+    "JCartu Lavd qualification: qad-tp4, isolated GPU run, original results retained"
+  ],
+  "exit_code": 0,
+  "start": 1790930526.1641326,
+  "end": 1790931079.4551506,
+  "elapsed_s": 553.2910182476044
+}

@@ -1,0 +1,10 @@
+{
+  "throughput": {
+    "source_sha256": "aee1e260385070bd9968490415de75b6a0e0e09eece8a578f300ac5e203fd53e",
+    "output_sha256": "4bd9f853593009527d7eedd899e249153f411dc6c16a16351e47d64fdfa6fc68"
+  },
+  "interference": {
+    "source_sha256": "aee1e260385070bd9968490415de75b6a0e0e09eece8a578f300ac5e203fd53e",
+    "output_sha256": "e516248277f961967f6f97326f8cb91ea50c480b5bdc5b2168f94993ac843b5d"
+  }
+}

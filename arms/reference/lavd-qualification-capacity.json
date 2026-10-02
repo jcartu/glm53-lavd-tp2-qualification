@@ -1,0 +1,10 @@
+{
+  "kv_tokens": [
+    1093386
+  ],
+  "capacity_lines": [
+    "(EngineCore pid=1199) INFO 10-02 00:48:05 [kv_cache_utils.py:2798] GPU KV cache size: 1,093,386 tokens, Maximum concurrency for 1,048,576 tokens per request: 1.04x"
+  ],
+  "checkpoint": "/mnt/2king/models/GLM-5.3-Flash-NVFP4-qad-tvn-step3500:/model:ro",
+  "image": "sha256:04bdd08b6ccbfe18f297dc4b60580fc6354f2efe249534888574d5046c187077"
+}

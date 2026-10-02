@@ -1,0 +1,1 @@
+{"venv": "/opt/venv", "launchers": ["/usr/local/bin/serve-glm53-flash-nvfp4-dflash2.sh", "/usr/local/bin/serve-glm53-flash.sh"], "lil_bench": [], "vllm": ["/opt/venv/lib/python3.12/site-packages/vllm"], "source_locks": []}

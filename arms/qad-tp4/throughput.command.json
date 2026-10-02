@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/usr/bin/python",
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/scenarios.py",
+    "--mode",
+    "throughput",
+    "--ports",
+    "8002",
+    "--output",
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/arms/qad-tp4/throughput.json"
+  ],
+  "exit_code": 0,
+  "start": 1790934784.8389356,
+  "end": 1790935301.2718658,
+  "elapsed_s": 516.4329304695129
+}

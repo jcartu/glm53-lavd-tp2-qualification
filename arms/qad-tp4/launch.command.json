@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "docker",
+    "compose",
+    "-p",
+    "lavd-qualification",
+    "-f",
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/arms/qad-tp4/compose.yaml",
+    "up",
+    "-d"
+  ],
+  "exit_code": 0,
+  "start": 1790929914.0351605,
+  "end": 1790929914.9009798,
+  "elapsed_s": 0.8658194541931152
+}

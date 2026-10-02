@@ -1,0 +1,112 @@
+lil-bench 1.3.2 · standard/1 (standard)
+▶ Serving process
+  ✓ model g53fq · max_model_len 1011712 · max-num-seqs 8 (argv) · KV 1,015,018 tokens
+  ✓ image ghcr.io/local-inference-lab/vllm:karmic-kraken-beta · assembly 9cde0acefeade5bb
+  ✓ image code matches its build (52,791 files, 9.6 s)
+▶ Plan: 7 measurements, about 7:14 (finishes ≈10:22)
+  – not measured: decode C16 @ ctx 0, 64k, 128k: the server runs at most 8 requests at once (--max-num-seqs 8), so C16 would measure a queue, not 16 concurrent users; expected with this configuration
+  – not measured: decode C8 @ ctx 128k: needs 1,064,960 KV tokens, the server has 1,015,018
+▶ [1/9] Hardware and PCIe topology
+  ✓ 4 × NVIDIA RTX PRO 6000 Blackwell Workstation Edition · Intel(R) Xeon(R) w9-3495X · 251 GiB RAM
+  GPU 0 0000:16:00.0: PCIe Gen5 x16, 1 bridges to the root port
+  GPU 1 0000:34:00.0: PCIe Gen5 x16, 1 bridges to the root port
+  GPU 2 0000:52:00.0: PCIe Gen5 x16, 1 bridges to the root port
+  GPU 3 0000:70:00.0: PCIe Gen5 x16, 1 bridges to the root port
+  ! GPU 0: +6000 MHz memory clock offset
+  ! GPU 1: +6000 MHz memory clock offset
+  ! GPU 2: +6000 MHz memory clock offset
+  ! GPU 3: +6000 MHz memory clock offset
+  ✓ PCIe ACS: no peer-to-peer redirect on the 4 ACS-capable ports of the GPU paths
+▶ [2/9] p2pmark (GPU-to-GPU bandwidth and latency)
+  bandwidth + latency + allreduce with 128 MiB buffers: 1,437 MiB free on the fullest GPU, 256 MiB stay free for the server
+P2P config: mode=all; P2P/topology buffer=128 MiB; latency iters=10000; allreduce=256 B..1 MiB default sweep
+Running P2P diagnostic: llm_p2pmark (full command in JSON; use --p2pmark-detail to print it)
+╭────────────────── Run ──────────────────╮      ╭─────────────────── Bandwidth ────────────────────╮
+│ 2 GPUs used / 2 visible                 │      │ 1:1 P2P: 44.9/44.8/45.0 GB/s avg/min/max         │
+│ mode: all                               │      │ ring: 42.6 GB/s/GPU, 85.2 GB/s total             │
+│ peer access: all enabled (2/2)          │      │ single writer: 45.0/44.9/45.0 GB/s               │
+│ topology: 128 MiB × 20 timed + 5 warmup │      │ all-to-all: 42.6/42.6/42.6 GB/s, 85.2 GB/s total │
+│ latency: 10000 dependent reads          │      ╰──────────────────────────────────────────────────╯
+│ elapsed: 2.7s                           │                                                          
+╰─────────────────────────────────────────╯                                                          
+╭───────────────── Latency ──────────────────╮   ╭────────── Allreduce ───────────╮                  
+│ isolated: 1.00 us avg, 1.00 us min         │   │ best: 1 MiB via custom         │                  
+│ full load: 0.97 us effective, 0.97 us mean │   │ 45.8 us, 22.9 bus GB/s, 1.2x   │                  
+╰────────────────────────────────────────────╯   │ sweep: 256 B..1 MiB (16 sizes) │                  
+                                                 ╰────────────────────────────────╯                  
+╭────────────────── Scores ───────────────────╮                                                      
+│ PCIe link score: 0.71                       │                                                      
+│ dense fabric score: 0.95                    │                                                      
+│ 1.00 is ideal for the measured 1:1 baseline │                                                      
+╰─────────────────────────────────────────────╯                                                      
+P2P memcpy bandwidth GB/s    
+╭───────────┬───────┬───────╮
+│ src \ dst │    G0 │    G1 │
+├───────────┼───────┼───────┤
+│ G0        │ local │  44.8 │
+│ G1        │  45.0 │ local │
+╰───────────┴───────┴───────╯
+Topology by peer distance                      Allreduce: custom PCIe vs NCCL                                 
+╭──────┬───────────┬─────────────┬──────────╮  ╭─────────┬───────────┬─────────┬────────┬─────────┬──────────╮
+│ dist │ write avg │ write total │ read avg │  │ size    │ custom us │ NCCL us │ winner │ speedup │ bus GB/s │
+├──────┼───────────┼─────────────┼──────────┤  ├─────────┼───────────┼─────────┼────────┼─────────┼──────────┤
+│ +1   │ 42.6 GB/s │   85.2 GB/s │  0.97 us │  │ 256 B   │       5.9 │    10.6 │ custom │    1.8x │      0.0 │
+╰──────┴───────────┴─────────────┴──────────╯  │ 512 B   │       5.4 │    10.4 │ custom │    1.9x │      0.1 │
+                                               │ 1 KiB   │       5.9 │    10.3 │ custom │    1.7x │      0.2 │
+                                               │ 2 KiB   │       5.0 │    10.2 │ custom │    2.0x │      0.4 │
+                                               │ 4 KiB   │       6.2 │    13.0 │ custom │    2.1x │      0.7 │
+                                               │ 8 KiB   │       5.9 │    11.4 │ custom │    1.9x │      1.4 │
+                                               │ 16 KiB  │       6.8 │    10.5 │ custom │    1.6x │      2.4 │
+                                               │ 32 KiB  │       6.9 │    10.8 │ custom │    1.6x │      4.8 │
+                                               │ 40 KiB  │       7.7 │    15.0 │ custom │    2.0x │      5.3 │
+                                               │ 48 KiB  │       7.6 │    14.2 │ custom │    1.9x │      6.4 │
+                                               │ 56 KiB  │       7.9 │    10.3 │ custom │    1.3x │      7.3 │
+                                               │ 64 KiB  │       8.7 │    11.2 │ custom │    1.3x │      7.5 │
+                                               │ 128 KiB │      10.7 │    15.1 │ custom │    1.4x │     12.2 │
+                                               │ 256 KiB │      16.2 │    24.3 │ custom │    1.5x │     16.2 │
+                                               │ 512 KiB │      25.5 │    35.4 │ custom │    1.4x │     20.5 │
+                                               │ 1 MiB   │      45.8 │    53.2 │ custom │    1.2x │     22.9 │
+                                               ╰─────────┴───────────┴─────────┴────────┴─────────┴──────────╯
+Per-GPU compact view                                                 
+╭─────┬─────────────────┬─────────────┬──────────┬──────────────────╮
+│ GPU │ seq out/in GB/s │ fanout GB/s │ a2a GB/s │ read iso/full us │
+├─────┼─────────────────┼─────────────┼──────────┼──────────────────┤
+│ G0  │       44.8/45.0 │        44.9 │     42.6 │        1.00/0.97 │
+│ G1  │       45.0/44.8 │        45.0 │     42.6 │        1.00/0.97 │
+╰─────┴─────────────────┴─────────────┴──────────┴──────────────────╯
+Use --p2pmark-detail for full peer matrices, per-pair patterns, and expanded latency tables. The JSON output always 
+contains the full raw diagnostic data.
+  ✓ p2pmark: 44.9 GB/s GPU↔GPU, 1.00 µs latency
+▶ [3/9] prefill 32k — elapsed 0:07, ~5:37 left (≈10:21)
+  ✓ prefill ctx=32k 8,778 tok/s
+▶ [4/9] prefill 128k — elapsed 0:28, ~5:15 left (≈10:21)
+  ✓ prefill ctx=128k 8,927 tok/s
+  decode warmup …
+▶ [5/9] decode C1 @ ctx 0 — elapsed 1:23, ~4:21 left (≈10:21)
+  ✓ C1 @ 0: 225.7 tok/s
+▶ [6/9] decode C1 @ ctx 64k — elapsed 2:00, ~3:43 left (≈10:21)
+  ✓ C1 @ 64k: 222.1 tok/s
+▶ [7/9] decode C1 @ ctx 128k — elapsed 2:44, ~3:00 left (≈10:21)
+  ✓ C1 @ 128k: 222.9 tok/s
+▶ [8/9] decode C8 @ ctx 0 — elapsed 3:35, ~2:08 left (≈10:21)
+  ✓ C8 @ 0: 720.7 tok/s
+▶ [9/9] decode C8 @ ctx 64k — elapsed 4:14, ~1:30 left (≈10:21)
+  ✓ C8 @ 64k: 649.3 tok/s
+
+Results
+  prefill   32k: 8,778 tok/s, TTFT 3.682 s
+  prefill  128k: 8,927 tok/s, TTFT 14.439 s
+  decode tok/s          C1        C8
+  ctx        0       225.7     720.7
+  ctx      64k       222.1     649.3
+  ctx     128k       222.9         —
+  not measured: decode C16 @ ctx 0, 64k, 128k: the server runs at most 8 requests at once (--max-num-seqs 8), so C16 would measure a queue, not 16 concurrent users; expected with this configuration
+  not measured: decode C8 @ ctx 128k: needs 1,064,960 KV tokens, the server has 1,015,018
+  ✓ GPU clocks during the run: ok
+  ! GPU 0: +6000 MHz memory clock offset
+  ! GPU 1: +6000 MHz memory clock offset
+  ! GPU 2: +6000 MHz memory clock offset
+  ! GPU 3: +6000 MHz memory clock offset
+  ✓ PCIe links: no replays, errors or retraining under load
+
+  ✓ saved /cache/lil-bench/b27d5a69-6081-474d-b0ac-e645fd53dae8.json.gz (96 kB)

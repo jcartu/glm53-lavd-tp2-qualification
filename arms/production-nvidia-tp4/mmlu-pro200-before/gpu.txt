@@ -1,0 +1,5 @@
+index, uuid, pcie.link.gen.current, pcie.link.width.current, memory.used [MiB], utilization.gpu [%], power.draw [W], temperature.gpu, clocks.current.sm [MHz], clocks.current.memory [MHz]
+0, GPU-538bf008-7ff2-0d1d-69e9-20db81a00459, 5, 16, 93966 MiB, 100 %, 334.51 W, 47, 2797 MHz, 16365 MHz
+1, GPU-ba6334bc-6fec-5f2c-df75-a887bbca476e, 5, 16, 93936 MiB, 0 %, 313.72 W, 43, 2857 MHz, 16365 MHz
+2, GPU-ae60c9dd-9ddc-cc7d-3a9e-f78cbeb00de9, 5, 16, 93934 MiB, 100 %, 288.45 W, 45, 2850 MHz, 16365 MHz
+3, GPU-d558b2e1-bdf6-47b3-7d99-556339354cd1, 5, 16, 93934 MiB, 0 %, 289.87 W, 45, 2857 MHz, 16365 MHz

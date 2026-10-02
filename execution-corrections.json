@@ -1,0 +1,11 @@
+{
+  "production_checkpoint": "NVIDIA NVFP4, not QAD",
+  "qad_checkpoint": "/mnt/2king/models/GLM-5.3-Flash-NVFP4-qad-tvn-step3500",
+  "qad_revision": "1ebb2e017d585b95ab841b54f94bdcd0ce675fdf",
+  "reference_mtp": "MXFP8 confirmed in config and safetensors headers",
+  "cache": "Received compose has prefix caching but no LMCache connector; cache mount alone is not LMCache",
+  "kv_capacity": "Record actual startup capacity, do not require anecdotal 1066052 tokens",
+  "gpu_link": "Idle Gen1 is power management; record negotiated links during real measurements",
+  "scheduler_959": "Requires max_parallel_prefills >=2; retain unchanged default=1 control and explicit stress arm",
+  "source_attachment": "First cat line is shell transcript, not a defect in Lavd\u2019s source compose"
+}

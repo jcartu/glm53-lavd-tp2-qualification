@@ -1,0 +1,13 @@
+{
+  "args": [
+    "/usr/bin/python",
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py",
+    "--phase",
+    "nccl-4"
+  ],
+  "returncode": 0,
+  "started_at": 1790946066.620623,
+  "finished_at": 1790947959.6274977,
+  "elapsed_seconds": 1893.0068745613098,
+  "log": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/control/20261002T083133Z/phase-nccl-4.log"
+}

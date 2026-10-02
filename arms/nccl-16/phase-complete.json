@@ -1,0 +1,7 @@
+{
+  "arm": "nccl-16",
+  "started": 1790947959.8184824,
+  "finished": 1790948424.9163501,
+  "status": "executed",
+  "note": "Individual benchmark scores and failures are retained; executed does not mean passed."
+}

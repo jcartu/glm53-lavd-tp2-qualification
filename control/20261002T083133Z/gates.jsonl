@@ -1,0 +1,9 @@
+{"name": "phase-execution:qad-tp4", "passed": true, "detail": {"returncode": 0, "script": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py"}, "timestamp": 1790935546.1210644}
+{"name": "phase-execution:spark-tp2", "passed": true, "detail": {"returncode": 0, "script": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py"}, "timestamp": 1790941628.3964255}
+{"name": "phase-execution:drafter-marlin", "passed": true, "detail": {"returncode": 0, "script": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py"}, "timestamp": 1790943890.2505972}
+{"name": "phase-execution:drafter-b12x", "passed": true, "detail": {"returncode": 0, "script": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py"}, "timestamp": 1790946066.6021745}
+{"name": "phase-execution:nccl-4", "passed": true, "detail": {"returncode": 0, "script": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py"}, "timestamp": 1790947959.6280272}
+{"name": "phase-execution:nccl-16", "passed": true, "detail": {"returncode": 0, "script": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py"}, "timestamp": 1790948425.2832522}
+{"name": "phase-execution:context-786k", "passed": true, "detail": {"returncode": 0, "script": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py"}, "timestamp": 1790949552.146437}
+{"name": "phase-execution:scheduler-fixed", "passed": true, "detail": {"returncode": 0, "script": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py"}, "timestamp": 1790950085.4283032}
+{"name": "phase-execution:scheduler-old-stress", "passed": true, "detail": {"returncode": 0, "script": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py"}, "timestamp": 1790950575.4762247}

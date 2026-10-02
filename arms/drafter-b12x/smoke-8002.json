@@ -1,0 +1,47 @@
+{
+  "ok": true,
+  "response": {
+    "id": "chatcmpl-877d74c0d5576211",
+    "object": "chat.completion",
+    "created": 1790944371,
+    "model": "g53fq",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "42",
+          "refusal": null,
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "reasoning": "42"
+        },
+        "logprobs": null,
+        "finish_reason": "stop",
+        "stop_reason": 154827,
+        "token_ids": null,
+        "routed_experts": null
+      }
+    ],
+    "service_tier": null,
+    "system_fingerprint": "vllm-0.1.dev21980+g85314135e-tp2-74b3f923",
+    "usage": {
+      "prompt_tokens": 26,
+      "total_tokens": 30,
+      "completion_tokens": 4,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": {
+        "reasoning_tokens": 1
+      }
+    },
+    "prompt_logprobs": null,
+    "prompt_token_ids": null,
+    "prompt_text": null,
+    "kv_transfer_params": null,
+    "ec_transfer_params": null,
+    "metrics": null
+  },
+  "port": 8002,
+  "timestamp": "2026-10-02T12:32:51.848123+00:00"
+}

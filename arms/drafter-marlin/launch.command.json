@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "docker",
+    "compose",
+    "-p",
+    "lavd-qualification",
+    "-f",
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/arms/drafter-marlin/compose.yaml",
+    "up",
+    "-d"
+  ],
+  "exit_code": 0,
+  "start": 1790941628.6075432,
+  "end": 1790941629.4238029,
+  "elapsed_s": 0.8162600994110107
+}

@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/usr/bin/python",
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/scenarios.py",
+    "--mode",
+    "long-context",
+    "--ports",
+    "8002",
+    "--output",
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/arms/context-786k/long-context.json"
+  ],
+  "exit_code": 0,
+  "start": 1790948906.7571812,
+  "end": 1790949550.3391,
+  "elapsed_s": 643.5819189548492
+}

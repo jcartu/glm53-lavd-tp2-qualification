@@ -1,0 +1,34 @@
+usage: lil-bench [-h] [--token TOKEN] [--site SITE] [--url URL]
+                 [--profile {quick,standard}] [--no-upload] [--no-p2pmark]
+                 [--allow-busy] [--note NOTE]
+                 [{run,upload,inventory,whoami}] [file]
+
+``lil-bench``: the standardized benchmark of a running Karmic Kraken container.
+
+Run it in the serving container itself::
+
+    docker exec --privileged -it -e LIL_BENCH_TOKEN=lilb_... <container> lil-bench
+
+It checks the uploader identity, reads the exact serving command from
+``/proc``, records hardware and PCIe topology, runs p2pmark, the standard
+prefill/decode matrix (``llm_decode_bench.py``) while sampling GPU clocks and
+throttle reasons, then saves and uploads one result document.
+
+positional arguments:
+  {run,upload,inventory,whoami}
+  file                  result file for 'upload'
+
+options:
+  -h, --help            show this help message and exit
+  --token TOKEN         uploader identifier (default: $LIL_BENCH_TOKEN)
+  --site SITE
+  --url URL             server URL (default: the port of the vLLM process in
+                        this container)
+  --profile {quick,standard}
+                        'quick' is for testing the setup; its uploads are kept
+                        out of statistics
+  --no-upload           measure and save locally only
+  --no-p2pmark
+  --allow-busy          measure even if the server has other requests
+                        (flagged; p2pmark does not run next to them)
+  --note NOTE           free text stored with the result (max 500 characters)

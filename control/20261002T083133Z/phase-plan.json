@@ -1,0 +1,110 @@
+[
+  {
+    "name": "qad-tp4",
+    "script": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py",
+    "args": [
+      "--phase",
+      "qad-tp4"
+    ],
+    "timeout_seconds": 172800
+  },
+  {
+    "name": "spark-tp2",
+    "script": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py",
+    "args": [
+      "--phase",
+      "spark-tp2"
+    ],
+    "timeout_seconds": 172800
+  },
+  {
+    "name": "drafter-marlin",
+    "script": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py",
+    "args": [
+      "--phase",
+      "drafter-marlin"
+    ],
+    "timeout_seconds": 172800
+  },
+  {
+    "name": "drafter-b12x",
+    "script": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py",
+    "args": [
+      "--phase",
+      "drafter-b12x"
+    ],
+    "timeout_seconds": 172800
+  },
+  {
+    "name": "nccl-4",
+    "script": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py",
+    "args": [
+      "--phase",
+      "nccl-4"
+    ],
+    "timeout_seconds": 172800
+  },
+  {
+    "name": "nccl-16",
+    "script": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py",
+    "args": [
+      "--phase",
+      "nccl-16"
+    ],
+    "timeout_seconds": 172800
+  },
+  {
+    "name": "context-786k",
+    "script": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py",
+    "args": [
+      "--phase",
+      "context-786k"
+    ],
+    "timeout_seconds": 172800
+  },
+  {
+    "name": "scheduler-fixed",
+    "script": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py",
+    "args": [
+      "--phase",
+      "scheduler-fixed"
+    ],
+    "timeout_seconds": 172800
+  },
+  {
+    "name": "scheduler-old-stress",
+    "script": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py",
+    "args": [
+      "--phase",
+      "scheduler-old-stress"
+    ],
+    "timeout_seconds": 172800
+  },
+  {
+    "name": "scheduler-fixed-stress",
+    "script": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py",
+    "args": [
+      "--phase",
+      "scheduler-fixed-stress"
+    ],
+    "timeout_seconds": 172800
+  },
+  {
+    "name": "accuracy-off",
+    "script": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py",
+    "args": [
+      "--phase",
+      "accuracy-off"
+    ],
+    "timeout_seconds": 172800
+  },
+  {
+    "name": "dual-tp2",
+    "script": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py",
+    "args": [
+      "--phase",
+      "dual-tp2"
+    ],
+    "timeout_seconds": 172800
+  }
+]

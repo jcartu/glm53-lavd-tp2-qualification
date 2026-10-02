@@ -1,0 +1,20 @@
+╭──────────────────────────── NVIDIA P2P Override ─────────────────────────────╮
+│ Effective: yes                                                               │
+│ Configured file: yes (/etc/modprobe.d/nvidia-p2p-override.conf)              │
+│ Runtime: ForceP2P=0x11; RMForceP2PType=1; RMPcieP2PType=2;                   │
+│ GrdmaPciTopoCheckOverride=1; EnableResizableBar=1; DmaRemapPeerMmio=1        │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─────────────────────────────── Configuration ────────────────────────────────╮
+│ LLM Inference Benchmark                                                      │
+│ Model: g53fq @ localhost:8002                                                │
+│ Decode concurrency: [1, 4, 8]                                                │
+│ Decode contexts: ['0', '16k']                                                │
+│ Duration: 30.0s per decode test | Max tokens: 8192                           │
+│ Pre-decode warmup: C=1 max-runnable context for 3s                           │
+│ Exact-loop guard: enabled | Output preview: unavailable in plain mode        │
+│ Prefill: skipped | Sustained decode: 6 cells                                 │
+╰──────────────────────────────────────────────────────────────────────────────╯
+Cannot connect to server at http://localhost:8002: All connection attempts 
+failed
+Make sure SGLang or vLLM is running and the port is correct.
+No results collected.

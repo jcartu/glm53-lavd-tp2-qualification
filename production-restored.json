@@ -1,0 +1,39 @@
+{
+  "container": "orca-prod",
+  "container_id": "e03ceb359c93d5249689f3aa4f25db6f4da165554afeae9ad71f4ac2f01f0351",
+  "healthy": true,
+  "models": {
+    "object": "list",
+    "data": [
+      {
+        "id": "GLM-5.3-Flash-NVFP4",
+        "object": "model",
+        "created": 1790929893,
+        "owned_by": "vllm",
+        "root": "/model",
+        "parent": null,
+        "max_model_len": 1048576,
+        "permission": [
+          {
+            "id": "modelperm-a8a6ad4e462a4dd3",
+            "object": "model_permission",
+            "created": 1790929893,
+            "allow_create_engine": false,
+            "allow_sampling": true,
+            "allow_logprobs": true,
+            "allow_search_indices": false,
+            "allow_view": true,
+            "allow_fine_tuning": false,
+            "organization": "*",
+            "group": null,
+            "is_blocking": false
+          }
+        ]
+      }
+    ]
+  },
+  "timestamp": 1790929893.7134645,
+  "cleanup_error": null,
+  "deferred_signals": [],
+  "policy": "Original container identity restored, no candidate promotion."
+}

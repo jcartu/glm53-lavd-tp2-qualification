@@ -1,0 +1,5 @@
+{
+  "phase": "scheduler-fixed-stress",
+  "script": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py",
+  "started_at": 1790950575.4956157
+}

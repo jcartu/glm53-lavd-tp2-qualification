@@ -1,0 +1,33 @@
+[2026-10-02 10:31:33] R26 QUALIFICATION START
+[2026-10-02 10:31:48] PRODUCTION PAUSED; GPU qualification begins (isolation=strict)
+[2026-10-02 10:31:53] QUALIFICATION PHASE qad-tp4
+[2026-10-02 10:31:53] $ /usr/bin/python /home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py --phase qad-tp4
+[2026-10-02 12:05:46] GATE PASS phase-execution:qad-tp4
+[2026-10-02 12:05:46] QUALIFICATION PHASE spark-tp2
+[2026-10-02 12:05:46] $ /usr/bin/python /home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py --phase spark-tp2
+[2026-10-02 13:47:08] GATE PASS phase-execution:spark-tp2
+[2026-10-02 13:47:08] QUALIFICATION PHASE drafter-marlin
+[2026-10-02 13:47:08] $ /usr/bin/python /home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py --phase drafter-marlin
+[2026-10-02 14:24:50] GATE PASS phase-execution:drafter-marlin
+[2026-10-02 14:24:50] QUALIFICATION PHASE drafter-b12x
+[2026-10-02 14:24:50] $ /usr/bin/python /home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py --phase drafter-b12x
+[2026-10-02 15:01:06] GATE PASS phase-execution:drafter-b12x
+[2026-10-02 15:01:06] QUALIFICATION PHASE nccl-4
+[2026-10-02 15:01:06] $ /usr/bin/python /home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py --phase nccl-4
+[2026-10-02 15:32:39] GATE PASS phase-execution:nccl-4
+[2026-10-02 15:32:39] QUALIFICATION PHASE nccl-16
+[2026-10-02 15:32:39] $ /usr/bin/python /home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py --phase nccl-16
+[2026-10-02 15:40:25] GATE PASS phase-execution:nccl-16
+[2026-10-02 15:40:25] QUALIFICATION PHASE context-786k
+[2026-10-02 15:40:25] $ /usr/bin/python /home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py --phase context-786k
+[2026-10-02 15:59:12] GATE PASS phase-execution:context-786k
+[2026-10-02 15:59:12] QUALIFICATION PHASE scheduler-fixed
+[2026-10-02 15:59:12] $ /usr/bin/python /home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py --phase scheduler-fixed
+[2026-10-02 16:08:05] GATE PASS phase-execution:scheduler-fixed
+[2026-10-02 16:08:05] QUALIFICATION PHASE scheduler-old-stress
+[2026-10-02 16:08:05] $ /usr/bin/python /home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py --phase scheduler-old-stress
+[2026-10-02 16:16:15] GATE PASS phase-execution:scheduler-old-stress
+[2026-10-02 16:16:15] QUALIFICATION PHASE scheduler-fixed-stress
+[2026-10-02 16:16:15] $ /usr/bin/python /home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py --phase scheduler-fixed-stress
+[2026-10-02 16:22:17] PRODUCTION RESTORED
+[2026-10-02 16:22:17] R26 QUALIFICATION COORDINATOR EXIT

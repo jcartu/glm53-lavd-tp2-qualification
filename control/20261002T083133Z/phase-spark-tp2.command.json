@@ -1,0 +1,13 @@
+{
+  "args": [
+    "/usr/bin/python",
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py",
+    "--phase",
+    "spark-tp2"
+  ],
+  "returncode": 0,
+  "started_at": 1790935546.1386507,
+  "finished_at": 1790941628.3960989,
+  "elapsed_seconds": 6082.257448196411,
+  "log": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/control/20261002T083133Z/phase-spark-tp2.log"
+}

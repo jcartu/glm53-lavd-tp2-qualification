@@ -1,0 +1,54 @@
+lil-bench 1.3.2 · standard/1 (standard)
+▶ Serving process
+  ✓ model g53fq · max_model_len 1048576 · max-num-seqs 8 (argv) · KV 1,093,386 tokens
+  ✓ image ghcr.io/local-inference-lab/vllm:karmic-kraken-beta · assembly 9cde0acefeade5bb
+  ✓ image code matches its build (52,791 files, 10.1 s)
+▶ Plan: 8 measurements, about 8:03 (finishes ≈00:59)
+  – not measured: decode C16 @ ctx 0, 64k, 128k: the server runs at most 8 requests at once (--max-num-seqs 8), so C16 would measure a queue, not 16 concurrent users; expected with this configuration
+▶ [1/10] Hardware and PCIe topology
+  ✓ 4 × NVIDIA RTX PRO 6000 Blackwell Workstation Edition · Intel(R) Xeon(R) w9-3495X · 251 GiB RAM
+  GPU 0 0000:16:00.0: PCIe Gen5 x16, 1 bridges to the root port
+  GPU 1 0000:34:00.0: PCIe Gen5 x16, 1 bridges to the root port
+  GPU 2 0000:52:00.0: PCIe Gen5 x16, 1 bridges to the root port
+  GPU 3 0000:70:00.0: PCIe Gen5 x16, 1 bridges to the root port
+  ! GPU 0: +6000 MHz memory clock offset
+  ! GPU 1: +6000 MHz memory clock offset
+  ! GPU 2: +6000 MHz memory clock offset
+  ! GPU 3: +6000 MHz memory clock offset
+  ✓ PCIe ACS: no peer-to-peer redirect on the 4 ACS-capable ports of the GPU paths
+▶ [2/10] p2pmark (GPU-to-GPU bandwidth and latency)
+  ! p2pmark skipped: not enough free GPU memory: GPU 3 has 597 MiB free, p2pmark needs 872 MiB (600 MiB CUDA context, 4 × 4 MiB buffers, 256 MiB kept free for the server). Run lil-bench right after the server starts, before other load: later runs reuse that measurement until the next reboot. Or free 275 MiB more per GPU (a smaller KV cache or --gpu-memory-utilization).
+▶ [3/10] prefill 32k — elapsed 0:11, ~6:22 left (≈00:58)
+  ✓ prefill ctx=32k 5,007 tok/s
+▶ [4/10] prefill 128k — elapsed 0:38, ~5:54 left (≈00:58)
+  ✓ prefill ctx=128k 4,656 tok/s
+  decode warmup …
+▶ [5/10] decode C1 @ ctx 0 — elapsed 1:47, ~4:46 left (≈00:58)
+  ✓ C1 @ 0: 220.5 tok/s
+▶ [6/10] decode C1 @ ctx 64k — elapsed 2:25, ~4:07 left (≈00:58)
+  ✓ C1 @ 64k: 195.0 tok/s
+▶ [7/10] decode C1 @ ctx 128k — elapsed 3:15, ~3:17 left (≈00:58)
+  ✓ C1 @ 128k: 184.1 tok/s
+▶ [8/10] decode C8 @ ctx 0 — elapsed 4:22, ~2:10 left (≈00:58)
+  ✓ C8 @ 0: 627.4 tok/s
+▶ [9/10] decode C8 @ ctx 64k — elapsed 5:01, ~1:31 left (≈00:58)
+  ✓ C8 @ 64k: 483.3 tok/s
+▶ [10/10] decode C8 @ ctx 128k — elapsed 6:01, ~0:31 left (≈00:58)
+  ✓ C8 @ 128k: 479.9 tok/s
+
+Results
+  prefill   32k: 5,007 tok/s, TTFT 6.455 s
+  prefill  128k: 4,656 tok/s, TTFT 27.678 s
+  decode tok/s          C1        C8
+  ctx        0       220.5     627.4
+  ctx      64k       195.0     483.3
+  ctx     128k       184.1     479.9
+  not measured: decode C16 @ ctx 0, 64k, 128k: the server runs at most 8 requests at once (--max-num-seqs 8), so C16 would measure a queue, not 16 concurrent users; expected with this configuration
+  ✓ GPU clocks during the run: ok
+  ! GPU 0: +6000 MHz memory clock offset
+  ! GPU 1: +6000 MHz memory clock offset
+  ! GPU 2: +6000 MHz memory clock offset
+  ! GPU 3: +6000 MHz memory clock offset
+  ✓ PCIe links: no replays, errors or retraining under load
+
+  ✓ saved /cache/lil-bench/31a6e33f-d178-4f09-b886-56fb54d33c43.json.gz (96 kB)

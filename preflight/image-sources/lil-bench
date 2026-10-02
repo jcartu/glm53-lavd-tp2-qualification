@@ -1,0 +1,3 @@
+#!/bin/sh
+# Standardized benchmark of this container: docker exec -it -e LIL_BENCH_TOKEN=... <container> lil-bench
+PYTHONPATH="/opt/lil/bench${PYTHONPATH:+:$PYTHONPATH}" exec /opt/venv/bin/python -m lil_bench "$@"

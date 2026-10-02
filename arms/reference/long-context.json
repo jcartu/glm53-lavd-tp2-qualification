@@ -1,0 +1,279 @@
+{
+  "schema": "lavd-scenarios/v1",
+  "mode": "long-context",
+  "ports": [
+    8002
+  ],
+  "started": 1790928644.4347615,
+  "_path": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/arms/reference/long-context.json",
+  "source_sha256": "aee1e260385070bd9968490415de75b6a0e0e09eece8a578f300ac5e203fd53e",
+  "max_model_len": 1048576,
+  "requests": [
+    {
+      "port": 8002,
+      "started": 1790928644.5810401,
+      "seed": 731,
+      "prompt_sha256": "7df7ad5659fc068bd8bb25d58b4d4533201fc7ed2bcebee4e4de9db19b36c027",
+      "prompt_chars": 33128,
+      "max_tokens": 4096,
+      "chat": true,
+      "ignore_eos": null,
+      "http_status": 200,
+      "ok": true,
+      "usage": {
+        "prompt_tokens": 8188,
+        "total_tokens": 8198,
+        "completion_tokens": 10,
+        "completion_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "ended": 1790928646.2723145,
+      "elapsed_s": 1.6912744045257568,
+      "ttft_s": 1.6675925254821777,
+      "tpot_ms": 1.2597242991129558,
+      "event_timestamps": [
+        1790928646.2486327,
+        1790928646.2599702
+      ],
+      "max_inter_chunk_gap_s": 0.011337518692016602,
+      "content": "84291\nFERN-72",
+      "reasoning_chars": 0,
+      "target_tokens": 8192,
+      "tokenized_prompt_tokens": 8188,
+      "alpha": true,
+      "omega": true,
+      "retrieval_pass": true
+    },
+    {
+      "port": 8002,
+      "started": 1790928649.0932198,
+      "seed": 731,
+      "prompt_sha256": "277fe530335ff6a70f33b336c27282ef0bba09a9e09ddef704cd773554a20afb",
+      "prompt_chars": 491437,
+      "max_tokens": 4096,
+      "chat": true,
+      "ignore_eos": null,
+      "http_status": 200,
+      "ok": true,
+      "usage": {
+        "prompt_tokens": 131047,
+        "total_tokens": 131057,
+        "completion_tokens": 10,
+        "completion_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "ended": 1790928678.4515958,
+      "elapsed_s": 29.358376026153564,
+      "ttft_s": 29.358190774917603,
+      "tpot_ms": 0.0,
+      "event_timestamps": [
+        1790928678.4514105
+      ],
+      "max_inter_chunk_gap_s": null,
+      "content": "84291\nFERN-72",
+      "reasoning_chars": 0,
+      "target_tokens": 131072,
+      "tokenized_prompt_tokens": 131047,
+      "alpha": true,
+      "omega": true,
+      "retrieval_pass": true
+    },
+    {
+      "port": 8002,
+      "started": 1790928694.3137147,
+      "seed": 731,
+      "prompt_sha256": "24d25ab321d763e6dd197f7bd28bfec3737793c7857e7aacf12c5f955f972317",
+      "prompt_chars": 2010172,
+      "max_tokens": 4096,
+      "chat": true,
+      "ignore_eos": null,
+      "http_status": 200,
+      "ok": true,
+      "usage": {
+        "prompt_tokens": 524286,
+        "total_tokens": 524296,
+        "completion_tokens": 10,
+        "completion_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "ended": 1790928816.1816,
+      "elapsed_s": 121.86788535118103,
+      "ttft_s": 121.86773109436035,
+      "tpot_ms": 0.0,
+      "event_timestamps": [
+        1790928816.1814458
+      ],
+      "max_inter_chunk_gap_s": null,
+      "content": "84291\nFERN-72",
+      "reasoning_chars": 0,
+      "target_tokens": 524288,
+      "tokenized_prompt_tokens": 524286,
+      "alpha": true,
+      "omega": true,
+      "retrieval_pass": true
+    },
+    {
+      "port": 8002,
+      "started": 1790928840.2845466,
+      "seed": 731,
+      "prompt_sha256": "631ed3e2a09f09fd8d5654566371be57d0681ddd78e74c8738f6bd31aae4c2c2",
+      "prompt_chars": 2864178,
+      "max_tokens": 4096,
+      "chat": true,
+      "ignore_eos": null,
+      "http_status": 200,
+      "ok": true,
+      "usage": {
+        "prompt_tokens": 769942,
+        "total_tokens": 769952,
+        "completion_tokens": 10,
+        "completion_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "ended": 1790929021.509685,
+      "elapsed_s": 181.22513842582703,
+      "ttft_s": 181.2250030040741,
+      "tpot_ms": 0.0,
+      "event_timestamps": [
+        1790929021.5095496
+      ],
+      "max_inter_chunk_gap_s": null,
+      "content": "84291\nFERN-72",
+      "reasoning_chars": 0,
+      "target_tokens": 770000,
+      "tokenized_prompt_tokens": 769942,
+      "alpha": true,
+      "omega": true,
+      "retrieval_pass": true
+    },
+    {
+      "port": 8002,
+      "started": 1790929057.3889418,
+      "seed": 731,
+      "prompt_sha256": "78d22b2cefa6ee6ebb711c7b0299df0f5833d0d6989b7e21b49477f3b2739010",
+      "prompt_chars": 3883308,
+      "max_tokens": 4096,
+      "chat": true,
+      "ignore_eos": null,
+      "http_status": 200,
+      "ok": true,
+      "usage": {
+        "prompt_tokens": 1040355,
+        "total_tokens": 1040365,
+        "completion_tokens": 10,
+        "completion_tokens_details": {
+          "reasoning_tokens": 0
+        }
+      },
+      "finish_reason": "stop",
+      "ended": 1790929306.2732792,
+      "elapsed_s": 248.88433742523193,
+      "ttft_s": 248.8842010498047,
+      "tpot_ms": 0.0,
+      "event_timestamps": [
+        1790929306.2731428
+      ],
+      "max_inter_chunk_gap_s": null,
+      "content": "84291\nFERN-72",
+      "reasoning_chars": 0,
+      "target_tokens": 1040384,
+      "tokenized_prompt_tokens": 1040355,
+      "alpha": true,
+      "omega": true,
+      "retrieval_pass": true
+    }
+  ],
+  "pressure": {
+    "requested_prompt_tokens": 1119925,
+    "summary": {
+      "requests": 2,
+      "completed": 2,
+      "failed": 0,
+      "wall_s": 242.60269260406494,
+      "output_tokens": 20,
+      "aggregate_output_tokens_per_s": 0.08243931584321125,
+      "ttft_p50_s": 172.58706486225128,
+      "ttft_p95_s": 235.59994193315507,
+      "tpot_p50_ms": 22.455705536736385,
+      "tpot_p95_ms": 42.66584051979913
+    },
+    "requests": [
+      {
+        "port": 8002,
+        "started": 1790929338.7314668,
+        "seed": 731,
+        "prompt_sha256": "db16c754356e9797442db8c1bc5e08b21326c8a873879f60a5bd30689a384ab0",
+        "prompt_chars": 2632385,
+        "max_tokens": 4096,
+        "chat": true,
+        "ignore_eos": null,
+        "http_status": 200,
+        "ok": true,
+        "usage": {
+          "prompt_tokens": 699956,
+          "total_tokens": 699966,
+          "completion_tokens": 10,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "finish_reason": "stop",
+        "ended": 1790929581.3329911,
+        "elapsed_s": 242.60152435302734,
+        "ttft_s": 242.60137271881104,
+        "tpot_ms": 0.0,
+        "event_timestamps": [
+          1790929581.3328395
+        ],
+        "max_inter_chunk_gap_s": null,
+        "content": "84291\nFERN-72",
+        "reasoning_chars": 0,
+        "tokenized_prompt_tokens": 699956,
+        "retrieval_pass": true
+      },
+      {
+        "port": 8002,
+        "started": 1790929338.7328358,
+        "seed": 731,
+        "prompt_sha256": "69fa5bf13edc22d7cfa1ad4ca7a400a2ff25d2f32be7e65a4b0f83bb17f97bb0",
+        "prompt_chars": 1528496,
+        "max_tokens": 4096,
+        "chat": true,
+        "ignore_eos": null,
+        "http_status": 200,
+        "ok": true,
+        "usage": {
+          "prompt_tokens": 419969,
+          "total_tokens": 419979,
+          "completion_tokens": 10,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "finish_reason": "stop",
+        "ended": 1790929442.0942676,
+        "elapsed_s": 103.36143183708191,
+        "ttft_s": 102.57275700569153,
+        "tpot_ms": 44.91141107347277,
+        "event_timestamps": [
+          1790929441.3055928,
+          1790929441.7097955
+        ],
+        "max_inter_chunk_gap_s": 0.4042026996612549,
+        "content": "84291\nFERN-72",
+        "reasoning_chars": 0,
+        "tokenized_prompt_tokens": 419969,
+        "retrieval_pass": true
+      }
+    ]
+  },
+  "ended": 1790929581.3340662
+}

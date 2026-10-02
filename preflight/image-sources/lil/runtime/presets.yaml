@@ -1,0 +1,98 @@
+schema_version: 1
+presets:
+  glm53-spark-tp2:
+    profile: glm53-flash
+    hardware: rtx-pro-6000-pcie
+    description: GLM Spark checkpoint on two 96-GB RTX PRO GPUs, with TP2/DCP2 MTP3, eight request slots (16 selectable) and a 3072-token prefill budget. The input embedding table lives in host RAM and the vision tower runs in MXFP8, which leaves room for about 1.02M KV tokens with 0.5 GiB per GPU kept free for image-heavy peaks. Spark identifies the checkpoint, not DGX Spark hardware.
+    options:
+      model: local-inference-lab/GLM-5.3-Flash-NVFP4-Spark
+      served-model-name: GLM-5.3-Flash
+      tensor-parallel-size: 2
+      decode-context-parallel-size: 2
+      mode: mtp
+      max-model-len: -1
+      max-num-seqs: 8
+      max-num-batched-tokens: 3072
+      cache-object-tokens: 3072
+      kv-cache-memory-bytes: 4240441344
+      gpu-memory-utilization: 0.985
+      max-cudagraph-capture-size: auto
+      cudagraph-capture-sizes: [1, 2, 4, 8, 12, 16]
+      load-format: safetensors
+    environment:
+      VLLM_PCIE_TWOSHOT_ALLREDUCE_MAX_SIZE: "off"
+      NCCL_SOCKET_IFNAME: lo
+      GLOO_SOCKET_IFNAME: lo
+      NCCL_MIN_NCHANNELS: "2"
+      NCCL_MAX_NCHANNELS: "2"
+      NCCL_BUFFSIZE: "1048576"
+      NCCL_NET_PLUGIN: none
+      NCCL_TUNER_PLUGIN: none
+      CUBLAS_WORKSPACE_CONFIG: ":4096:1"
+      OMP_NUM_THREADS: "1"
+      VLLM_B12X_MLA_CKV_GATHER_MAX_TOKENS: "65536"
+      PYTORCH_CUDA_ALLOC_CONF: expandable_segments:True,large_segment_size_mb:12
+      VLLM_GLM53_EMBED_HOST: "1"
+      VLLM_GLM53_VISION_MXFP8: "1"
+      VLLM_SHARE_PYNCCL_COMMS: "1"
+    modes:
+      mtp:
+        config: {moe_backend: b12x}
+    linked_options:
+      cache-object-tokens: max-num-batched-tokens
+    kv_bytes_per_extra_slot: 67108864
+    kv_bytes_for_external_cache: 201326592
+    vllm_fallback:
+      # Images whose vLLM predates vllm #898 keep the earlier qualified
+      # four-slot recipe; the memory savings below free the room for more.
+      requires_environment:
+        - VLLM_GLM53_EMBED_HOST
+        - VLLM_GLM53_VISION_MXFP8
+        - VLLM_SHARE_PYNCCL_COMMS
+      options:
+        max-num-seqs: 4
+        kv-cache-memory-bytes: 4190109696
+  glm53-tp3:
+    profile: glm53-flash
+    hardware: rtx-pro-6000-pcie
+    description: GLM-5.3-Flash on three 96-GB RTX PRO GPUs with TP3, expert parallelism and MTP3. Attention heads are padded for TP3, the vision tower runs data-parallel, and large dense projections decode in FP8. VRAM prefix cache only.
+    options:
+      tensor-parallel-size: 3
+      enable-expert-parallel: true
+      moe-backend: flashinfer_cutlass
+      enable-flashinfer-autotune: true
+      mode: mtp
+      max-num-seqs: 8
+      max-cudagraph-capture-size: 32
+      cudagraph-capture-sizes: [1, 2, 4, 8, 12, 16, 20, 24, 28, 32]
+      additional-config: {glm53_kda_decode_backend: b12x, kda_prefill_backend: flashkda}
+    environment:
+      VLLM_PCIE_ONESHOT_ALLREDUCE_MAX_SIZE: 256KB
+      VLLM_GLM53_L2_PREFETCH_BUDGET_A_MB: "10"
+      VLLM_GLM53_L2_PREFETCH_BUDGET_B_MB: "25"
+      VLLM_GLM53_L2_PREFETCH_BUDGET_C_MB: "7.5"
+      VLLM_GLM53_L2_PREFETCH_BUDGET_A_MLA_MB: "18"
+      VLLM_GLM53_FP8_DENSE: "1"
+      VLLM_GLM53_FP8_PREFILL: w8a8
+    modes: {}
+    linked_options: {}
+  qwen38-tp2:
+    profile: qwen38-flash-next
+    hardware: rtx-pro-6000-pcie
+    description: Qwen3.8 Flash Next on two GPUs, retaining the model profile's MTP, table-offload and attention defaults.
+    options:
+      tensor-parallel-size: 2
+    environment: {}
+    modes: {}
+    linked_options: {}
+  mimo26-flash-tp2:
+    profile: mimo26-flash
+    hardware: rtx-pro-6000-pcie
+    description: MiMo-V2.6-Flash-RL on two 96-GB RTX PRO GPUs with DFlash 7 and adaptive verification, FP8 KV and the full 1M context. Images and audio work; video input is off because its encoder profile would take most of the KV cache at TP2.
+    options:
+      tensor-parallel-size: 2
+      gpu-memory-utilization: 0.985
+      limit-mm-per-prompt: {video: 0}
+    environment: {}
+    modes: {}
+    linked_options: {}

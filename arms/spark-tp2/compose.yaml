@@ -1,0 +1,43 @@
+services:
+  g53f:
+    image: ghcr.io/local-inference-lab/vllm@sha256:04bdd08b6ccbfe18f297dc4b60580fc6354f2efe249534888574d5046c187077
+    container_name: lavd-qualification
+    network_mode: host
+    gpus: all
+    shm_size: 32g
+    ipc: host
+    init: true
+    ulimits:
+      memlock: -1
+      stack: 67108864
+    environment:
+      CUDA_VISIBLE_DEVICES: 2,3
+      HF_HUB_OFFLINE: '1'
+      TRANSFORMERS_OFFLINE: '1'
+      CACHE_MODE: vram
+    volumes:
+    - /mnt/2king/models/GLM-5.3-Flash-NVFP4-Spark-a6082410:/model:ro
+    - /home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/cache:/root/.cache:rw
+    - /home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/cache:/cache:rw
+    - /home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z:/evidence:rw
+    entrypoint:
+    - /usr/local/bin/lil-entrypoint
+    command:
+    - --preset
+    - glm53-spark-tp2
+    - --model
+    - /model
+    - --host
+    - 127.0.0.1
+    - --port
+    - '8002'
+    - --served-model-name
+    - g53fq
+    - --default-chat-template-kwargs
+    - '{"reasoning_effort":"max","clear_thinking":true}'
+    labels:
+      field-lab.battery: r26
+      lavd.campaign: lavd-qualification-20261001T231927Z
+      lavd.arm: spark-tp2
+    stop_grace_period: 60s
+    restart: 'no'

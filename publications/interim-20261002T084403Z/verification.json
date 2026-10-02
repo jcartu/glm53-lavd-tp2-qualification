@@ -1,0 +1,20 @@
+{
+  "message_id": "1555500606959919184",
+  "author": "jcartu",
+  "content_matches": true,
+  "attachments": [
+    {
+      "filename": "glm-flash-first-numbers.png",
+      "sha256_matches": true,
+      "bytes": 200586,
+      "url": "https://cdn.discordapp.com/attachments/1471527895439638528/1555500605454155776/glm-flash-first-numbers.png?backend=b2&ex=6ac0c054&is=6abf6ed4&hm=d7a3c25de58835aa988d5b1b613a766e72f8c963911a1c5678f8a0759b19b874&"
+    },
+    {
+      "filename": "glm-flash-million-token-check.png",
+      "sha256_matches": true,
+      "bytes": 246738,
+      "url": "https://cdn.discordapp.com/attachments/1471527895439638528/1555500606561587282/glm-flash-million-token-check.png?backend=b2&ex=6ac0c054&is=6abf6ed4&hm=31dd29d2ba932f7a780760f6c600ba875a9772c7e1d0e9ea3418ccde72e60d6c&"
+    }
+  ],
+  "verified_utc": "2026-10-02T08:44:28.530231+00:00"
+}

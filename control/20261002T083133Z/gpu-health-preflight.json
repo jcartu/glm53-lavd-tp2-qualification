@@ -1,0 +1,30 @@
+{
+  "timestamp": 1790929893.9045496,
+  "gpu_health": {
+    "healthy": true,
+    "gpus": [
+      {
+        "index": 0,
+        "uuid": "GPU-538bf008-7ff2-0d1d-69e9-20db81a00459",
+        "recovery_action": "None"
+      },
+      {
+        "index": 1,
+        "uuid": "GPU-ba6334bc-6fec-5f2c-df75-a887bbca476e",
+        "recovery_action": "None"
+      },
+      {
+        "index": 2,
+        "uuid": "GPU-ae60c9dd-9ddc-cc7d-3a9e-f78cbeb00de9",
+        "recovery_action": "None"
+      },
+      {
+        "index": 3,
+        "uuid": "GPU-d558b2e1-bdf6-47b3-7d99-556339354cd1",
+        "recovery_action": "None"
+      }
+    ],
+    "errors": []
+  },
+  "speed_eligible": true
+}

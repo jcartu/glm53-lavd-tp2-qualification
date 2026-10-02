@@ -1,0 +1,11 @@
+[
+  {
+    "name": "reference",
+    "script": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py",
+    "args": [
+      "--phase",
+      "reference"
+    ],
+    "timeout_seconds": 172800
+  }
+]

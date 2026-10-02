@@ -1,0 +1,131 @@
+╭──────────────────────────── NVIDIA P2P Override ─────────────────────────────╮
+│ Effective: yes                                                               │
+│ Configured file: yes (/etc/modprobe.d/nvidia-p2p-override.conf)              │
+│ Runtime: ForceP2P=0x11; RMForceP2PType=1; RMPcieP2PType=2;                   │
+│ GrdmaPciTopoCheckOverride=1; EnableResizableBar=1; DmaRemapPeerMmio=1        │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─────────────────────────────── Configuration ────────────────────────────────╮
+│ MMLU-Pro Accuracy Benchmark                                                  │
+│ Model: GLM-5.3-Flash-NVFP4 @ localhost:5001                                  │
+│ Prompt: profile:mmlu-pro                                                     │
+│ Dataset: mmlu_pro_1000 (1000 items, sha256 a229ed37f28bea01…)                │
+│ Concurrency: 8                                                               │
+│ Measured runs: 200 | Max tokens: 131072                                      │
+│ Scoring: per-item option letter vs dataset reference                         │
+│ Sampling: temperature 0, seed 731 + run index, reasoning_effort max |        │
+│ Watchdog: stall 600s, wall-clock 3600s                                       │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭────────────────────────────── Completion Stats ──────────────────────────────╮
+│ MMLU-Pro Accuracy Benchmark                                                  │
+│ Every request is a different question from the pinned stratified             │
+│ 1000-question MMLU-Pro subset (multiple choice, up to 10 options), scored by │
+│ exact option-letter match. Accuracy with a Wilson 95% interval is the        │
+│ headline metric; per-category accuracy locates where configurations differ.  │
+│ Use --compare-baseline for paired A/B comparison across quantizations.       │
+│ Built-in profile run at fixed concurrency C=8.                               │
+╰──────────────────────────────────────────────────────────────────────────────╯
+Profile                                                
+╭────────────────┬────────────────────────────────────╮
+│ field          │ value                              │
+├────────────────┼────────────────────────────────────┤
+│ profile        │ mmlu-pro                           │
+│ prompt         │ dataset:mmlu_pro_1000 (1000 items) │
+│ prompt chars   │ 573                                │
+│ dataset        │ mmlu_pro_1000 (200/1000 items)     │
+│ requested runs │ 200                                │
+│ concurrency    │ 8                                  │
+│ max tokens     │ 131072                             │
+│ scoring        │ dataset_mc_letter                  │
+│ dataset sha256 │ a229ed37f28bea01                   │
+╰────────────────┴────────────────────────────────────╯
+╭────────────────────────── Whole-run GPU Power ───────────────────────────╮
+│ avg 1,457 W | max 1,571 W | limit 2,400 W | over 47m 30s | 1,170 samples │
+╰──────────────────────────────────────────────────────────────────────────╯
+Concurrency Results                                                             
+╭──┬──────┬────────────────────────┬────┬────────┬────────┬─────────┬───────┬──╮
+│  │ don… │                  score │ s… │ outpu… │ outpu… │ aggreg… │ avg … │  │
+├──┼──────┼────────────────────────┼────┼────────┼────────┼─────────┼───────┼──┤
+│  │ 200… │ EXACT 170 / FAIL 16 /… │ ★… │    500 │ 131,0… │   176.3 │ 103.8 │  │
+╰──┴──────┴────────────────────────┴────┴────────┴────────┴─────────┴───────┴──╯
+Selected C=8                                                                    
+╭────────────────────────────┬─────────────────────────────────────────────────╮
+│ metric                     │                                           value │
+├────────────────────────────┼─────────────────────────────────────────────────┤
+│ completed                  │                                         200/200 │
+│ score                      │                  EXACT 170 / FAIL 16 / TRUNC 14 │
+│ stars                      │                                   ★★★★★★★★✕⊘ 👍 │
+│ accuracy                   │                                85.00% (170/200) │
+│ Wilson 95% CI              │                                 79.39% – 89.29% │
+│ truncated (no answer)      │            14 — hit max_tokens before answering │
+│ hit max_tokens             │  25  (14 produced no answer, 11 answered before │
+│                            │                                        the cap) │
+│ completion tokens avg      │                                          18,118 │
+│ completion tokens p50      │                                             500 │
+│ completion tokens p90      │                                         131,072 │
+│ completion tokens p99      │                                         131,072 │
+│ elapsed avg                │                                          103.8s │
+│ TTFT avg                   │                                           0.98s │
+│ aggregate gen tok/s        │                                           176.3 │
+│ mean per-request gen tok/s │                                           129.4 │
+╰────────────────────────────┴─────────────────────────────────────────────────╯
+Per-category Accuracy                             
+╭──────────────────┬────────┬─────────┬──────────╮
+│ category         │ scored │ correct │ accuracy │
+├──────────────────┼────────┼─────────┼──────────┤
+│ biology          │     12 │      11 │    91.7% │
+│ business         │     14 │      12 │    85.7% │
+│ chemistry        │     18 │      15 │    83.3% │
+│ computer science │      7 │       6 │    85.7% │
+│ economics        │     14 │      11 │    78.6% │
+│ engineering      │     16 │      13 │    81.2% │
+│ health           │     14 │      12 │    85.7% │
+│ history          │      6 │       5 │    83.3% │
+│ law              │     19 │      10 │    52.6% │
+│ math             │     22 │      22 │   100.0% │
+│ other            │     15 │      13 │    86.7% │
+│ philosophy       │      9 │       8 │    88.9% │
+│ physics          │     21 │      19 │    90.5% │
+│ psychology       │     13 │      13 │   100.0% │
+╰──────────────────┴────────┴─────────┴──────────╯
+Failed Final Answers                                                            
+╭────┬───────────────┬───┬─────────┬───────┬───────────────────────────────────╮
+│  # │ item          │ C │  tokens │ score │ final answer                      │
+├────┼───────────────┼───┼─────────┼───────┼───────────────────────────────────┤
+│  4 │ mmlupro-2985  │ 8 │ 131,072 │ FAIL  │ B (expected C, got B) |           │
+│ 14 │ mmlupro-129   │ 8 │   9,414 │ FAIL  │ E (expected I, got E) | E         │
+│ 17 │ mmlupro-311   │ 8 │ 131,072 │ TRUNC │ (no answer: hit max_tokens limit) │
+│    │               │   │         │       │ |                                 │
+│ 37 │ mmlupro-4181  │ 8 │ 131,072 │ TRUNC │ (no answer: hit max_tokens limit) │
+│    │               │   │         │       │ |                                 │
+│ 38 │ mmlupro-4242  │ 8 │ 131,072 │ TRUNC │ (no answer: hit max_tokens limit) │
+│    │               │   │         │       │ |                                 │
+│ 42 │ mmlupro-4488  │ 8 │ 131,072 │ TRUNC │ (no answer: hit max_tokens limit) │
+│    │               │   │         │       │ |                                 │
+│ 47 │ mmlupro-10479 │ 8 │ 131,072 │ TRUNC │ (no answer: hit max_tokens limit) │
+│    │               │   │         │       │ |                                 │
+│ 52 │ mmlupro-6839  │ 8 │   1,986 │ FAIL  │ A (expected D, got A) | A         │
+│ 55 │ mmlupro-7020  │ 8 │     237 │ FAIL  │ D (expected J, got D) | D         │
+│ 59 │ mmlupro-7268  │ 8 │ 131,072 │ TRUNC │ (no answer: hit max_tokens limit) │
+│    │               │   │         │       │ |                                 │
+│ 69 │ mmlupro-11478 │ 8 │ 131,072 │ TRUNC │ (no answer: hit max_tokens limit) │
+│    │               │   │         │       │ |                                 │
+│ 71 │ mmlupro-11598 │ 8 │ 131,072 │ TRUNC │ (no answer: hit max_tokens limit) │
+│    │               │   │         │       │ |                                 │
+╰────┴───────────────┴───┴─────────┴───────┴───────────────────────────────────╯
+Interpretation: every measured request is a distinct pinned dataset item, so the
+correctness rate is dataset accuracy, not a resample pass-rate; the Wilson 95% 
+interval reflects item-count resolution. TRUNC (14 here, glyph ⊘) means the 
+model hit the max_tokens limit while still reasoning and never emitted an answer
+— a token-budget artifact, not a format miss; these still count as wrong. Raise 
+--max-tokens (or shorten the model's thinking) to recover them. 'unparseable 
+(format)' is the separate case where the model did answer but the letter/number 
+could not be read. For quantization A/B tests keep engine version and flags 
+identical, run the same profile against each endpoint, and pass 
+--compare-baseline to get paired per-item deltas with an exact McNemar 
+significance test. Completion-token inflation and max_tokens hits are early 
+damage signals even before accuracy moves.
+
+Results saved to 
+/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/arms/
+production-nvidia-tp4/mmlu-pro200.json

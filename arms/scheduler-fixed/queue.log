@@ -1,0 +1,1 @@
+queue {'requests': 12, 'completed': 12, 'failed': 0, 'wall_s': 68.5896303653717, 'output_tokens': 384, 'aggregate_output_tokens_per_s': 5.598513914632014, 'ttft_p50_s': 38.130061745643616, 'ttft_p95_s': 65.57717463970184, 'tpot_p50_ms': 124.65737711998725, 'tpot_p95_ms': 155.67604457178425}

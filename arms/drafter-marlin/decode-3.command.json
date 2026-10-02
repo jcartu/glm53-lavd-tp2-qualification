@@ -1,0 +1,32 @@
+{
+  "argv": [
+    "/home/josh/llm-inference-bench/.venv/bin/python",
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/preflight/llm_decode_bench.py",
+    "--port",
+    "8002",
+    "--model",
+    "g53fq",
+    "--display-mode",
+    "plain",
+    "--no-resume",
+    "--output",
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/arms/drafter-marlin/decode-3.json",
+    "--dcp-size",
+    "2",
+    "--concurrency",
+    "1,4,8",
+    "--contexts",
+    "0,16k",
+    "--duration",
+    "30",
+    "--max-tokens",
+    "8192",
+    "--temperature",
+    "1.0",
+    "--skip-prefill"
+  ],
+  "exit_code": 0,
+  "start": 1790942736.8235009,
+  "end": 1790942997.9743047,
+  "elapsed_s": 261.15080404281616
+}

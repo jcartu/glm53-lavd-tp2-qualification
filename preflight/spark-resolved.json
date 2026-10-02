@@ -1,0 +1,789 @@
+{
+  "schema_version": 1,
+  "status": "implemented",
+  "qualification": "CPU configuration tests only; no GPU performance claim",
+  "profile": "glm53-flash",
+  "hardware": "rtx-pro-6000-pcie",
+  "argv": [
+    "/opt/venv/bin/python",
+    "-m",
+    "vllm.entrypoints.cli.main",
+    "serve",
+    "/model",
+    "--additional-config",
+    "{\"glm53_kda_decode_backend\":\"auto\",\"kda_prefill_backend\":\"b12x\"}",
+    "--attention-backend",
+    "B12X",
+    "--block-size",
+    "256",
+    "--chat-template",
+    "/opt/lil/runtime/templates/glm53-flash.jinja",
+    "--compilation-config",
+    "{\"cudagraph_mode\":\"FULL_AND_PIECEWISE\"}",
+    "--cp-kv-cache-interleave-size",
+    "4",
+    "--cudagraph-capture-sizes",
+    "1",
+    "2",
+    "4",
+    "8",
+    "12",
+    "16",
+    "20",
+    "24",
+    "28",
+    "32",
+    "--dcp-kv-cache-interleave-size",
+    "4",
+    "--decode-context-parallel-size",
+    "2",
+    "--default-chat-template-kwargs",
+    "{\"reasoning_effort\":\"max\",\"clear_thinking\":true}",
+    "--dtype",
+    "bfloat16",
+    "--enable-auto-tool-choice",
+    "--enable-chunked-prefill",
+    "--no-enable-flashinfer-autotune",
+    "--enable-prefix-caching",
+    "--enable-prompt-tokens-details",
+    "--gpu-memory-utilization",
+    "0.985",
+    "--host",
+    "127.0.0.1",
+    "--kv-cache-dtype",
+    "fp8",
+    "--kv-cache-memory-bytes",
+    "4240441344",
+    "--linear-backend",
+    "b12x",
+    "--load-format",
+    "safetensors",
+    "--mamba-cache-mode",
+    "align",
+    "--max-cudagraph-capture-size",
+    "32",
+    "--max-model-len",
+    "-1",
+    "--max-num-batched-tokens",
+    "3072",
+    "--max-num-seqs",
+    "8",
+    "--max-parallel-prefills",
+    "1",
+    "--moe-backend",
+    "b12x",
+    "--override-generation-config",
+    "{\"temperature\":1.0,\"top_p\":0.95}",
+    "--pipeline-parallel-size",
+    "1",
+    "--port",
+    "8002",
+    "--prefill-compute-share",
+    "0.4",
+    "--prefill-schedule-interval",
+    "1",
+    "--quantization",
+    "modelopt_mixed",
+    "--reasoning-parser",
+    "glm45",
+    "--recurrent-checkpoint-policy",
+    "request_boundaries",
+    "--served-model-name",
+    "g53fq",
+    "--speculative-config",
+    "{\"method\":\"mtp\",\"draft_sample_method\":\"probabilistic\",\"rejection_sample_method\":\"standard\",\"moe_backend\":\"b12x\",\"attention_backend\":\"B12X\",\"num_speculative_tokens\":3}",
+    "--tensor-parallel-size",
+    "2",
+    "--tool-call-parser",
+    "glm47"
+  ],
+  "settings": {
+    "cache-transfer-mode": {
+      "value": "engine_driven",
+      "source": "common:single-node-vllm"
+    },
+    "cache-l1-gib": {
+      "value": 64.0,
+      "source": "model:glm53-flash"
+    },
+    "cache-l1-init-gib": {
+      "value": 2,
+      "source": "model:glm53-flash"
+    },
+    "cache-l2-gib": {
+      "value": 512.0,
+      "source": "model:glm53-flash"
+    },
+    "cache-l2-enabled": {
+      "value": true,
+      "source": "model:glm53-flash"
+    },
+    "cache-l2-odirect": {
+      "value": false,
+      "source": "common:single-node-vllm"
+    },
+    "cache-l2-prune-stale": {
+      "value": false,
+      "source": "common:single-node-vllm"
+    },
+    "cache-l2-checkpoint-writes": {
+      "value": "on-evict",
+      "source": "model:glm53-flash"
+    },
+    "cache-cpu-workers": {
+      "value": 16,
+      "source": "model:glm53-flash"
+    },
+    "cache-l2-workers": {
+      "value": 8,
+      "source": "model:glm53-flash"
+    },
+    "cache-directory": {
+      "value": "/cache/lmcache",
+      "source": "common:single-node-vllm"
+    },
+    "cache-object-tokens": {
+      "value": 3072,
+      "source": "derived:preset link to max-num-batched-tokens"
+    },
+    "cache-native-gib": {
+      "value": 64.0,
+      "source": "common:single-node-vllm"
+    },
+    "cache-host": {
+      "value": "127.0.0.1",
+      "source": "common:single-node-vllm"
+    },
+    "cache-http-host": {
+      "value": "127.0.0.1",
+      "source": "common:single-node-vllm"
+    },
+    "cache-start-timeout": {
+      "value": 120.0,
+      "source": "common:single-node-vllm"
+    },
+    "cache-prefetch-policy": {
+      "value": "retain",
+      "source": "common:single-node-vllm"
+    },
+    "cache-broker-directory": {
+      "value": "/cache/lmcache-cumem",
+      "source": "common:single-node-vllm"
+    },
+    "cache-load-failure-policy": {
+      "value": "recompute",
+      "source": "common:single-node-vllm"
+    },
+    "host": {
+      "value": "127.0.0.1",
+      "source": "cli"
+    },
+    "port": {
+      "value": 8002,
+      "source": "cli"
+    },
+    "pipeline-parallel-size": {
+      "value": 1,
+      "source": "common:single-node-vllm"
+    },
+    "decode-context-parallel-size": {
+      "value": 2,
+      "source": "preset:glm53-spark-tp2"
+    },
+    "dtype": {
+      "value": "bfloat16",
+      "source": "common:single-node-vllm"
+    },
+    "kv-cache-dtype": {
+      "value": "fp8",
+      "source": "common:single-node-vllm"
+    },
+    "load-format": {
+      "value": "safetensors",
+      "source": "preset:glm53-spark-tp2"
+    },
+    "enable-prefix-caching": {
+      "value": true,
+      "source": "common:single-node-vllm"
+    },
+    "enable-prompt-tokens-details": {
+      "value": true,
+      "source": "common:single-node-vllm"
+    },
+    "enable-chunked-prefill": {
+      "value": true,
+      "source": "common:single-node-vllm"
+    },
+    "enable-auto-tool-choice": {
+      "value": true,
+      "source": "common:single-node-vllm"
+    },
+    "cache-mode": {
+      "value": "vram",
+      "source": "environment:CACHE_MODE"
+    },
+    "cache-gpu-workers": {
+      "value": 8,
+      "source": "model:glm53-flash"
+    },
+    "model": {
+      "value": "/model",
+      "source": "cli"
+    },
+    "served-model-name": {
+      "value": "g53fq",
+      "source": "cli"
+    },
+    "tensor-parallel-size": {
+      "value": 2,
+      "source": "preset:glm53-spark-tp2"
+    },
+    "mode": {
+      "value": "mtp",
+      "source": "preset:glm53-spark-tp2"
+    },
+    "prefill-compute-share": {
+      "value": "0.4",
+      "source": "model:glm53-flash"
+    },
+    "prefill-schedule-interval": {
+      "value": 1,
+      "source": "model:glm53-flash"
+    },
+    "max-parallel-prefills": {
+      "value": 1,
+      "source": "model:glm53-flash"
+    },
+    "max-model-len": {
+      "value": -1,
+      "source": "preset:glm53-spark-tp2"
+    },
+    "max-num-seqs": {
+      "value": 8,
+      "source": "preset:glm53-spark-tp2"
+    },
+    "max-num-batched-tokens": {
+      "value": 3072,
+      "source": "preset:glm53-spark-tp2"
+    },
+    "gpu-memory-utilization": {
+      "value": 0.985,
+      "source": "preset:glm53-spark-tp2"
+    },
+    "block-size": {
+      "value": 256,
+      "source": "model:glm53-flash"
+    },
+    "target-page-size": {
+      "value": "2048",
+      "source": "model:glm53-flash"
+    },
+    "recurrent-page-size": {
+      "value": "auto",
+      "source": "model:glm53-flash"
+    },
+    "recurrent-checkpoint-policy": {
+      "value": "request_boundaries",
+      "source": "model:glm53-flash"
+    },
+    "mamba-cache-mode": {
+      "value": "align",
+      "source": "model:glm53-flash"
+    },
+    "cp-kv-cache-interleave-size": {
+      "value": 4,
+      "source": "model:glm53-flash"
+    },
+    "dcp-kv-cache-interleave-size": {
+      "value": 4,
+      "source": "model:glm53-flash"
+    },
+    "dcp-ckv-gather": {
+      "value": "auto",
+      "source": "model:glm53-flash"
+    },
+    "attention-backend": {
+      "value": "B12X",
+      "source": "model:glm53-flash"
+    },
+    "moe-backend": {
+      "value": "b12x",
+      "source": "model:glm53-flash"
+    },
+    "linear-backend": {
+      "value": "b12x",
+      "source": "model:glm53-flash"
+    },
+    "quantization": {
+      "value": "modelopt_mixed",
+      "source": "model:glm53-flash"
+    },
+    "enable-flashinfer-autotune": {
+      "value": false,
+      "source": "model:glm53-flash"
+    },
+    "max-cudagraph-capture-size": {
+      "value": 32,
+      "source": "derived:bounded verifier rows"
+    },
+    "cudagraph-capture-sizes": {
+      "value": [
+        1,
+        2,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32
+      ],
+      "source": "derived:capture-size cap override"
+    },
+    "compilation-config": {
+      "value": {
+        "cudagraph_mode": "FULL_AND_PIECEWISE"
+      },
+      "source": "model:glm53-flash"
+    },
+    "additional-config": {
+      "value": {
+        "glm53_kda_decode_backend": "auto",
+        "kda_prefill_backend": "b12x"
+      },
+      "source": "model:glm53-flash"
+    },
+    "reasoning-parser": {
+      "value": "glm45",
+      "source": "model:glm53-flash"
+    },
+    "tool-call-parser": {
+      "value": "glm47",
+      "source": "model:glm53-flash"
+    },
+    "default-chat-template-kwargs": {
+      "value": {
+        "reasoning_effort": "max",
+        "clear_thinking": true
+      },
+      "source": "cli"
+    },
+    "chat-template": {
+      "value": "runtime:templates/glm53-flash.jinja",
+      "source": "model:glm53-flash"
+    },
+    "override-generation-config": {
+      "value": {
+        "temperature": 1.0,
+        "top_p": 0.95
+      },
+      "source": "model:glm53-flash"
+    },
+    "kv-cache-memory-bytes": {
+      "value": 4240441344,
+      "source": "preset:glm53-spark-tp2"
+    },
+    "speculative-config": {
+      "value": {
+        "method": "mtp",
+        "draft_sample_method": "probabilistic",
+        "rejection_sample_method": "standard",
+        "moe_backend": "b12x",
+        "attention_backend": "B12X",
+        "num_speculative_tokens": 3
+      },
+      "source": "derived:mtp policy and resolved draft settings"
+    },
+    "draft-tokens": {
+      "value": 3,
+      "source": "derived:effective proposal width"
+    }
+  },
+  "environment": {
+    "B12X_COMPILE_CACHE_DIR": {
+      "value": "/cache/jit/718ff03c222670127175c4290cf84d9b436e1e0cc4650a7d4785ff0cb4b62e15/glm53-flash-b2693dd6150447f8/b12x/compile",
+      "source": "derived:runtime-lock and profile identity"
+    },
+    "B12X_CUTE_COMPILE_CACHE_DIR": {
+      "value": "/cache/jit/718ff03c222670127175c4290cf84d9b436e1e0cc4650a7d4785ff0cb4b62e15/glm53-flash-b2693dd6150447f8/b12x/cute",
+      "source": "derived:runtime-lock and profile identity"
+    },
+    "B12X_DYNAMIC_DIRECT_EXPERT_SCALES": {
+      "value": "1",
+      "source": "model:glm53-flash"
+    },
+    "B12X_DYNAMIC_SKIP_SPLIT_BARRIER_RESET": {
+      "value": "1",
+      "source": "model:glm53-flash"
+    },
+    "B12X_DYNAMIC_SPLIT_COMPUTE_MAC": {
+      "value": "224",
+      "source": "model:glm53-flash"
+    },
+    "B12X_DYNAMIC_SPLIT_FAST_PREPARE": {
+      "value": "1",
+      "source": "model:glm53-flash"
+    },
+    "B12X_DYNAMIC_SPLIT_LOW_SMEM": {
+      "value": "1",
+      "source": "model:glm53-flash"
+    },
+    "B12X_DYNAMIC_SPLIT_ROUTE_COMPUTE": {
+      "value": "1",
+      "source": "model:glm53-flash"
+    },
+    "B12X_DYNAMIC_WORK_SOURCE": {
+      "value": "persistent_grid",
+      "source": "model:glm53-flash"
+    },
+    "B12X_MHC_PDL": {
+      "value": "1",
+      "source": "model:glm53-flash"
+    },
+    "B12X_PCIE_ONESHOT_BLOCK_LIMIT": {
+      "value": "4",
+      "source": "model:glm53-flash"
+    },
+    "B12X_PCIE_ONESHOT_PDL": {
+      "value": "1",
+      "source": "model:glm53-flash"
+    },
+    "B12X_PCIE_ONESHOT_THREADS": {
+      "value": "512",
+      "source": "model:glm53-flash"
+    },
+    "CUBLAS_WORKSPACE_CONFIG": {
+      "value": ":4096:1",
+      "source": "preset:glm53-spark-tp2"
+    },
+    "CUDA_ARCH_LIST": {
+      "value": "7.5 8.0 8.6 9.0 10.0 12.0",
+      "source": "environment"
+    },
+    "CUDA_BINARY_LOADER_THREAD_COUNT": {
+      "value": "8",
+      "source": "environment"
+    },
+    "CUDA_CACHE_PATH": {
+      "value": "/cache/jit/718ff03c222670127175c4290cf84d9b436e1e0cc4650a7d4785ff0cb4b62e15/glm53-flash-b2693dd6150447f8/cuda",
+      "source": "derived:runtime-lock and profile identity"
+    },
+    "CUDA_COMPONENT_LIST": {
+      "value": "crt nvrtc driver-dev culibos-dev cudart cudart-dev nvcc tileiras cupti",
+      "source": "environment"
+    },
+    "CUDA_DEVICE_ORDER": {
+      "value": "PCI_BUS_ID",
+      "source": "common:single-node-vllm"
+    },
+    "CUDA_DRIVER_VERSION": {
+      "value": "615.65.02",
+      "source": "environment"
+    },
+    "CUDA_HOME": {
+      "value": "/usr/local/cuda",
+      "source": "environment"
+    },
+    "CUDA_MODULE_LOADING": {
+      "value": "LAZY",
+      "source": "environment"
+    },
+    "CUDA_VERSION": {
+      "value": "13.4.1.012",
+      "source": "environment"
+    },
+    "CUPY_CACHE_DIR": {
+      "value": "/cache/jit/718ff03c222670127175c4290cf84d9b436e1e0cc4650a7d4785ff0cb4b62e15/glm53-flash-b2693dd6150447f8/cupy",
+      "source": "derived:runtime-lock and profile identity"
+    },
+    "CUTE_DSL_ARCH": {
+      "value": "sm_120a",
+      "source": "hardware:rtx-pro-6000-pcie"
+    },
+    "CUTE_DSL_CACHE_DIR": {
+      "value": "/cache/jit/718ff03c222670127175c4290cf84d9b436e1e0cc4650a7d4785ff0cb4b62e15/glm53-flash-b2693dd6150447f8/cute-dsl",
+      "source": "derived:runtime-lock and profile identity"
+    },
+    "FLASHINFER_WORKSPACE_BASE": {
+      "value": "/cache/jit/718ff03c222670127175c4290cf84d9b436e1e0cc4650a7d4785ff0cb4b62e15/glm53-flash-b2693dd6150447f8/flashinfer",
+      "source": "derived:runtime-lock and profile identity"
+    },
+    "FLASH_ATTENTION_CUTE_DSL_CACHE_DIR": {
+      "value": "/cache/jit/718ff03c222670127175c4290cf84d9b436e1e0cc4650a7d4785ff0cb4b62e15/glm53-flash-b2693dd6150447f8/flash-attention-cute-dsl",
+      "source": "derived:runtime-lock and profile identity"
+    },
+    "GLOO_SOCKET_IFNAME": {
+      "value": "lo",
+      "source": "preset:glm53-spark-tp2"
+    },
+    "HF_HOME": {
+      "value": "/root/.cache/huggingface",
+      "source": "common:single-node-vllm"
+    },
+    "INSTANTTENSOR_BACKEND": {
+      "value": "BUFFERED",
+      "source": "common:single-node-vllm"
+    },
+    "NCCL_BUFFSIZE": {
+      "value": "1048576",
+      "source": "preset:glm53-spark-tp2"
+    },
+    "NCCL_IB_DISABLE": {
+      "value": "1",
+      "source": "hardware:rtx-pro-6000-pcie"
+    },
+    "NCCL_MAX_NCHANNELS": {
+      "value": "2",
+      "source": "preset:glm53-spark-tp2"
+    },
+    "NCCL_MIN_NCHANNELS": {
+      "value": "2",
+      "source": "preset:glm53-spark-tp2"
+    },
+    "NCCL_NET_PLUGIN": {
+      "value": "none",
+      "source": "preset:glm53-spark-tp2"
+    },
+    "NCCL_P2P_LEVEL": {
+      "value": "SYS",
+      "source": "hardware:rtx-pro-6000-pcie"
+    },
+    "NCCL_PROTO": {
+      "value": "LL,LL128,Simple",
+      "source": "hardware:rtx-pro-6000-pcie"
+    },
+    "NCCL_SOCKET_IFNAME": {
+      "value": "lo",
+      "source": "preset:glm53-spark-tp2"
+    },
+    "NCCL_TUNER_PLUGIN": {
+      "value": "none",
+      "source": "preset:glm53-spark-tp2"
+    },
+    "NCCL_VERSION": {
+      "value": "2.30.7+cuda13.3",
+      "source": "environment"
+    },
+    "NUMBA_CACHE_DIR": {
+      "value": "/cache/jit/718ff03c222670127175c4290cf84d9b436e1e0cc4650a7d4785ff0cb4b62e15/glm53-flash-b2693dd6150447f8/numba",
+      "source": "derived:runtime-lock and profile identity"
+    },
+    "OMP_NUM_THREADS": {
+      "value": "1",
+      "source": "preset:glm53-spark-tp2"
+    },
+    "PYTORCH_CUDA_ALLOC_CONF": {
+      "value": "expandable_segments:True,large_segment_size_mb:12",
+      "source": "preset:glm53-spark-tp2"
+    },
+    "SAFETENSORS_FAST_GPU": {
+      "value": "1",
+      "source": "common:single-node-vllm"
+    },
+    "SPARKINFER_COMPILE_CACHE_DIR": {
+      "value": "/cache/jit/718ff03c222670127175c4290cf84d9b436e1e0cc4650a7d4785ff0cb4b62e15/glm53-flash-b2693dd6150447f8/b12x/compile",
+      "source": "derived:runtime-lock and profile identity"
+    },
+    "TILELANG_CACHE_DIR": {
+      "value": "/cache/jit/718ff03c222670127175c4290cf84d9b436e1e0cc4650a7d4785ff0cb4b62e15/glm53-flash-b2693dd6150447f8/tilelang",
+      "source": "derived:runtime-lock and profile identity"
+    },
+    "TORCHINDUCTOR_CACHE_DIR": {
+      "value": "/cache/jit/718ff03c222670127175c4290cf84d9b436e1e0cc4650a7d4785ff0cb4b62e15/glm53-flash-b2693dd6150447f8/torchinductor",
+      "source": "derived:runtime-lock and profile identity"
+    },
+    "TORCHINDUCTOR_CUTLASS_DIR": {
+      "value": "/opt/pytorch/pytorch/third_party/cutlass",
+      "source": "environment"
+    },
+    "TORCHINDUCTOR_LOOP_ORDERING_AFTER_FUSION": {
+      "value": "0",
+      "source": "environment"
+    },
+    "TORCH_CUDA_ARCH_LIST": {
+      "value": "12.0a",
+      "source": "hardware:rtx-pro-6000-pcie"
+    },
+    "TORCH_EXTENSIONS_DIR": {
+      "value": "/cache/jit/718ff03c222670127175c4290cf84d9b436e1e0cc4650a7d4785ff0cb4b62e15/glm53-flash-b2693dd6150447f8/torch-extensions",
+      "source": "derived:runtime-lock and profile identity"
+    },
+    "TRITON_CACHE_DIR": {
+      "value": "/cache/jit/718ff03c222670127175c4290cf84d9b436e1e0cc4650a7d4785ff0cb4b62e15/glm53-flash-b2693dd6150447f8/triton",
+      "source": "derived:runtime-lock and profile identity"
+    },
+    "TRITON_CUDACRT_PATH": {
+      "value": "/usr/local/cuda/include",
+      "source": "environment"
+    },
+    "TRITON_CUDART_PATH": {
+      "value": "/usr/local/cuda/include",
+      "source": "environment"
+    },
+    "TRITON_CUOBJDUMP_PATH": {
+      "value": "/usr/local/cuda/bin/cuobjdump",
+      "source": "environment"
+    },
+    "TRITON_CUPTI_INCLUDE_PATH": {
+      "value": "/usr/local/cuda/include",
+      "source": "environment"
+    },
+    "TRITON_CUPTI_LIB_PATH": {
+      "value": "/usr/local/cuda/lib64",
+      "source": "environment"
+    },
+    "TRITON_NVDISASM_PATH": {
+      "value": "/usr/local/cuda/bin/nvdisasm",
+      "source": "environment"
+    },
+    "TRITON_PTXAS_PATH": {
+      "value": "/usr/local/cuda/bin/ptxas",
+      "source": "environment"
+    },
+    "TVM_CACHE_DIR": {
+      "value": "/cache/jit/718ff03c222670127175c4290cf84d9b436e1e0cc4650a7d4785ff0cb4b62e15/glm53-flash-b2693dd6150447f8/tvm",
+      "source": "derived:runtime-lock and profile identity"
+    },
+    "TVM_FFI_CACHE_DIR": {
+      "value": "/cache/jit/718ff03c222670127175c4290cf84d9b436e1e0cc4650a7d4785ff0cb4b62e15/glm53-flash-b2693dd6150447f8/tvm-ffi",
+      "source": "derived:runtime-lock and profile identity"
+    },
+    "VLLM_B12X_MLA_CKV_GATHER": {
+      "value": "1",
+      "source": "derived:DCP CKV policy"
+    },
+    "VLLM_B12X_MLA_CKV_GATHER_MAX_TOKENS": {
+      "value": "65536",
+      "source": "preset:glm53-spark-tp2"
+    },
+    "VLLM_B12X_MOE_FP4_FORCE_A16": {
+      "value": "0",
+      "source": "model:glm53-flash"
+    },
+    "VLLM_CACHE_DIR": {
+      "value": "/cache/jit/718ff03c222670127175c4290cf84d9b436e1e0cc4650a7d4785ff0cb4b62e15/glm53-flash-b2693dd6150447f8/vllm",
+      "source": "derived:runtime-lock and profile identity"
+    },
+    "VLLM_CACHE_ROOT": {
+      "value": "/cache/jit/718ff03c222670127175c4290cf84d9b436e1e0cc4650a7d4785ff0cb4b62e15/glm53-flash-b2693dd6150447f8/vllm",
+      "source": "derived:runtime-lock and profile identity"
+    },
+    "VLLM_CAUSAL_CONV1D_UPDATE_HOIST": {
+      "value": "1",
+      "source": "model:glm53-flash"
+    },
+    "VLLM_DISABLED_KERNELS": {
+      "value": "MarlinFP8ScaledMMLinearKernel",
+      "source": "model:glm53-flash"
+    },
+    "VLLM_DISABLE_SHARED_EXPERTS_STREAM": {
+      "value": "0",
+      "source": "model:glm53-flash"
+    },
+    "VLLM_ENABLE_PCIE_ALLREDUCE": {
+      "value": "1",
+      "source": "hardware:rtx-pro-6000-pcie"
+    },
+    "VLLM_GLM53_DFLASH_ATTN": {
+      "value": "1",
+      "source": "model:glm53-flash"
+    },
+    "VLLM_GLM53_EMBED_HOST": {
+      "value": "1",
+      "source": "preset:glm53-spark-tp2"
+    },
+    "VLLM_GLM53_KDA_GATE_SIDE_STREAM": {
+      "value": "1",
+      "source": "model:glm53-flash"
+    },
+    "VLLM_GLM53_L2_PREFETCH": {
+      "value": "1",
+      "source": "model:glm53-flash"
+    },
+    "VLLM_GLM53_L2_PREFETCH_PERSIST_MB": {
+      "value": "0",
+      "source": "model:glm53-flash"
+    },
+    "VLLM_GLM53_MTP_DRAFT_HEAD": {
+      "value": "nvfp4",
+      "source": "model:glm53-flash"
+    },
+    "VLLM_GLM53_ONLINE_DENSE_MXFP8": {
+      "value": "0",
+      "source": "model:glm53-flash"
+    },
+    "VLLM_GLM53_SPLIT_MAMBA_BLOCK_SIZE": {
+      "value": "auto",
+      "source": "model:glm53-flash"
+    },
+    "VLLM_GLM53_SPLIT_TARGET_BLOCK_SIZE": {
+      "value": "2048",
+      "source": "model:glm53-flash"
+    },
+    "VLLM_GLM53_VISION_MXFP8": {
+      "value": "1",
+      "source": "preset:glm53-spark-tp2"
+    },
+    "VLLM_LM_HEAD_A16": {
+      "value": "1",
+      "source": "model:glm53-flash"
+    },
+    "VLLM_MTP_NVFP4_LM_HEAD": {
+      "value": "0",
+      "source": "model:glm53-flash"
+    },
+    "VLLM_MXFP8_LM_HEAD": {
+      "value": "0",
+      "source": "model:glm53-flash"
+    },
+    "VLLM_PCIE_ALLREDUCE_BACKEND": {
+      "value": "b12x",
+      "source": "hardware:rtx-pro-6000-pcie"
+    },
+    "VLLM_PCIE_DMA_MIN_BYTES": {
+      "value": "off",
+      "source": "derived:GLM PCIe DCP policy"
+    },
+    "VLLM_PCIE_TWOSHOT_ALLREDUCE_MAX_SIZE": {
+      "value": "off",
+      "source": "preset:glm53-spark-tp2"
+    },
+    "VLLM_PLUGINS": {
+      "value": "",
+      "source": "model:glm53-flash"
+    },
+    "VLLM_SHARE_PYNCCL_COMMS": {
+      "value": "1",
+      "source": "preset:glm53-spark-tp2"
+    },
+    "VLLM_USE_FASTOKENS": {
+      "value": "1",
+      "source": "common:single-node-vllm"
+    },
+    "VLLM_USE_FLASHINFER_SAMPLER": {
+      "value": "1",
+      "source": "model:glm53-flash"
+    },
+    "VLLM_USE_V2_MODEL_RUNNER": {
+      "value": "1",
+      "source": "common:single-node-vllm"
+    },
+    "VLLM_WORKER_MULTIPROC_METHOD": {
+      "value": "spawn",
+      "source": "common:single-node-vllm"
+    },
+    "XDG_CACHE_HOME": {
+      "value": "/cache/jit/718ff03c222670127175c4290cf84d9b436e1e0cc4650a7d4785ff0cb4b62e15/glm53-flash-b2693dd6150447f8",
+      "source": "derived:runtime-lock and profile identity"
+    }
+  },
+  "warnings": [
+    "Model parameters preserve recipe intent; changing installed vLLM/B12X requires independent qualification."
+  ],
+  "cache_service": null,
+  "bootstrap": [
+    "/opt/venv/bin/lil-runtime-bootstrap"
+  ],
+  "runtime_lock_sha256": "718ff03c222670127175c4290cf84d9b436e1e0cc4650a7d4785ff0cb4b62e15"
+}

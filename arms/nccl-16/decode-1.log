@@ -1,0 +1,88 @@
+╭──────────────────────────── NVIDIA P2P Override ─────────────────────────────╮
+│ Effective: yes                                                               │
+│ Configured file: yes (/etc/modprobe.d/nvidia-p2p-override.conf)              │
+│ Runtime: ForceP2P=0x11; RMForceP2PType=1; RMPcieP2PType=2;                   │
+│ GrdmaPciTopoCheckOverride=1; EnableResizableBar=1; DmaRemapPeerMmio=1        │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─────────────────────────────── Configuration ────────────────────────────────╮
+│ LLM Inference Benchmark                                                      │
+│ Model: g53fq @ localhost:8002                                                │
+│ Decode concurrency: [1, 4, 8]                                                │
+│ Decode contexts: ['0', '16k']                                                │
+│ Duration: 30.0s per decode test | Max tokens: 8192                           │
+│ Pre-decode warmup: C=1 max-runnable context for 3s                           │
+│ Exact-loop guard: enabled | Output preview: unavailable in plain mode        │
+│ Prefill: skipped | Sustained decode: 6 cells                                 │
+╰──────────────────────────────────────────────────────────────────────────────╯
+Engine: vLLM 0.1.dev21972+ga2b44f520  Models: ['g53fq']
+KV cache budget (vLLM metrics): 1,093,386 tokens (kv_cache_size_tokens)
+Model context length: 1,048,576 tokens
+Prefill tests: skipped
+Calibrating padding text (run=ydiuuprbjrif, up to 16k)...
+  Token targeting: single-point estimate from 8k (use --token-targeting exact 
+for /tokenize binary search)
+  Calibrated: 6.18 chars/token (cached, source=8k)
+  16k: 101,176 chars (~16,383 tokens)
+Done.
+
+Cell C=1 ctx=0 failed: scheduler isolation metrics are unavailable before C=1 
+ctx=0: expected vllm:num_requests_running and vllm:num_requests_waiting
+Cell C=1 ctx=16k failed: scheduler isolation metrics are unavailable before C=1 
+ctx=16k: expected vllm:num_requests_running and vllm:num_requests_waiting
+Cell C=4 ctx=0 failed: scheduler isolation metrics are unavailable before C=4 
+ctx=0: expected vllm:num_requests_running and vllm:num_requests_waiting
+Cell C=8 ctx=0 failed: scheduler isolation metrics are unavailable before C=8 
+ctx=0: expected vllm:num_requests_running and vllm:num_requests_waiting
+Cell C=4 ctx=16k failed: scheduler isolation metrics are unavailable before C=4 
+ctx=16k: expected vllm:num_requests_running and vllm:num_requests_waiting
+Cell C=8 ctx=16k failed: scheduler isolation metrics are unavailable before C=8 
+ctx=16k: expected vllm:num_requests_running and vllm:num_requests_waiting
+
+
+llm-decode-bench v0.7.5
+╭────────────────────────────────── Phase 2 ───────────────────────────────────╮
+│ Sustained Decode                                                             │
+│ Steady-state decode throughput after the engine has admitted the requested   │
+│ concurrency and passed warmup. Use this as the main tuning/regression signal │
+│ for kernels, NCCL, DCP, MTP, and scheduler changes.                          │
+╰──────────────────────────────────────────────────────────────────────────────╯
+Aggregate tok/s                       
+╭────────────┬───────┬───────┬───────╮
+│ ctx \ conc │     1 │     4 │     8 │
+├────────────┼───────┼───────┼───────┤
+│ 0          │ ERROR │ ERROR │ ERROR │
+│ 16k        │ ERROR │ ERROR │ ERROR │
+╰────────────┴───────┴───────┴───────╯
+Sustained Decode: aggregate tok/s uses OpenAI stream usage by default 
+(continuous completion_tokens when the server supports it). Prometheus is kept 
+as validation/scheduler data.
+Per-Request tok/s                     
+╭────────────┬───────┬───────┬───────╮
+│ ctx \ conc │     1 │     4 │     8 │
+├────────────┼───────┼───────┼───────┤
+│ 0          │ ERROR │ ERROR │ ERROR │
+│ 16k        │ ERROR │ ERROR │ ERROR │
+╰────────────┴───────┴───────┴───────╯
+
+╭────────────────────────────────── Phase 3 ───────────────────────────────────╮
+│ Burst / E2E Decode                                                           │
+│ Not run. Re-run with --run-burst to append a finite client-facing request    │
+│ burst after Sustained Decode. This is intentionally disabled by default      │
+│ because it adds another full decode matrix.                                  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭────────────────────────────── Primary Summary ───────────────────────────────╮
+│ Primary matrices repeated last so the important numbers are visible without  │
+│ scrolling back through diagnostics.                                          │
+╰──────────────────────────────────────────────────────────────────────────────╯
+Aggregate decode tok/s                
+╭────────────┬───────┬───────┬───────╮
+│ ctx \ conc │     1 │     4 │     8 │
+├────────────┼───────┼───────┼───────┤
+│ 0          │ ERROR │ ERROR │ ERROR │
+│ 16k        │ ERROR │ ERROR │ ERROR │
+╰────────────┴───────┴───────┴───────╯
+
+Results saved to 
+/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/arms/
+nccl-16/decode-1.json

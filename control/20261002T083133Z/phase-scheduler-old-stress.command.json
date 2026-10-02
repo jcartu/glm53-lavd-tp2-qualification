@@ -1,0 +1,13 @@
+{
+  "args": [
+    "/usr/bin/python",
+    "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/campaign.py",
+    "--phase",
+    "scheduler-old-stress"
+  ],
+  "returncode": 0,
+  "started_at": 1790950085.447053,
+  "finished_at": 1790950575.474351,
+  "elapsed_seconds": 490.0272979736328,
+  "log": "/home/josh/omp-workspace/drock-lmcache/lavd-qualification-20261001T231927Z/control/20261002T083133Z/phase-scheduler-old-stress.log"
+}
